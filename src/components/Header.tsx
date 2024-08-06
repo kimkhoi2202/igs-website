@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
-import { ModeToggle } from '@/components/ui/mode-toggle';
+import { ModeToggle } from '@/components/ui/mode-toggle'; // Import the ModeToggle component
 
 function HomeIcon(props: Readonly<React.SVGProps<SVGSVGElement>>) {
   return (
@@ -30,12 +30,12 @@ export default function Header() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex gap-2 items-center">
-        <ModeToggle /> {/* Add the ModeToggle component here */}
+      <div className="flex gap-2">
         <Button variant="outline" size="sm">
           Login
         </Button>
         <Button size="sm">Contact Us</Button>
+        <ModeToggle /> {/* Add the ModeToggle component */}
       </div>
     </header>
   );
