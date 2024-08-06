@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 function FacebookIcon(props: Readonly<React.SVGProps<SVGSVGElement>>) {
   return (
@@ -44,6 +45,7 @@ export default function Footer() {
   return (
     <footer className="bg-background p-6 md:py-12 w-full">
       <div className="container flex flex-col items-center justify-between max-w-7xl mx-auto">
+        <Separator className="my-4" />
         <div className="flex gap-4">
           <Button variant="outline" className="rounded-full">
             <FacebookIcon className="w-5 h-5" />
