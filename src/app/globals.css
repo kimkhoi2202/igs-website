@@ -2,32 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%; /* white */
+    --foreground: 240 10% 3.9%; /* near-black */
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 240 10% 3.9%; /* near-black */
+    --popover: 0 0% 100%; /* white */
+    --popover-foreground: 240 10% 3.9%; /* near-black */
+    --primary: 346.8 77.2% 49.8%; /* red */
+    --primary-foreground: 355.7 100% 99%; /* near-white */
+    --secondary: 240 4.8% 95.9%; /* light-gray */
+    --secondary-foreground: 240 5.9% 10%; /* dark-gray */
+    --muted: 240 4.8% 95.9%; /* light-gray */
+    --muted-foreground: 240 3.8% 45%; /* medium-gray */
+    --accent: 240 4.8% 95.9%; /* light-gray */
+    --accent-foreground: 240 5.9% 10%; /* dark-gray */
+    --destructive: 0 72% 51%; /* red */
+    --destructive-foreground: 0 0% 98%; /* white */
+    --border: 240 5.9% 90%; /* light-gray */
+    --input: 240 5.9% 90%; /* light-gray */
+    --ring: 346.8 77.2% 49.8%; /* red */
+    --radius: 0.5rem; /* border-radius */
+    --font-inter: 'Inter', sans-serif;
+  }
+
+  .dark {
+    --background: 240 5% 10%; /* very dark blue */
+    --foreground: 0 0% 98%; /* white */
+    --card: 240 5% 12%; /* dark blue */
+    --card-foreground: 0 0% 98%; /* white */
+    --popover: 240 5% 15%; /* dark blue */
+    --popover-foreground: 0 0% 98%; /* white */
+    --primary: 0 84% 40%; /* red */
+    --primary-foreground: 0 0% 98%; /* white */
+    --secondary: 240 5% 30%; /* medium-dark blue */
+    --secondary-foreground: 0 0% 98%; /* white */
+    --muted: 240 5% 22%; /* medium-dark blue */
+    --muted-foreground: 0 0% 90%; /* light-gray */
+    --accent: 0 84% 40%; /* red */
+    --accent-foreground: 0 0% 98%; /* white */
+    --destructive: 0 87% 47%; /* lighter red */
+    --destructive-foreground: 0 0% 98%; /* white */
+    --border: 240 5% 48%; /* medium-dark blue */
+    --input: 240 5% 34%; /* medium-dark blue */
+    --ring: 0 84% 40%; /* red */
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer base {
+  * {
+    @apply border-border;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
   }
 }
