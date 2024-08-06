@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function DifferentiatorSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 text-center">
           <h2 className="text-3xl font-bold tracking-tighter mb-8 w-full">Differentiator</h2>

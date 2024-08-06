@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function SupplyChainSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
       <div className="container px-4 md:px-6 mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tighter">Supply Chain Solution</h2>
         <Image

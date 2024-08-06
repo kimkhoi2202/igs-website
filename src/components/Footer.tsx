@@ -42,7 +42,7 @@ function LinkedinIcon(props: Readonly<React.SVGProps<SVGSVGElement>>) {
 
 export default function Footer() {
   return (
-    <footer className="bg-primary p-6 md:py-12 w-full">
+    <footer className="bg-background p-6 md:py-12 w-full">
       <div className="container flex flex-col items-center justify-between max-w-7xl mx-auto">
         <div className="flex gap-4">
           <Button variant="outline" className="rounded-full">

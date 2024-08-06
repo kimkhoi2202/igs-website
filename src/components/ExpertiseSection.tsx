@@ -37,7 +37,7 @@ const expertiseItems: readonly ExpertiseItem[] = [
 
 export default function ExpertiseSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
         <div className="space-y-4">
           <h2 className="text-3xl font-bold tracking-tighter">IGS Expertise</h2>
