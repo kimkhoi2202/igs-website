@@ -11,7 +11,7 @@ const services = [
   },
   {
     icon: "/section/warehouse.png",
-    heading: "Warehouse/ Distribution",
+    heading: "Warehouse Distribution",
     text: "IGS can unburden customers from the hassles of recalling for a product returns, RMA management and any other process that returns goods from the point of consumption to the point of origin.",
   },
   {
@@ -35,27 +35,30 @@ export default function ServicesSection() {
   return (
     <section className="w-full py-12">
       <div className="container mx-auto px-6 md:px-12">
+        <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-gray-50">Our Services</h2>
         <div className="flex flex-wrap justify-center gap-6">
           {services.map((service, index) => (
             <BackgroundGradient
               key={index}
               containerClassName="max-w-xs w-full flex justify-center"
             >
-              <div className="group w-full cursor-pointer overflow-hidden relative card h-96 rounded-3xl shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent bg-white dark:bg-neutral-900">
-                <Image
-                  src={service.icon}
-                  width={50}
-                  height={50}
-                  alt={service.heading}
-                  className="mb-4"
-                />
-                <div className="text relative z-50">
-                  <h1 className="font-bold text-xl md:text-3xl text-gray-900 dark:text-gray-50 relative">
-                    {service.heading}
-                  </h1>
-                  <p className="font-normal text-base text-gray-900 dark:text-gray-50 relative my-4">
-                    {service.text}
-                  </p>
+              <div className="group w-full cursor-pointer overflow-hidden relative card h-96 rounded-3xl shadow-xl mx-auto flex items-center justify-center p-4 border border-transparent bg-white dark:bg-neutral-900">
+                <div className="flex flex-col items-start">
+                  <Image
+                    src={service.icon}
+                    width={50}
+                    height={50}
+                    alt={service.heading}
+                    className="mb-4"
+                  />
+                  <div className="text relative z-50">
+                    <h1 className="font-bold text-xl md:text-3xl text-gray-900 dark:text-gray-50 relative">
+                      {service.heading}
+                    </h1>
+                    <p className="font-normal text-base text-gray-900 dark:text-gray-50 relative my-4">
+                      {service.text}
+                    </p>
+                  </div>
                 </div>
               </div>
             </BackgroundGradient>
