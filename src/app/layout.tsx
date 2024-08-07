@@ -4,6 +4,8 @@ import './globals.css';
 import { ReactNode } from 'react';
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import NavbarMenu from '@/components/ui/navbar-menu';
+import Footer from '@/components/Footer';
 
 const fontInter = Inter({
   subsets: ['latin'],
@@ -27,7 +29,9 @@ export default function Layout({ children }: LayoutProps) {
           disableTransitionOnChange
         >
           <SpeedInsights />
+          <NavbarMenu />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
