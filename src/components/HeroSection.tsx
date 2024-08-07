@@ -4,14 +4,14 @@ import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
 
 export default function HeroSection() {
   return (
-    <HeroHighlight containerClassName="w-full bg-[url('/hero-bg.jpg')] bg-cover bg-center py-24 md:py-32 lg:py-40">
+    <HeroHighlight containerClassName="w-full bg-[url('/hero-bg.jpg')] bg-cover bg-center py-48 md:py-56 lg:py-72">
       <div className="container px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center">
         <div className="w-full md:w-3/4 lg:w-2/3 mb-24 md:mb-0">
           <span className="text-red-500 text-base font-bold">INTERNASH GLOBAL SERVICES</span>
-            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <Highlight>Engineering, Repair,</Highlight>
             </h1>
-            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <Highlight>and Logistics Solutions</Highlight>
             </h1>
           <div className="mt-4 flex flex-col items-center text-lg md:text-xl text-black dark:text-white">
@@ -27,10 +27,10 @@ export default function HeroSection() {
           <Image
             src="/placeholder.svg"
             width={550}
-            height={310}
+            height={500}
             alt="Hero"
             className="rounded-lg object-cover"
-            style={{ aspectRatio: '550/310', objectFit: 'cover' }}
+            style={{ aspectRatio: '700/500', objectFit: 'cover' }}
           />
         </div>
       </div>

@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 
 interface CheckIconProps {
@@ -36,6 +40,33 @@ const expertiseItems: readonly ExpertiseItem[] = [
 ];
 
 export default function ExpertiseSection() {
+  const imageControls = useAnimation();
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          imageControls.start({ x: 0, opacity: 1 });
+        }
+      }
+    };
+
+    // Set initial position
+    imageControls.start({ x: 100, opacity: 0 });
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [imageControls]);
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
@@ -52,7 +83,12 @@ export default function ExpertiseSection() {
             ))}
           </ul>
         </div>
-        <div>
+        <motion.div
+          ref={sectionRef}
+          animate={imageControls}
+          initial={{ x: 100, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 100 }}
+        >
           <Image
             src="/placeholder.svg"
             width={550}
@@ -61,7 +97,7 @@ export default function ExpertiseSection() {
             className="w-full h-auto rounded-lg object-cover"
             style={{ aspectRatio: '550/400', objectFit: 'cover' }}
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,3 +1,6 @@
+"use client"; 
+
+import { useEffect } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import WelcomeSection from '@/components/WelcomeSection';
@@ -11,6 +14,12 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 export default function Page() {
+
+  useEffect(() => {
+    // Scroll to the top of the page on initial render
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
       <Header />
