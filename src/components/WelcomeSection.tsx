@@ -1,18 +1,45 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 export default function WelcomeSection() {
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imageRef.current) {
+        const rect = imageRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top >= 0 && rect.bottom <= windowHeight) {
+          imageRef.current.classList.add('active');
+        } else {
+          imageRef.current.classList.remove('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
-        <div>
+        <div className="image-container">
           <Image
             src="/placeholder.svg"
             width={550}
             height={400}
             alt="Welcome"
-            className="w-full h-auto rounded-lg object-cover"
+            className="w-full h-auto rounded-lg object-cover image-transition"
             style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+            ref={imageRef}
           />
         </div>
         <div className="flex flex-col justify-center space-y-4">
