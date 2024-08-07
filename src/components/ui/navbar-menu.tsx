@@ -36,13 +36,16 @@ export const MenuItem = ({
     <div
       onMouseEnter={() => setActive(item)}
       className="relative flex items-center justify-center"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && setActive(item)}
     >
-      <motion.button
+      <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
       >
         {item}
-      </motion.button>
+      </motion.p>
       {active !== null && (
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 10 }}
@@ -176,7 +179,7 @@ export default function NavbarMenu() {
 
   return (
     <>
-      <header className="bg-background h-18 flex items-center justify-between px-4 lg:px-6">
+      <header className="bg-background h-18 flex items-center justify-between px-4 lg:px-6 mt-1 mb-1">
         <Link href="#" className="flex items-center" prefetch={false}>
           <Home className="h-6 w-6" />
           <span className="sr-only">Acme Supply Chain</span>
@@ -198,7 +201,7 @@ export default function NavbarMenu() {
           </Menu>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="icon">
             Login
           </Button>
           <ModeToggle />
