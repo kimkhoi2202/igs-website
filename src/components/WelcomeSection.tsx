@@ -8,12 +8,14 @@ import { Separator } from '@/components/ui/separator';
 export default function WelcomeSection() {
   const imageControls = useAnimation();
   const textControls = useAnimation();
+  const shadowControls = useAnimation();
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (imageRef.current && textRef.current) {
+      if (imageRef.current && textRef.current && shadowRef.current) {
         const imageRect = imageRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
@@ -21,9 +23,7 @@ export default function WelcomeSection() {
         if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
-        } else {
-          imageControls.start({ x: -100, opacity: 0 });
-          textControls.start({ opacity: 0, x: -20 });
+          shadowControls.start({ x: -10, opacity: 1 }); // Move shadow to the left of the image
         }
       }
     };
@@ -31,6 +31,7 @@ export default function WelcomeSection() {
     // Initial animation setup
     imageControls.set({ x: 50, opacity: 0 });
     textControls.set({ opacity: 0, x: -20 });
+    shadowControls.set({ x: 50, opacity: 0 }); // Initial position of the shadow
 
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
@@ -38,26 +39,34 @@ export default function WelcomeSection() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [imageControls, textControls]);
+  }, [imageControls, textControls, shadowControls]);
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
-        <motion.div
-          ref={imageRef}
-          animate={imageControls}
-          initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
-          className="image-container"
-        >
-          <Image
-            src="/welcome.png"
-            width={550}
-            height={400}
-            alt="Welcome"
-            className="w-full h-auto rounded-lg object-cover"
-            style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+        <div className="relative">
+          <motion.div
+            ref={shadowRef}
+            animate={shadowControls}
+            initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
+            className="absolute bottom-[-40px] left-[-30px] w-full h-full bg-red-500 rounded-lg z-0"
           />
-        </motion.div>
+          <motion.div
+            ref={imageRef}
+            animate={imageControls}
+            initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
+            className="relative z-10"
+          >
+            <Image
+              src="/welcome.png"
+              width={550}
+              height={400}
+              alt="Welcome"
+              className="w-full h-auto rounded-lg object-cover"
+              style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+            />
+          </motion.div>
+        </div>
         <motion.div
           ref={textRef}
           animate={textControls}
