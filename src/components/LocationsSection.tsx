@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-const GlobeDemo = dynamic(() => import('@/components/ui/globe').then((m) => m.GlobeDemo), { ssr: false });
+const GlobeDemo = dynamic(() => import('@/components/ui/GlobeDemo').then((m) => m.default), { ssr: false });
 
 export default function LocationsSection() {
   const [focusLat, setFocusLat] = useState<number | undefined>(undefined);
@@ -22,19 +22,19 @@ export default function LocationsSection() {
   };
 
   const globeConfig = {
-    pointSize: 4,
-    globeColor: "#062056",
+    pointSize: 6, // Adjusted point size
+    globeColor: "#1E90FF",
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: "#87CEEB",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
-    emissiveIntensity: 0.1,
-    shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
-    directionalLeftLight: "#ffffff",
-    directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
+    emissive: "#1E90FF",
+    emissiveIntensity: 0.2,
+    shininess: 1.5,
+    polygonColor: "rgba(255,255,255,0.9)",
+    ambientLight: "#FFFFFF",
+    directionalLeftLight: "#FFFFFF",
+    directionalTopLight: "#FFFFFF",
+    pointLight: "#FFFFFF",
     arcTime: 1000,
     arcLength: 0.9,
     rings: 1,
@@ -43,6 +43,12 @@ export default function LocationsSection() {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
+
+  const locations = [
+    { lat: 29.7869, lng: -95.4108, name: 'Houston Kempwood Facility' }, // Corrected Houston coordinates
+    { lat: 39.1032, lng: -84.5120, name: 'Cincinnati Facility' }, // Corrected Cincinnati coordinates
+    { lat: 22.3193, lng: 114.1694, name: 'Taoyuan City New Facility' } // Taiwan coordinates
+  ];
 
   const sampleArcs = [
     {
@@ -75,19 +81,19 @@ export default function LocationsSection() {
             <h2 className="text-3xl font-bold tracking-tighter">Repair Service Center Locations</h2>
             <ul className="list-disc pl-5 mt-4 text-muted-foreground md:text-xl">
               <li
-                onMouseEnter={() => handleMouseEnter(29.817161646275192, -95.49694133682567)}
+                onMouseEnter={() => handleMouseEnter(29.7869, -95.4108)}
                 onMouseLeave={handleMouseLeave}
               >
                 Houston Kempwood Facility (US)
               </li>
               <li
-                onMouseEnter={() => handleMouseEnter(39.307914468891745, -84.47317962384071)}
+                onMouseEnter={() => handleMouseEnter(39.1032, -84.5120)}
                 onMouseLeave={handleMouseLeave}
               >
                 Cincinnati Facility (US)
               </li>
               <li
-                onMouseEnter={() => handleMouseEnter(24.000000, 121.000000)}
+                onMouseEnter={() => handleMouseEnter(22.3193, 114.1694)}
                 onMouseLeave={handleMouseLeave}
               >
                 Taoyuan City New Facility 2/2021 (Taiwan)
@@ -95,11 +101,17 @@ export default function LocationsSection() {
             </ul>
           </div>
           <div className="relative aspect-[4/3]">
-            <GlobeDemo globeConfig={globeConfig} data={sampleArcs} focusLat={focusLat} focusLng={focusLng} autoRotate={autoRotate} />
+            <GlobeDemo
+              globeConfig={globeConfig}
+              data={sampleArcs}
+              focusLat={focusLat}
+              focusLng={focusLng}
+              autoRotate={autoRotate}
+              locations={locations} // Pass the locations data
+            />
           </div>
         </div>
       </div>
     </section>
   );
 }
-  
