@@ -43,29 +43,34 @@ const expertiseItems: readonly ExpertiseItem[] = [
 export default function ExpertiseSection() {
   const imageControls = useAnimation();
   const textControls = useAnimation();
+  const shadowControls = useAnimation();
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (imageRef.current && textRef.current) {
+      if (imageRef.current && textRef.current && shadowRef.current) {
         const imageRect = imageRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
         // Check image position
-        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom - imageRect.height*2/3 <= windowHeight) {
+        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
+          shadowControls.start({ x: 0, opacity: 1 }); // Shadow appears from left to right
         } else {
-          imageControls.start({ x: 100, opacity: 0 }); // Adjust to move from right to left
-          textControls.start({ opacity: 0, x: -20 });
+          imageControls.start({ x: 40}); // Move from right to left
+          textControls.start({  x: -40 });
+          shadowControls.start({ x: 50}); // Move shadow to the left
         }
       }
     };
 
     // Initial animation setup
     imageControls.set({ x: 100, opacity: 0 });
-    textControls.set({ opacity: 0, x: -20 });
+    textControls.set({ opacity: 0, x: 20 });
+    shadowControls.set({ x: -60, opacity: 0 }); // Initial position of the shadow
 
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
@@ -73,15 +78,15 @@ export default function ExpertiseSection() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [imageControls, textControls]);
+  }, [imageControls, textControls, shadowControls]);
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
+    <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
         <motion.div
           ref={textRef}
           animate={textControls}
-          initial={{ opacity: 0, x: -20 }} // Start off-screen to the left
+          initial={{ opacity: 0, x: 20 }} // Start off-screen to the right
           className="flex flex-col justify-center space-y-4"
         >
           <h2 className="text-3xl font-bold tracking-tighter">IGS Expertise</h2>
@@ -96,21 +101,29 @@ export default function ExpertiseSection() {
             ))}
           </ul>
         </motion.div>
-        <motion.div
-          ref={imageRef}
-          animate={imageControls}
-          initial={{ x: 100, opacity: 0 }} // Start off-screen to the right
-          className="flex items-center justify-center"
-        >
-          <Image
-            src="/placeholder.svg"
-            width={550}
-            height={400}
-            alt="Expertise"
-            className="w-full h-auto rounded-lg object-cover"
-            style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+        <div className="relative">
+          <motion.div
+            ref={shadowRef}
+            animate={shadowControls}
+            initial={{ x: -60, opacity: 0 }} // Start off-screen to the left
+            className="absolute bottom-[-40px] right-[-30px] w-full h-full bg-red-500 rounded-lg z-0"
           />
-        </motion.div>
+          <motion.div
+            ref={imageRef}
+            animate={imageControls}
+            initial={{ x: 100, opacity: 0 }} // Start off-screen to the right
+            className="relative z-10"
+          >
+            <Image
+              src="/placeholder.svg"
+              width={550}
+              height={400}
+              alt="Expertise"
+              className="w-full h-auto rounded-lg object-cover"
+              style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

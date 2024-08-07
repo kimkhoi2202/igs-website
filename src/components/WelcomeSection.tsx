@@ -26,9 +26,9 @@ export default function WelcomeSection() {
           shadowControls.start({ x: -10, opacity: 1 }); // Move shadow to the left of the image
         }
         else {
-          imageControls.start({ x: -50});
-          textControls.start({ x: 50 });
-          shadowControls.start({ x: -60}); // Move shadow to the left of the image
+          imageControls.start({ x: -40});
+          textControls.start({ x: 40 });
+          shadowControls.start({ x: -50}); // Move shadow to the left of the image
         }
       }
     };
