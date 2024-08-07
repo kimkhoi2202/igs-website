@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 export default function WelcomeSection() {
-  const imageRef = useRef(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
