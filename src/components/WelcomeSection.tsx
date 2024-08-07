@@ -7,7 +7,7 @@ export default function WelcomeSection() {
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
         <div>
           <Image
-            src="/placeholder.svg"
+            src="/welcome.png"
             width={550}
             height={400}
             alt="Welcome"
