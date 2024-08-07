@@ -3,16 +3,16 @@ import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
 
 export default function HeroSection() {
   return (
-    <HeroHighlight containerClassName="w-full bg-[url('/hero-bg.jpg')] bg-cover bg-center min-h-screen flex items-center">
+    <HeroHighlight containerClassName="w-full bg-[url('/hero-bg.jpg')] bg-cover bg-center py-48 md:py-56 lg:py-72">
       <div className="container px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center">
         <div className="w-full md:w-3/4 lg:w-2/3 mb-24 md:mb-0">
           <span className="text-red-500 text-base font-bold">INTERNASH GLOBAL SERVICES</span>
-          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <Highlight>Engineering, Repair,</Highlight>
-          </h1>
-          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <Highlight>and Logistics Solutions</Highlight>
-          </h1>
+            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <Highlight>Engineering, Repair,</Highlight>
+            </h1>
+            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <Highlight>and Logistics Solutions</Highlight>
+            </h1>
           <div className="mt-4 flex flex-col items-center text-lg md:text-xl text-black dark:text-white">
             <span className="mt-2">
               Engineering, Repair, & Logistics solutions create value and a competitive edge for our clients

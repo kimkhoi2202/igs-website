@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 export default function WelcomeSection() {
-  const [hasScrolled, setHasScrolled] = useState(false);
   const imageControls = useAnimation();
   const textControls = useAnimation();
   const imageRef = useRef<HTMLDivElement>(null);
@@ -16,49 +15,30 @@ export default function WelcomeSection() {
     const handleScroll = () => {
       if (imageRef.current && textRef.current) {
         const imageRect = imageRef.current.getBoundingClientRect();
-        const textRect = textRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        // Check if the section is in view
-        if ((imageRect.top + imageRect.height / 2) < windowHeight && imageRect.bottom > 0) {
-          if (!hasScrolled) {
-            // First-time view animation
-            imageControls.start({ x: 0, opacity: 1, transition: { type: "spring", stiffness: 30 } });
-            textControls.start({ opacity: 1, x: 0, transition: { type: "spring", stiffness: 30 } });
-            setHasScrolled(true);
-          } else {
-            // Subsequent views animation
-            imageControls.start({ x: 0, transition: { type: "spring", stiffness: 30 } });
-            textControls.start({ opacity: 1, x: 0, transition: { type: "spring", stiffness: 30 } });
-          }
+        // Check image position
+        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
+          imageControls.start({ x: 0, opacity: 1 });
+          textControls.start({ opacity: 1, x: 0 });
         } else {
-          if (!hasScrolled) {
-            // Initial positions for first-time view
-            imageControls.start({ x: 50, opacity: 0 });
-            textControls.start({ opacity: 0, x: -20 });
-          } else {
-            // Reset positions for subsequent views
-            imageControls.start({ x: 50 });
-            textControls.start({ opacity: 0, x: -20 });
-          }
+          imageControls.start({ x: -100, opacity: 0 });
+          textControls.start({ opacity: 0, x: -20 });
         }
       }
     };
 
-    // Initial state setup
+    // Initial animation setup
     imageControls.set({ x: 50, opacity: 0 });
     textControls.set({ opacity: 0, x: -20 });
 
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-    
-    // Initial call to handleScroll for page load
-    handleScroll();
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [hasScrolled, imageControls, textControls]);
+  }, [imageControls, textControls]);
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
