@@ -87,7 +87,7 @@ export default function ExpertiseSection() {
           ref={sectionRef}
           animate={imageControls}
           initial={{ x: 100, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 100 }}
+          transition={{ type: "spring", stiffness: 30 }}
         >
           <Image
             src="/placeholder.svg"
