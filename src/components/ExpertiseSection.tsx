@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
+import { Separator } from '@/components/ui/separator';
 
 interface CheckIconProps {
   readonly className?: string;
@@ -41,36 +42,54 @@ const expertiseItems: readonly ExpertiseItem[] = [
 
 export default function ExpertiseSection() {
   const imageControls = useAnimation();
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const textControls = useAnimation();
+  const imageRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
+      if (imageRef.current && textRef.current) {
+        const imageRect = imageRef.current.getBoundingClientRect();
+        const textRect = textRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        if (rect.top < windowHeight && rect.bottom > 0) {
+        // Check image position
+        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
           imageControls.start({ x: 0, opacity: 1 });
+        } else {
+          imageControls.start({ x: 100, opacity: 0 }); // Adjust to move from right to left
+        }
+
+        // Check text position
+        if ((textRect.top + (textRect.height / 3) * 2) >= 0 && textRect.bottom <= windowHeight) {
+          textControls.start({ opacity: 1, x: 0 });
+        } else {
+          textControls.start({ opacity: 0, x: -20 });
         }
       }
     };
 
-    // Set initial position
-    imageControls.start({ x: 100, opacity: 0 });
+    // Initial animation setup
+    imageControls.set({ x: 100, opacity: 0 });
+    textControls.set({ opacity: 0, x: -20 });
 
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
 
-    // Cleanup event listener
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [imageControls]);
+  }, [imageControls, textControls]);
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
-        <div className="space-y-4">
+        <motion.div
+          ref={textRef}
+          animate={textControls}
+          initial={{ opacity: 0, x: -20 }} // Start off-screen to the left
+          className="flex flex-col justify-center space-y-4"
+        >
           <h2 className="text-3xl font-bold tracking-tighter">IGS Expertise</h2>
           <ul className="space-y-2">
             {expertiseItems.map((item) => (
@@ -82,12 +101,12 @@ export default function ExpertiseSection() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
         <motion.div
-          ref={sectionRef}
+          ref={imageRef}
           animate={imageControls}
-          initial={{ x: 100, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 30 }}
+          initial={{ x: 100, opacity: 0 }} // Start off-screen to the right
+          className="flex items-center justify-center"
         >
           <Image
             src="/placeholder.svg"
