@@ -152,10 +152,10 @@ export const FloatingNav = ({
       >
         {navItems.map((navItem) => (
           <Link
-            key={navItem.name} // Use a unique identifier for keys
+            key={navItem.name}
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-2 text-lg text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500" // Adjusted font size and spacing
+              "relative dark:text-neutral-50 items-center flex space-x-2 text-lg text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
             )}
           >
             <span className="block sm:hidden">{navItem.icon}</span>
@@ -201,7 +201,7 @@ export default function NavbarMenu() {
           </Menu>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="md">
             Login
           </Button>
           <ModeToggle />
