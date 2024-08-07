@@ -50,20 +50,14 @@ export default function ExpertiseSection() {
     const handleScroll = () => {
       if (imageRef.current && textRef.current) {
         const imageRect = imageRef.current.getBoundingClientRect();
-        const textRect = textRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
         // Check image position
-        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
+        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom - imageRect.height*2/3 <= windowHeight) {
           imageControls.start({ x: 0, opacity: 1 });
-        } else {
-          imageControls.start({ x: 100, opacity: 0 }); // Adjust to move from right to left
-        }
-
-        // Check text position
-        if ((textRect.top + (textRect.height / 3) * 2) >= 0 && textRect.bottom <= windowHeight) {
           textControls.start({ opacity: 1, x: 0 });
         } else {
+          imageControls.start({ x: 100, opacity: 0 }); // Adjust to move from right to left
           textControls.start({ opacity: 0, x: -20 });
         }
       }
