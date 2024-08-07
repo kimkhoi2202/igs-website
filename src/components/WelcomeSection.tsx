@@ -15,20 +15,14 @@ export default function WelcomeSection() {
     const handleScroll = () => {
       if (imageRef.current && textRef.current) {
         const imageRect = imageRef.current.getBoundingClientRect();
-        const textRect = textRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
         // Check image position
         if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
           imageControls.start({ x: 0, opacity: 1 });
-        } else {
-          imageControls.start({ x: -100, opacity: 0 });
-        }
-
-        // Check text position
-        if ((textRect.top + (textRect.height / 3) * 2) >= 0 && textRect.bottom <= windowHeight) {
           textControls.start({ opacity: 1, x: 0 });
         } else {
+          imageControls.start({ x: -100, opacity: 0 });
           textControls.start({ opacity: 0, x: -20 });
         }
       }
