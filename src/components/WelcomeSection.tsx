@@ -6,31 +6,45 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 export default function WelcomeSection() {
-  const controls = useAnimation();
-  const imageRef = useRef<HTMLImageElement>(null);
+  const imageControls = useAnimation();
+  const textControls = useAnimation();
+  const imageRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (imageRef.current) {
-        const rect = imageRef.current.getBoundingClientRect();
+      if (imageRef.current && textRef.current) {
+        const imageRect = imageRef.current.getBoundingClientRect();
+        const textRect = textRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        if ((rect.top + (rect.height/3)*2) >= 0 && rect.bottom <= windowHeight) {
-          controls.start({ x: 0 }); // animate the image to move right
+        // Check image position
+        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
+          imageControls.start({ x: 0, opacity: 1 });
         } else {
-          controls.start({ x: -100 }); // reset the image position
+          imageControls.start({ x: -100, opacity: 0 });
+        }
+
+        // Check text position
+        if ((textRect.top + (textRect.height / 3) * 2) >= 0 && textRect.bottom <= windowHeight) {
+          textControls.start({ opacity: 1, x: 0 });
+        } else {
+          textControls.start({ opacity: 0, x: -20 });
         }
       }
     };
 
+    // Initial animation setup
+    imageControls.set({ x: 50, opacity: 0 });
+    textControls.set({ opacity: 0, x: -20 });
 
-
+    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [controls]);
+  }, [imageControls, textControls]);
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
@@ -68,7 +82,7 @@ export default function WelcomeSection() {
             site facility to facilitate rapid turn-around-time, so our customers can have the best service in the
             shortest time.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
