@@ -6,12 +6,12 @@ export default function SupplyChainSection() {
       <div className="container px-4 md:px-6 mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tighter">Supply Chain Solution</h2>
         <Image
-          src="/placeholder.svg"
+          src="/supply-chain.png"
           width={1200}
           height={600}
           alt="Supply Chain Solution"
-          className="w-full h-auto rounded-lg object-cover mt-8"
-          style={{ aspectRatio: '1200/600', objectFit: 'cover' }}
+          className="w-full h-auto rounded-lg mt-8"
+          style={{ aspectRatio: '1200/600', objectFit: 'contain' }}
         />
       </div>
     </section>
