@@ -14,34 +14,36 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
   }, [focusLat, focusLng]);
 
   return (
-    <Globe
-      ref={globeRef}
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
-      bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-      backgroundColor="#000000"
-      animateIn
-      atmosphereColor={globeConfig.atmosphereColor}
-      atmosphereAltitude={globeConfig.atmosphereAltitude}
-      arcsData={data}
-      arcColor={() => '#FF0000'}
-      arcDashLength={globeConfig.arcLength}
-      arcDashGap={1}
-      arcDashAnimateTime={globeConfig.arcTime}
-      polygonsData={globeData.features}
-      polygonCapColor={() => globeConfig.polygonColor}
-      polygonSideColor={() => globeConfig.polygonColor}
-      showGlobea={true}
-      showGraticules={false}
-      showAtmosphere={globeConfig.showAtmosphere}
-      enablePointerInteraction
-      pointsData={locations} // Use the locations prop
-      pointColor={() => '#FF0000'}
-      pointAltitude={0.01}
-      pointRadius={globeConfig.pointSize}
-      onPointClick={(point) => alert(`Clicked on ${point.name}`)}
-      autoRotate={autoRotate}
-      autoRotateSpeed={globeConfig.autoRotateSpeed}
-    />
+    <div className="relative aspect-square h-80">
+      <Globe
+        ref={globeRef}
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        backgroundColor="#000000"
+        animateIn
+        atmosphereColor={globeConfig.atmosphereColor}
+        atmosphereAltitude={globeConfig.atmosphereAltitude}
+        arcsData={data}
+        arcColor={() => '#FF0000'}
+        arcDashLength={globeConfig.arcLength}
+        arcDashGap={1}
+        arcDashAnimateTime={globeConfig.arcTime}
+        polygonsData={globeData.features}
+        polygonCapColor={() => globeConfig.polygonColor}
+        polygonSideColor={() => globeConfig.polygonColor}
+        showGlobea={true}
+        showGraticules={false}
+        showAtmosphere={globeConfig.showAtmosphere}
+        enablePointerInteraction
+        pointsData={locations} // Use the locations prop
+        pointColor={() => '#FF0000'}
+        pointAltitude={0.01}
+        pointRadius={globeConfig.pointSize}
+        onPointClick={(point) => alert(`Clicked on ${point.name}`)}
+        autoRotate={autoRotate}
+        autoRotateSpeed={globeConfig.autoRotateSpeed}
+      />
+    </div>
   );
 };
 
