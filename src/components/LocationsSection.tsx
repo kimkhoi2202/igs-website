@@ -23,15 +23,15 @@ export default function LocationsSection() {
   };
 
   const globeConfig = {
-    pointSize: 6, // Adjusted point size
-    globeColor: "#1E90FF",
+    pointSize: 6, 
+    globeColor: "#00BFFF",
     showAtmosphere: true,
-    atmosphereColor: "#87CEEB",
-    atmosphereAltitude: 0.1,
+    atmosphereColor: "#00BFFF",
+    atmosphereAltitude: 0.7,
     emissive: "#1E90FF",
-    emissiveIntensity: 0.2,
+    emissiveIntensity: 0.7,
     shininess: 1.5,
-    polygonColor: "rgba(255,255,255,0.9)",
+    polygonColor: "rgba(0,128,0,0.9)", // Darker green
     ambientLight: "#FFFFFF",
     directionalLeftLight: "#FFFFFF",
     directionalTopLight: "#FFFFFF",
@@ -46,40 +46,52 @@ export default function LocationsSection() {
   };
 
   const locations = [
-    { lat: 29.7869, lng: -95.4108, name: 'Houston Kempwood Facility' }, // Corrected Houston coordinates
-    { lat: 39.1032, lng: -84.5120, name: 'Cincinnati Facility' }, // Corrected Cincinnati coordinates
-    { lat: 22.3193, lng: 114.1694, name: 'Taoyuan City New Facility' } // Taiwan coordinates
+    { lat: 29.7869, lng: -95.4108, name: 'Houston Kempwood Facility' },
+    { lat: 39.1032, lng: -84.5120, name: 'Cincinnati Facility' },
+    { lat: 22.3193, lng: 114.1694, name: 'Taoyuan City New Facility' }
   ];
 
   const sampleArcs = [
     {
       order: 1,
-      startLat: -19.885592,
-      startLng: -43.951191,
-      endLat: -22.9068,
-      endLng: -43.1729,
+      startLat: 29.7869, // Houston Kempwood Facility
+      startLng: -95.4108,
+      endLat: 39.1032,   // Cincinnati Facility
+      endLng: -84.5120,
       arcAlt: 0.1,
-      color: "#06b6d4",
+      color: "#FF6347", // Tomato color
     },
     {
       order: 1,
-      startLat: 28.6139,
-      startLng: 77.209,
-      endLat: 3.139,
-      endLng: 101.6869,
+      startLat: 39.1032, // Cincinnati Facility
+      startLng: -84.5120,
+      endLat: 22.3193,   // Taoyuan City New Facility
+      endLng: 114.1694,
       arcAlt: 0.2,
-      color: "#3b82f6",
+      color: "#4682B4", // SteelBlue color
     },
-    // Add more arcs as needed
+    {
+      order: 1,
+      startLat: 22.3193, // Taoyuan City New Facility
+      startLng: 114.1694,
+      endLat: 29.7869,   // Houston Kempwood Facility
+      endLng: -95.4108,
+      arcAlt: 0.3,
+      color: "#32CD32", // LimeGreen color
+    },
   ];
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <span className="text-red-500 text-sm">REPAIR SERVICE CENTER LOCATIONS</span>
-            <h2 className="text-3xl font-bold tracking-tighter">Repair Service Center Locations</h2>
+          <div style={{ transform: 'translateX(-30%) translateY(-30%)'}}> {/* Move text section to the left */}
+            <span className="text-red-500 text-sm" style={{ display: 'block', marginBottom: '1rem' }}> {/* Move text down */}
+              REPAIR SERVICE CENTER LOCATIONS
+            </span>
+            <h2 className="text-3xl font-bold tracking-tighter" style={{ marginBottom: '1rem' }}> {/* Move text down */}
+              Repair Service Center Locations
+            </h2>
             <ul className="list-disc pl-5 mt-4 text-muted-foreground md:text-xl">
               <li
                 onMouseEnter={() => handleMouseEnter(29.7869, -95.4108)}
@@ -101,15 +113,17 @@ export default function LocationsSection() {
               </li>
             </ul>
           </div>
-          <div className="relative aspect-[4/3]">
-            <GlobeDemo
-              globeConfig={globeConfig}
-              data={sampleArcs}
-              focusLat={focusLat}
-              focusLng={focusLng}
-              autoRotate={autoRotate}
-              locations={locations}
-            />
+          <div className="relative" style={{ height: '250%', width: '280%', margin: 'auto', transform: 'translateX(-10%) translateY(-30%)'}}>
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+              <GlobeDemo
+                globeConfig={globeConfig}
+                data={sampleArcs}
+                focusLat={focusLat}
+                focusLng={focusLng}
+                autoRotate={autoRotate}
+                locations={locations}
+              />
+            </div>
           </div>
         </div>
       </div>

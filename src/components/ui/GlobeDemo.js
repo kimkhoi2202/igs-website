@@ -1,4 +1,3 @@
-// components/ui/GlobeDemo.js
 import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
 import globeData from '@/data/globe.json';
@@ -13,35 +12,53 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
     }
   }, [focusLat, focusLng]);
 
+  useEffect(() => {
+    const globe = globeRef.current;
+    if (globe) {
+      // Disabling zooming
+      globe.controls().enableZoom = false;
+    }
+  }, []);
+
   return (
-    <Globe
-      ref={globeRef}
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
-      bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-      backgroundColor="#000000"
-      animateIn
-      atmosphereColor={globeConfig.atmosphereColor}
-      atmosphereAltitude={globeConfig.atmosphereAltitude}
-      arcsData={data}
-      arcColor={() => '#FF0000'}
-      arcDashLength={globeConfig.arcLength}
-      arcDashGap={1}
-      arcDashAnimateTime={globeConfig.arcTime}
-      polygonsData={globeData.features}
-      polygonCapColor={() => globeConfig.polygonColor}
-      polygonSideColor={() => globeConfig.polygonColor}
-      showGlobea={true}
-      showGraticules={false}
-      showAtmosphere={globeConfig.showAtmosphere}
-      enablePointerInteraction
-      pointsData={locations} // Use the locations prop
-      pointColor={() => '#FF0000'}
-      pointAltitude={0.01}
-      pointRadius={globeConfig.pointSize}
-      onPointClick={(point) => alert(`Clicked on ${point.name}`)}
-      autoRotate={autoRotate}
-      autoRotateSpeed={globeConfig.autoRotateSpeed}
-    />
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-25%)'}}>
+      <Globe
+        ref={globeRef}
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg" 
+        backgroundColor="#000000"
+        animateIn
+        atmosphereColor={globeConfig.atmosphereColor}
+        atmosphereAltitude={globeConfig.atmosphereAltitude}
+        arcsData={data}
+        arcColor={() => '#FF0000'}
+        arcDashLength={globeConfig.arcLength}
+        arcDashGap={1}
+        arcDashAnimateTime={globeConfig.arcTime}
+        polygonsData={globeData.features}
+        polygonCapColor={() => globeConfig.polygonColor}
+        polygonSideColor={() => globeConfig.polygonColor}
+        showGlobe={true}
+        showGraticules={false}
+        showAtmosphere={globeConfig.showAtmosphere}
+        enablePointerInteraction
+        pointsData={[]} // Empty array to remove default red dots
+        autoRotate={autoRotate}
+        autoRotateSpeed={globeConfig.autoRotateSpeed}
+        // Using the map_marker.png image as the marker
+        htmlElementsData={locations}
+        htmlElement={(location) => {
+          const el = document.createElement('div');
+          el.innerHTML = `<img src="/section/map_marker.png" alt="${location.name}" style="width: 80px; height: 80px;" />`;
+          el.style.position = 'absolute'; // Ensure absolute positioning
+          el.style.left = `${43}px`; // Center horizontally
+          el.style.top = `-${85 / 2}px`; // Center vertically
+          el.style.cursor = 'pointer';
+          el.onclick = () => alert(`Clicked on ${location.name}`);
+          return el;
+        }}
+        htmlElementOffset={[0, 0]} // Center the marker
+      />
+    </div>
   );
 };
 
