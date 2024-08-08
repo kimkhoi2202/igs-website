@@ -85,7 +85,7 @@ export default function LocationsSection() {
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8">
-          <div style={{ transform: 'translateX(-25%) translateY(-30%)'}}> {/* Move text section to the left */}
+          <div style={{ transform: 'translateX(-25%) translateY(0%)'}}> {/* Move text section to the left */}
             <span className="text-red-500 text-sm" style={{ display: 'block', marginBottom: '1rem' }}> {/* Move text down */}
               REPAIR SERVICE CENTER LOCATIONS
             </span>
@@ -113,7 +113,7 @@ export default function LocationsSection() {
               </li>
             </ul>
           </div>
-          <div className="relative" style={{ height: '250%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-30%)'}}>
+          <div className="relative" style={{ height: '250%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-20%)'}}>
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
               <GlobeDemo
                 globeConfig={globeConfig}
