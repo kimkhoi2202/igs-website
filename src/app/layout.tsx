@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn('antialiased bg-background', fontInter.variable)}>
+      <body className={cn('antialiased bg-background dark:bg-black bg-dot-black/[0.2] dark:bg-dot-white/[0.2]', fontInter.variable)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
