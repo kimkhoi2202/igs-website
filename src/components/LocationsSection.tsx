@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { globeConfig, sampleArcs } from '@/components/ui/globeConfig';
 
@@ -107,7 +108,7 @@ export default function LocationsSection() {
               focusLat={focusLat}
               focusLng={focusLng}
               autoRotate={autoRotate}
-              locations={locations} // Pass the locations data
+              locations={locations}
             />
           </div>
         </div>
