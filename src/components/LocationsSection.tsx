@@ -23,8 +23,8 @@ export default function LocationsSection() {
   };
 
   const globeConfig = {
-    pointSize: 6, 
-    globeColor: "#00BFFF",
+    pointSize: 6,
+    globeColor: "#1E90FF",
     showAtmosphere: true,
     atmosphereColor: "#00BFFF",
     atmosphereAltitude: 0.7,
