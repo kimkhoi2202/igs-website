@@ -1,7 +1,7 @@
 // components/ui/GlobeDemo.js
 import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
-import globeData from '@/data/globe.json'; // Ensure you have the correct path to your GeoJSON data
+import globeData from '@/data/globe.json';
 
 const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, locations }) => {
   const globeRef = useRef();
