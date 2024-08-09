@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
 import globeData from '@/data/globe.json';
 
-const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, locations }) => {
+const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, locations, theme }) => {
   const globeRef = useRef();
 
   useEffect(() => {
@@ -20,12 +20,14 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
     }
   }, []);
 
+  const globeBackgroundColor = theme === 'light' ? '#FFFFFF' : '#000000'; // Set background color based on theme
+
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-25%)'}}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-13%)'}}>
       <Globe
         ref={globeRef}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg" 
-        backgroundColor="#000000"
+        backgroundColor={globeBackgroundColor}
         animateIn
         atmosphereColor={globeConfig.atmosphereColor}
         atmosphereAltitude={globeConfig.atmosphereAltitude}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { globeConfig, sampleArcs } from '@/components/ui/globeConfig';
+import { useTheme } from "next-themes";
 
 const GlobeDemo = dynamic(() => import('@/components/ui/GlobeDemo').then((m) => m.default), { ssr: false });
 
@@ -9,6 +9,7 @@ export default function LocationsSection() {
   const [focusLat, setFocusLat] = useState<number | undefined>(undefined);
   const [focusLng, setFocusLng] = useState<number | undefined>(undefined);
   const [autoRotate, setAutoRotate] = useState(true);
+  const { theme } = useTheme(); // Get the current theme
 
   const handleMouseEnter = (lat: number, lng: number) => {
     setFocusLat(lat);
@@ -142,7 +143,7 @@ export default function LocationsSection() {
               </li>
             </ul>
           </div>
-          <div className="relative" style={{ height: '250%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-20%)'}}>
+          <div className="relative" style={{ height: '250%', width: '270%', margin: 'auto', transform: 'translateX(0%) translateY(-20%)'}}>
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
               <GlobeDemo
                 globeConfig={globeConfig}
@@ -151,6 +152,7 @@ export default function LocationsSection() {
                 focusLng={focusLng}
                 autoRotate={autoRotate}
                 locations={locations}
+                theme={theme}
               />
             </div>
           </div>
