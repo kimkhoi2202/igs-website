@@ -31,31 +31,33 @@ export default function DifferentiatorSection() {
         </div>
         <div className="md:w-1/2 flex flex-col items-center gap-8 mt-12 md:mt-0">
           <Image
-            src="/placeholder.svg"
+            src="/iso.png"
             width={400}
             height={300}
             alt=""
             className="object-cover rounded-lg"
-            style={{ aspectRatio: '400/300', objectFit: 'cover' }}
+            style={{ aspectRatio: '400/300', objectFit: 'contain' }}
           />
           <Image
-            src="/placeholder.svg"
+            src="/anab.png"
             width={400}
             height={300}
             alt=""
             className="object-cover rounded-lg"
-            style={{ aspectRatio: '400/300', objectFit: 'cover' }}
+            style={{ aspectRatio: '400/300', objectFit: 'contain' }}
           />
         </div>
       </div>
-      <Image
-        src="/placeholder.svg"
-        width={1200}
-        height={600}
-        alt=""
-        className="w-full h-auto rounded-lg object-cover mt-12"
-        style={{ aspectRatio: '1200/600', objectFit: 'cover' }}
-      />
+      <div className="max-w-auto mx-auto px-4">
+        <Image
+          src="/differentiator.png"
+          width={1200}
+          height={200}
+          alt=""
+          className="w-full h-auto rounded-lg object-contain mt-12"
+          style={{ aspectRatio: '1200/200', objectFit: 'contain' }}
+        />
+      </div>
     </section>
   );
 }
