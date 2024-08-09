@@ -11,7 +11,7 @@ export default function SupplyChainSection() {
             width={1200}
             height={600}
             alt="Supply Chain Solution"
-            className="w-full h-auto rounded-lg mt-8 dark:hidden"
+            className="w-full h-auto rounded-lg dark:hidden"
             style={{ aspectRatio: '1200/600', objectFit: 'contain' }}
           />
           <Image
@@ -19,7 +19,7 @@ export default function SupplyChainSection() {
             width={1200}
             height={600}
             alt="Supply Chain Solution"
-            className="w-full h-auto rounded-lg mt-8 hidden dark:block"
+            className="w-full h-auto rounded-lg hidden dark:block"
             style={{ aspectRatio: '1200/600', objectFit: 'contain' }}
           />
         </div>

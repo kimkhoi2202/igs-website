@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
+import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 
 export default function HeroSection() {
   return (
@@ -7,12 +10,12 @@ export default function HeroSection() {
       <div className="container px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center h-full">
         <div className="w-full md:w-3/4 lg:w-2/3 mb-24 md:mb-0">
           <span className="text-red-500 text-base font-bold">INTERNASH GLOBAL SERVICES</span>
-            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              <Highlight>Engineering, Repair,</Highlight>
-            </h1>
-            <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              <Highlight>and Logistics Solutions</Highlight>
-            </h1>
+          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <Highlight>Engineering, Repair,</Highlight>
+          </h1>
+          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <Highlight>and Logistics Solutions</Highlight>
+          </h1>
           <div className="mt-4 flex flex-col items-center text-lg md:text-xl text-black dark:text-white">
             <span className="mt-2">
               Engineering, Repair, & Logistics solutions create value and a competitive edge for our clients
@@ -28,14 +31,20 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="mt-24 md:mt-0 md:ml-24">
-          <Image
-            src="/placeholder.svg"
-            width={550}
-            height={500}
-            alt="Hero"
-            className="rounded-lg object-cover"
-            style={{ aspectRatio: '700/500', objectFit: 'cover' }}
-          />
+          <CardContainer className="inter-var">
+            <CardBody className="relative group/card w-[550px] h-[500px] rounded-lg">
+              <CardItem translateZ={50} className="w-full h-full">
+                <Image
+                  src="/hero.png"
+                  width={550}
+                  height={500}
+                  alt="Hero"
+                  className="rounded-lg object-cover w-full h-full group-hover/card:shadow-xl"
+                  style={{ aspectRatio: '550/500', objectFit: 'cover' }}
+                />
+              </CardItem>
+            </CardBody>
+          </CardContainer>
         </div>
       </div>
     </HeroHighlight>

@@ -1,12 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useTransform,
-  useScroll,
-  useVelocity,
-  useSpring,
-} from "framer-motion";
+import { motion, useTransform, useScroll, useVelocity, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const TracingBeam = ({
@@ -32,14 +26,14 @@ export const TracingBeam = ({
   }, []);
 
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
+    useTransform(scrollYProgress, [0, 0.8], [40, svgHeight - 10]), // Adjusted for moving up
     {
       stiffness: 500,
       damping: 90,
     }
   );
   const y2 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [50, svgHeight - 200]),
+    useTransform(scrollYProgress, [0, 1], [40, svgHeight - 210]), // Adjusted for moving up
     {
       stiffness: 500,
       damping: 90,
@@ -51,7 +45,7 @@ export const TracingBeam = ({
       ref={ref}
       className={cn("relative w-full max-w-4xl mx-auto h-full", className)}
     >
-      <div className="absolute -left-4 md:-left-20 top-3">
+      <div className="absolute -left-10 md:-left-22 top-2"> {/* Adjusted left and top positions */}
         <motion.div
           transition={{
             duration: 0.2,
@@ -87,7 +81,7 @@ export const TracingBeam = ({
           aria-hidden="true"
         >
           <motion.path
-            d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
+            d={`M 1 0V -46 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`} // Adjusted starting position
             fill="none"
             stroke="#9091A0"
             strokeOpacity="0.16"
@@ -96,7 +90,7 @@ export const TracingBeam = ({
             }}
           ></motion.path>
           <motion.path
-            d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
+            d={`M 1 0V -46 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`} // Adjusted starting position
             fill="none"
             stroke="url(#gradient)"
             strokeWidth="1.25"

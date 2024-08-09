@@ -43,7 +43,7 @@ function LinkedinIcon(props: Readonly<React.SVGProps<SVGSVGElement>>) {
 
 export default function Footer() {
   return (
-    <footer className="bg-background p-6 md:py-12 w-full">
+    <footer className="bg-background pb-4 w-full"> {/* Changed to pb-4 for bottom padding only */}
       <div className="container flex flex-col items-center justify-between max-w-7xl mx-auto">
         <Separator className="my-4" />
         <div className="flex gap-4">

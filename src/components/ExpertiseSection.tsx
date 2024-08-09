@@ -115,7 +115,7 @@ export default function ExpertiseSection() {
             className="relative z-10"
           >
             <Image
-              src="/placeholder.svg"
+              src="/expertise.png"
               width={550}
               height={400}
               alt="Expertise"
