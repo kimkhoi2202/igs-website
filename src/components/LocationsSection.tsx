@@ -27,7 +27,7 @@ export default function LocationsSection() {
     globeColor: "#1E90FF",
     showAtmosphere: true,
     atmosphereColor: "#00BFFF",
-    atmosphereAltitude: 0.7,
+    atmosphereAltitude: 0.3,
     emissive: "#1E90FF",
     emissiveIntensity: 0.7,
     shininess: 1.5,
@@ -36,7 +36,7 @@ export default function LocationsSection() {
     directionalLeftLight: "#FFFFFF",
     directionalTopLight: "#FFFFFF",
     pointLight: "#FFFFFF",
-    arcTime: 1000,
+    arcTime: 2000,
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
@@ -52,35 +52,64 @@ export default function LocationsSection() {
   ];
 
   const sampleArcs = [
+    // Houston Kempwood Facility to Cincinnati Facility
     {
       order: 1,
-      startLat: 29.7869, // Houston Kempwood Facility
+      startLat: 29.7869, 
       startLng: -95.4108,
-      endLat: 39.1032,   // Cincinnati Facility
+      endLat: 39.1032,
       endLng: -84.5120,
-      arcAlt: 0.1,
-      color: "#FF6347", // Tomato color
+      arcAlt: 0.15, // Curve for Houston to Cincinnati
     },
+    // Cincinnati Facility to Houston Kempwood Facility
     {
-      order: 1,
-      startLat: 39.1032, // Cincinnati Facility
+      order: 2,
+      startLat: 39.1032, 
       startLng: -84.5120,
-      endLat: 22.3193,   // Taoyuan City New Facility
-      endLng: 114.1694,
-      arcAlt: 0.2,
-      color: "#4682B4", // SteelBlue color
-    },
-    {
-      order: 1,
-      startLat: 22.3193, // Taoyuan City New Facility
-      startLng: 114.1694,
-      endLat: 29.7869,   // Houston Kempwood Facility
+      endLat: 29.7869,   
       endLng: -95.4108,
-      arcAlt: 0.3,
-      color: "#32CD32", // LimeGreen color
+      arcAlt: 0.35, // Different curve for Cincinnati to Houston
     },
-  ];
+    // Cincinnati Facility to Taoyuan City New Facility
+    {
+      order: 3,
+      startLat: 39.1032,
+      startLng: -84.5120,
+      endLat: 22.3193,   
+      endLng: 114.1694,
+      arcAlt: 0.30, // Curve for Cincinnati to Taoyuan
+    },
+    // Taoyuan City New Facility to Cincinnati Facility
+    {
+      order: 4,
+      startLat: 22.3193,
+      startLng: 114.1694,
+      endLat: 39.1032,   
+      endLng: -84.5120,
+      arcAlt: 0.50, // Different curve for Taoyuan to Cincinnati
+    },
+    // Taoyuan City New Facility to Houston Kempwood Facility
+    {
+      order: 5,
+      startLat: 22.3193, 
+      startLng: 114.1694,
+      endLat: 29.7869,
+      endLng: -95.4108,
+      arcAlt: 0.50, // Curve for Taoyuan to Houston
+    },
+    // Houston Kempwood Facility to Taoyuan City New Facility
+    {
+      order: 6,
+      startLat: 29.7869,
+      startLng: -95.4108,
+      endLat: 22.3193,   
+      endLng: 114.1694,
+      arcAlt: 0.30, // Different curve for Houston to Taoyuan
+    },
+];
 
+
+  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 max-w-4xl">

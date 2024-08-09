@@ -30,10 +30,12 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
         atmosphereColor={globeConfig.atmosphereColor}
         atmosphereAltitude={globeConfig.atmosphereAltitude}
         arcsData={data}
-        arcColor={() => '#FF0000'}
+        arcColor={() => ['#0000FF', '#00FFFF']} // Gradient from blue to cyan
+        arcStroke={1} // Make the arc wider
         arcDashLength={globeConfig.arcLength}
         arcDashGap={1}
         arcDashAnimateTime={globeConfig.arcTime}
+        arcAltitude={arc => arc.arcAlt} 
         polygonsData={globeData.features}
         polygonCapColor={() => globeConfig.polygonColor}
         polygonSideColor={() => globeConfig.polygonColor}
@@ -50,7 +52,7 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
           const el = document.createElement('div');
           el.innerHTML = `<img src="/section/map_marker.png" alt="${location.name}" style="width: 80px; height: 80px;" />`;
           el.style.position = 'absolute'; // Ensure absolute positioning
-          el.style.left = `${43}px`; // Center horizontally
+          el.style.left = `${0}px`; // Center horizontally
           el.style.top = `-${85 / 2}px`; // Center vertically
           el.style.cursor = 'pointer';
           el.onclick = () => alert(`Clicked on ${location.name}`);
