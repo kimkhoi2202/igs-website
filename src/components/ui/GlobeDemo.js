@@ -18,18 +18,22 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
     }
   }, []);
 
+
   const globeBackgroundColor = theme === 'light' ? '#FFFFFF' : '#000000'; // Set background color based on theme
+  const globeTexture = theme === 'light' ? "/EarthImage/8k_earth_daymap.jpg"  : "/EarthImage/8k_earth_nightmap.jpg" ;
+  const globeGlow = theme === 'light' ? "0.3"  : "0.5" ;
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-13%)'}}>
+      <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-13%)'}}>
       <Globe
         ref={globeRef}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg" 
-        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png" 
+        globeImageUrl={globeTexture}
+        bumpImageUrl="/EarthImage/8k_earthbump.png"
+        bumpScale={2.0}
         backgroundColor={globeBackgroundColor}
         animateIn
         atmosphereColor={globeConfig.atmosphereColor}
-        atmosphereAltitude={globeConfig.atmosphereAltitude}
+        atmosphereAltitude={globeGlow}
         arcsData={data}
         arcColor={() => ['#0000FF', '#00FFFF']} // Gradient from blue to cyan
         arcStroke={1} // Make the arc wider
@@ -55,7 +59,7 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
           return el;
         }}
         htmlElementOffset={[0, 0]} // Center the marker
-      />
+      />  
     </div>
   );
 };
