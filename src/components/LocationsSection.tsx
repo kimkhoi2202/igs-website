@@ -27,17 +27,17 @@ export default function LocationsSection() {
         if (textRec.top <= windowHeight && textRec.bottom >= 0+textRec.height/4) {
           setFocusLat(29.7869); // Return to initial position
           setFocusLng(-95.4108); // Return to initial position
-          setAutoRotate(true);
-          setScroll(true)
+          //setAutoRotate(true);
+          //setScroll(true)
         } else {
-          if (scrolled){
+          //if (scrolled){
             // Text section is not in view
             const antipodalPos = getAntipodalLocation(29.7869, -95.4108);
             setFocusLat(antipodalPos.lat);
             setFocusLng(antipodalPos.lng);
-            setAutoRotate(false);
-            setScroll(false)
-          }      
+            //setAutoRotate(false);
+            //setScroll(false)
+          //}      
         }
       }
     };
@@ -186,7 +186,7 @@ export default function LocationsSection() {
               </li>
             </ul>
           </div>
-          <div className="relative" style={{ height: '250%', width: '270%', margin: 'auto', transform: 'translateX(0%) translateY(-20%)'}}>
+          <div className="relative" style={{ height: '260%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-30%)'}}>
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
               <GlobeDemo
                 globeConfig={globeConfig}
