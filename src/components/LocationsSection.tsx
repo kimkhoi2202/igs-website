@@ -9,13 +9,12 @@ export default function LocationsSection() {
   const [focusLat, setFocusLat] = useState<number | undefined>(undefined);
   const [focusLng, setFocusLng] = useState<number | undefined>(undefined);
   const [autoRotate, setAutoRotate] = useState(true);
-  const [scrolled, setScroll] = useState(false)
   const { theme } = useTheme(); // Get the current theme
   const textRef = useRef<HTMLDivElement>(null);
   
   const getAntipodalLocation = (lat: number, lng: number) => ({
     lat: -lat, // Flip latitude
-    lng: lng
+    lng: -lng
   });
   
   useEffect(() => {
@@ -30,14 +29,9 @@ export default function LocationsSection() {
           //setAutoRotate(true);
           //setScroll(true)
         } else {
-          //if (scrolled){
-            // Text section is not in view
             const antipodalPos = getAntipodalLocation(29.7869, -95.4108);
             setFocusLat(antipodalPos.lat);
-            setFocusLng(antipodalPos.lng);
-            //setAutoRotate(false);
-            //setScroll(false)
-          //}      
+            setFocusLng(antipodalPos.lng);   
         }
       }
     };
@@ -80,7 +74,7 @@ export default function LocationsSection() {
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: -29.7869, lng: -95.4108},
+    initialPosition: { lat: 29.7869, lng: -95.4108},
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
