@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
+import { Exo_2 } from '@next/font/google';
+
+const exo2 = Exo_2({ weight: ['400', '700'], subsets: ['latin'] });
 
 export default function HeroSection() {
   return (
@@ -10,11 +13,11 @@ export default function HeroSection() {
       <div className="container px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center h-full">
         <div className="w-full md:w-3/4 lg:w-2/3 mb-24 md:mb-0">
           <span className="text-red-500 text-base font-bold">INTERNASH GLOBAL SERVICES</span>
-          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <Highlight>Engineering, Repair,</Highlight>
+          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
+            <Highlight className={exo2.className}>Engineering, Repair,</Highlight>
           </h1>
-          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <Highlight>and Logistics Solutions</Highlight>
+          <h1 className="mt-4 text-black dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
+            <Highlight className={exo2.className}>and Logistics Solutions</Highlight>
           </h1>
           <div className="mt-4 flex flex-col items-center text-lg md:text-xl text-black dark:text-white">
             <span className="mt-2">
