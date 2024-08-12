@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 import { useInView } from "react-intersection-observer";
 
-export default function VisionSection() {
+interface VisionSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function VisionSection({ onLoadComplete }: VisionSectionProps) {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.5,
@@ -15,6 +21,19 @@ export default function VisionSection() {
       controls.start("visible");
     }
   }, [controls, inView]);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
 
   return (
     <section ref={ref} className="w-full py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">

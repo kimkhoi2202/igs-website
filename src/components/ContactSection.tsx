@@ -1,8 +1,28 @@
+"use client"; 
+import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 
-export default function ContactSection() {
+
+interface ContactSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function ContactSection({ onLoadComplete }: ContactSectionProps) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-8">

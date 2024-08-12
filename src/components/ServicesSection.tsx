@@ -1,7 +1,12 @@
-import { cn } from "@/lib/utils";
+"use client";
+
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from 'react';
+
+interface ServicesSectionProps {
+  onLoadComplete?: () => void;
+}
 
 const services = [
   {
@@ -31,7 +36,20 @@ const services = [
   },
 ];
 
-export default function ServicesSection() {
+export default function ServicesSection({ onLoadComplete }: ServicesSectionProps) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
+  
   return (
     <section className="w-full py-12">
       <div className="container mx-auto px-6 md:px-12">

@@ -1,6 +1,24 @@
+"use client"; 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-export default function DifferentiatorSection() {
+interface DifferentiatorSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function DifferentiatorSection({ onLoadComplete }: DifferentiatorSectionProps) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center" style={{ transform: 'translateX(0%) translateY(-15%)'}}>

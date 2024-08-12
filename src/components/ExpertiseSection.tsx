@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
@@ -40,7 +40,24 @@ const expertiseItems: readonly ExpertiseItem[] = [
   { title: 'Call Center Services', description: 'for Technical Support and Customer Service applications.' },
 ];
 
-export default function ExpertiseSection() {
+interface ExpertiseSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionProps) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
+
   const imageControls = useAnimation();
   const textControls = useAnimation();
   const shadowControls = useAnimation();

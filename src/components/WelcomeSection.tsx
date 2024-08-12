@@ -1,17 +1,34 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
-export default function WelcomeSection() {
+interface WelcomeSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) {
   const imageControls = useAnimation();
   const textControls = useAnimation();
   const shadowControls = useAnimation();
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
 
   useEffect(() => {
     const handleScroll = () => {

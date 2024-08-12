@@ -4,8 +4,11 @@ import dynamic from 'next/dynamic';
 import { useTheme } from "next-themes";
 
 const GlobeDemo = dynamic(() => import('@/components/ui/GlobeDemo').then((m) => m.default), { ssr: false });
+interface LocationsSectionProps {
+  onLoadComplete?: () => void;
+}
 
-export default function LocationsSection() {
+export default function LocationsSection({ onLoadComplete }: LocationsSectionProps) {
   const [focusLat, setFocusLat] = useState<number | undefined>(undefined);
   const [focusLng, setFocusLng] = useState<number | undefined>(undefined);
   const [autoRotate, setAutoRotate] = useState(true);
@@ -16,6 +19,19 @@ export default function LocationsSection() {
     lat: -lat, // Flip latitude
     lng: -lng
   });
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
   
   useEffect(() => {
     const handleScroll = () => {
