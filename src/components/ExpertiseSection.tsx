@@ -106,7 +106,7 @@ export default function ExpertiseSection() {
             ref={shadowRef}
             animate={shadowControls}
             initial={{ x: -60, opacity: 0 }} // Start off-screen to the left
-            className="absolute bottom-[-40px] right-[-30px] w-full h-full bg-red-500 rounded-lg z-0"
+            className="absolute bottom-[-40px] right-[-50px] w-full h-full bg-red-800 rounded-lg z-0"
           />
           <motion.div
             ref={imageRef}

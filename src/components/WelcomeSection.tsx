@@ -23,12 +23,12 @@ export default function WelcomeSection() {
         if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
-          shadowControls.start({ x: -10, opacity: 1 }); // Move shadow to the left of the image
+          shadowControls.start({ x: -10, y: 0, opacity: 1 }); // Move shadow to the left of the image
         }
         else {
           imageControls.start({ x: -40});
           textControls.start({ x: 40 });
-          shadowControls.start({ x: -50}); // Move shadow to the left of the image
+          shadowControls.start({ x: -60, y: 20}); // Move shadow to the left of the image
         }
       }
     };
@@ -54,7 +54,7 @@ export default function WelcomeSection() {
             ref={shadowRef}
             animate={shadowControls}
             initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
-            className="absolute bottom-[-40px] left-[-30px] w-full h-full bg-red-500 rounded-lg z-0"
+            className="absolute bottom-[-40px] left-[-30px] w-full h-full bg-red-800 rounded-lg z-0"
           />
           <motion.div
             ref={imageRef}
