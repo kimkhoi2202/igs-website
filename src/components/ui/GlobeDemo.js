@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
-import globeData from '@/data/globe.json';
 
 const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, locations, theme }) => {
   const globeRef = useRef();
@@ -15,22 +14,26 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
   useEffect(() => {
     const globe = globeRef.current;
     if (globe) {
-      // Disabling zooming
-      globe.controls().enableZoom = false;
+      globe.controls().enableZoom = false; // Disabling zooming
     }
   }, []);
 
+
   const globeBackgroundColor = theme === 'light' ? '#FFFFFF' : '#000000'; // Set background color based on theme
+  const globeTexture = theme === 'light' ? "/EarthImage/8k_earth_daymap.jpg"  : "/EarthImage/8k_earth_nightmap.jpg" ;
+  const globeGlow = theme === 'light' ? "0.3"  : "0.5" ;
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-13%)'}}>
+      <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', transform: 'translateX(-50%) translateY(-13%)'}}>
       <Globe
         ref={globeRef}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg" 
+        globeImageUrl={globeTexture}
+        bumpImageUrl="/EarthImage/8k_earthbump.png"
+        bumpScale={2.0}
         backgroundColor={globeBackgroundColor}
         animateIn
         atmosphereColor={globeConfig.atmosphereColor}
-        atmosphereAltitude={globeConfig.atmosphereAltitude}
+        atmosphereAltitude={globeGlow}
         arcsData={data}
         arcColor={() => ['#0000FF', '#00FFFF']} // Gradient from blue to cyan
         arcStroke={1} // Make the arc wider
@@ -38,30 +41,25 @@ const GlobeDemo = ({ globeConfig, data, focusLat, focusLng, autoRotate, location
         arcDashGap={1}
         arcDashAnimateTime={globeConfig.arcTime}
         arcAltitude={arc => arc.arcAlt} 
-        polygonsData={globeData.features}
-        polygonCapColor={() => globeConfig.polygonColor}
-        polygonSideColor={() => globeConfig.polygonColor}
         showGlobe={true}
         showGraticules={false}
         showAtmosphere={globeConfig.showAtmosphere}
         enablePointerInteraction
-        pointsData={[]} // Empty array to remove default red dots
         autoRotate={autoRotate}
         autoRotateSpeed={globeConfig.autoRotateSpeed}
-        // Using the map_marker.png image as the marker
         htmlElementsData={locations}
         htmlElement={(location) => {
           const el = document.createElement('div');
           el.innerHTML = `<img src="/section/map_marker.png" alt="${location.name}" style="width: 80px; height: 80px;" />`;
-          el.style.position = 'absolute'; // Ensure absolute positioning
-          el.style.left = `${0}px`; // Center horizontally
-          el.style.top = `-${85 / 2}px`; // Center vertically
+          el.style.position = 'absolute';
+          el.style.left = `${0}px`;
+          el.style.top = `-${85 / 2}px`;
           el.style.cursor = 'pointer';
           el.onclick = () => alert(`Clicked on ${location.name}`);
           return el;
         }}
         htmlElementOffset={[0, 0]} // Center the marker
-      />
+      />  
     </div>
   );
 };

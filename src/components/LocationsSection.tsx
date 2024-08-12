@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useTheme } from "next-themes";
 
@@ -9,7 +9,46 @@ export default function LocationsSection() {
   const [focusLat, setFocusLat] = useState<number | undefined>(undefined);
   const [focusLng, setFocusLng] = useState<number | undefined>(undefined);
   const [autoRotate, setAutoRotate] = useState(true);
+  const [scrolled, setScroll] = useState(false)
   const { theme } = useTheme(); // Get the current theme
+  const textRef = useRef<HTMLDivElement>(null);
+  
+  const getAntipodalLocation = (lat: number, lng: number) => ({
+    lat: -lat, // Flip latitude
+    lng: lng
+  });
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (textRef.current) {
+        const textRec = textRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (textRec.top <= windowHeight && textRec.bottom >= 0+textRec.height/4) {
+          setFocusLat(29.7869); // Return to initial position
+          setFocusLng(-95.4108); // Return to initial position
+          setAutoRotate(true);
+          setScroll(true)
+        } else {
+          if (scrolled){
+            // Text section is not in view
+            const antipodalPos = getAntipodalLocation(29.7869, -95.4108);
+            setFocusLat(antipodalPos.lat);
+            setFocusLng(antipodalPos.lng);
+            setAutoRotate(false);
+            setScroll(false)
+          }      
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run once on mount to set initial state
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleMouseEnter = (lat: number, lng: number) => {
     setFocusLat(lat);
@@ -41,7 +80,7 @@ export default function LocationsSection() {
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: 29.7869, lng: -95.4108},
+    initialPosition: { lat: -29.7869, lng: -95.4108},
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
@@ -107,15 +146,16 @@ export default function LocationsSection() {
       endLng: 114.1694,
       arcAlt: 0.30, // Different curve for Houston to Taoyuan
     },
-];
+  ];
 
+  // Define the red glow color based on the theme
+  const glowColor = theme === 'light' ? '#B71C1C' : '#FF0000'; // Darker red for light theme, bright red for dark theme
 
-  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8">
-          <div style={{ transform: 'translateX(-25%) translateY(0%)'}}> {/* Move text section to the left */}
+          <div ref={textRef} style={{ transform: 'translateX(-25%) translateY(0%)'}}> {/* Move text section to the left */}
             <span className="text-red-500 text-sm" style={{ display: 'block', marginBottom: '1rem' }}> {/* Move text down */}
               REPAIR SERVICE CENTER LOCATIONS
             </span>
@@ -124,18 +164,21 @@ export default function LocationsSection() {
             </h2>
             <ul className="list-disc pl-5 mt-4 text-muted-foreground md:text-xl">
               <li
+                className="location-item"
                 onMouseEnter={() => handleMouseEnter(29.7869, -95.4108)}
                 onMouseLeave={handleMouseLeave}
               >
                 Houston Kempwood Facility (US)
               </li>
               <li
+                className="location-item"
                 onMouseEnter={() => handleMouseEnter(39.1032, -84.5120)}
                 onMouseLeave={handleMouseLeave}
               >
                 Cincinnati Facility (US)
               </li>
               <li
+                className="location-item"
                 onMouseEnter={() => handleMouseEnter(22.3193, 114.1694)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -158,6 +201,16 @@ export default function LocationsSection() {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .location-item {
+          transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+        .location-item:hover {
+          font-size: 1.3rem; /* Increase font size on hover */
+          color: ${glowColor}; /* Red color on hover */
+          text-shadow: 0 0 0px red; /* Red glow effect */
+        }
+      `}</style>
     </section>
   );
 }
