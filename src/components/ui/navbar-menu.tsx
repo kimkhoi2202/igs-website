@@ -42,7 +42,7 @@ export const MenuItem = ({
     >
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer font-bold text-white hover:text-gray-700 dark:text-white dark:hover:text-gray-300"
       >
         {item}
       </motion.p>
@@ -57,7 +57,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                className="bg-red-800 dark:bg-red-800 rounded-2xl overflow-hidden border border-red-800 dark:border-red-800 shadow-xl"
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -84,7 +84,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center items-center space-x-6 px-8 py-4" // Adjusted padding and spacing
+      className="relative rounded-full border border-transparent dark:border-red-800 bg-red-800 dark:bg-red-800 shadow-input flex justify-center items-center space-x-6 px-8 py-4"
     >
       {children}
     </nav>
@@ -95,7 +95,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black"
+      className="text-red-800 dark:text-red-800 hover:text-red-800 dark:hover:text-red-500 font-bold"
     >
       {children}
     </Link>
@@ -146,7 +146,7 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit fixed top-10 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-6 pl-6 py-3 items-center justify-center space-x-8", // Adjusted padding and spacing
+          "flex max-w-fit fixed top-10 inset-x-0 mx-auto border border-transparent dark:border-red-800 rounded-full dark:bg-red-800 bg-red-800 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-6 pl-6 py-3 items-center justify-center space-x-8",
           className
         )}
       >
@@ -155,11 +155,11 @@ export const FloatingNav = ({
             key={navItem.name}
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-2 text-lg text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+              "relative dark:text-neutral-50 items-center flex space-x-2 text-lg text-white dark:text-white dark:hover:text-gray-300 hover:text-gray-700 font-bold"
             )}
           >
             <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block text-lg">{navItem.name}</span> {/* Adjusted font size */}
+            <span className="hidden sm:block text-lg">{navItem.name}</span>
           </Link>
         ))}
       </motion.div>
@@ -171,17 +171,17 @@ export default function NavbarMenu() {
   const [active, setActive] = useState<string | null>(null);
 
   const navItems = [
-    { name: "Home", link: "#", icon: <Home className="h-5 w-5" /> }, // Increased icon size
-    { name: "Solutions", link: "#", icon: <Package className="h-5 w-5" /> }, // Increased icon size
-    { name: "Expertise", link: "#", icon: <Hammer className="h-5 w-5" /> }, // Increased icon size
-    { name: "Services", link: "#", icon: <Layers className="h-5 w-5" /> }, // Increased icon size
+    { name: "Home", link: "#", icon: <Home className="h-10 w-10 text-black dark:text-white bg-white dark:bg-gray-500 p-2 rounded" /> }, // Adjusted size
+    { name: "Solutions", link: "#", icon: <Package className="h-6 w-6 text-white dark:text-white" /> },
+    { name: "Expertise", link: "#", icon: <Hammer className="h-6 w-6 text-white dark:text-white" /> },
+    { name: "Services", link: "#", icon: <Layers className="h-6 w-6 text-white dark:text-white" /> },
   ];
 
   return (
     <>
-      <header className="bg-background h-18 flex items-center justify-between px-4 lg:px-6 mt-1 mb-1">
+      <header className="bg-red-800 h-18 flex items-center justify-between px-4 lg:px-6 mt-1 mb-1">
         <Link href="#" className="flex items-center" prefetch={false}>
-          <Home className="h-6 w-6" />
+          <Home className="h-10 w-10 text-black dark:text-white bg-white dark:bg-black p-2 rounded" /> {/* Adjusted size */}
           <span className="sr-only">Acme Supply Chain</span>
         </Link>
         <div className="flex-1 flex items-center justify-center">
@@ -200,8 +200,8 @@ export default function NavbarMenu() {
             </MenuItem>
           </Menu>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="md">
+        <div className="flex gap-2 ">
+          <Button variant="outline" size="md" className="text-black dark:bg-black dark:hover:bg-red-700 dark:text-white">
             Login
           </Button>
           <ModeToggle />

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 
@@ -41,7 +44,24 @@ function LinkedinIcon(props: Readonly<React.SVGProps<SVGSVGElement>>) {
   );
 }
 
-export default function Footer() {
+interface FooterProps {
+  onLoadComplete?: () => void;
+}
+
+export default function Footer({ onLoadComplete }: FooterProps) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
+  
   return (
     <footer className="bg-background pb-4 w-full"> {/* Changed to pb-4 for bottom padding only */}
       <div className="container flex flex-col items-center justify-between max-w-7xl mx-auto">

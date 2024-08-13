@@ -1,6 +1,26 @@
+"use client";
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function SupplyChainSection() {
+interface SupplyChainSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectionProps) {
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
+
   return (
     <section className="relative w-full py-12 md:py-24 lg:py-32 bg-black">
       <div className="container px-4 md:px-6 mx-auto text-center relative z-10">

@@ -1,6 +1,6 @@
-"use client"; 
+"use client";
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import HeroSection from '@/components/HeroSection';
 import WelcomeSection from '@/components/WelcomeSection';
 import SupplyChainSection from '@/components/SupplyChainSection';
@@ -12,6 +12,26 @@ import LocationsSection from '@/components/LocationsSection';
 import ContactSection from '@/components/ContactSection';
 
 export default function Page() {
+  const [loadingStates, setLoadingStates] = useState({
+    heroLoaded: false,
+    welcomeLoaded: false,
+    supplyChainLoaded: false,
+    expertiseLoaded: false,
+    differentiatorLoaded: false,
+    servicesLoaded: false,
+    visionLoaded: false,
+    locationsLoaded: false,
+    contactLoaded: false,
+  });
+
+  const allComponentsLoaded = Object.values(loadingStates).every(Boolean);
+
+  const handleLoadComplete = (section: keyof typeof loadingStates) => {
+    setLoadingStates(prevStates => ({
+      ...prevStates,
+      [section]: true
+    }));
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,16 +40,23 @@ export default function Page() {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
       <main className="flex-1">
-        <HeroSection />
-        <WelcomeSection />
-        <SupplyChainSection />
-        <ExpertiseSection />
-        <DifferentiatorSection />
-        <ServicesSection />
-        <VisionSection />
-        <LocationsSection />
-        <ContactSection />
+        <HeroSection onLoadComplete={() => handleLoadComplete('heroLoaded')} />
+        <WelcomeSection onLoadComplete={() => handleLoadComplete('welcomeLoaded')} />
+        <SupplyChainSection onLoadComplete={() => handleLoadComplete('supplyChainLoaded')} />
+        <ExpertiseSection onLoadComplete={() => handleLoadComplete('expertiseLoaded')} />
+        <DifferentiatorSection onLoadComplete={() => handleLoadComplete('differentiatorLoaded')} />
+        <ServicesSection onLoadComplete={() => handleLoadComplete('servicesLoaded')} />
+        <VisionSection onLoadComplete={() => handleLoadComplete('visionLoaded')} />
+        <LocationsSection onLoadComplete={() => handleLoadComplete('locationsLoaded')} />
+        <ContactSection onLoadComplete={() => handleLoadComplete('contactLoaded')} />
       </main>
+      {allComponentsLoaded && (
+        <div>
+          {/* All components are loaded */}
+          <p>All components are fully loaded!</p>
+          {/* Implement any transition or action here */}
+        </div>
+      )}
     </div>
   );
 }

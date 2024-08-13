@@ -4,19 +4,34 @@ import dynamic from 'next/dynamic';
 import { useTheme } from "next-themes";
 
 const GlobeDemo = dynamic(() => import('@/components/ui/GlobeDemo').then((m) => m.default), { ssr: false });
+interface LocationsSectionProps {
+  onLoadComplete?: () => void;
+}
 
-export default function LocationsSection() {
+export default function LocationsSection({ onLoadComplete }: LocationsSectionProps) {
   const [focusLat, setFocusLat] = useState<number | undefined>(undefined);
   const [focusLng, setFocusLng] = useState<number | undefined>(undefined);
   const [autoRotate, setAutoRotate] = useState(true);
-  const [scrolled, setScroll] = useState(false)
   const { theme } = useTheme(); // Get the current theme
   const textRef = useRef<HTMLDivElement>(null);
   
   const getAntipodalLocation = (lat: number, lng: number) => ({
     lat: -lat, // Flip latitude
-    lng: lng
+    lng: -lng
   });
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -27,17 +42,12 @@ export default function LocationsSection() {
         if (textRec.top <= windowHeight && textRec.bottom >= 0+textRec.height/4) {
           setFocusLat(29.7869); // Return to initial position
           setFocusLng(-95.4108); // Return to initial position
-          setAutoRotate(true);
-          setScroll(true)
+          //setAutoRotate(true);
+          //setScroll(true)
         } else {
-          if (scrolled){
-            // Text section is not in view
             const antipodalPos = getAntipodalLocation(29.7869, -95.4108);
             setFocusLat(antipodalPos.lat);
-            setFocusLng(antipodalPos.lng);
-            setAutoRotate(false);
-            setScroll(false)
-          }      
+            setFocusLng(antipodalPos.lng);   
         }
       }
     };
@@ -80,7 +90,7 @@ export default function LocationsSection() {
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: -29.7869, lng: -95.4108},
+    initialPosition: { lat: 29.7869, lng: -95.4108},
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
@@ -186,7 +196,7 @@ export default function LocationsSection() {
               </li>
             </ul>
           </div>
-          <div className="relative" style={{ height: '250%', width: '270%', margin: 'auto', transform: 'translateX(0%) translateY(-20%)'}}>
+          <div className="relative" style={{ height: '260%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-30%)'}}>
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
               <GlobeDemo
                 globeConfig={globeConfig}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
@@ -40,7 +40,24 @@ const expertiseItems: readonly ExpertiseItem[] = [
   { title: 'Call Center Services', description: 'for Technical Support and Customer Service applications.' },
 ];
 
-export default function ExpertiseSection() {
+interface ExpertiseSectionProps {
+  onLoadComplete?: () => void;
+}
+
+export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionProps) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading (replace with real loading logic)
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Adjust timing as needed
+
+    if (loaded && onLoadComplete) {
+      onLoadComplete(); // Notify when loading is complete
+    }
+  }, [loaded, onLoadComplete]);
+
   const imageControls = useAnimation();
   const textControls = useAnimation();
   const shadowControls = useAnimation();
@@ -106,7 +123,7 @@ export default function ExpertiseSection() {
             ref={shadowRef}
             animate={shadowControls}
             initial={{ x: -60, opacity: 0 }} // Start off-screen to the left
-            className="absolute bottom-[-40px] right-[-30px] w-full h-full bg-red-500 rounded-lg z-0"
+            className="absolute bottom-[-40px] right-[-50px] w-full h-full bg-red-800 rounded-lg z-0"
           />
           <motion.div
             ref={imageRef}
