@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import WelcomeSection from '@/components/WelcomeSection';
 import SupplyChainSection from '@/components/SupplyChainSection';
@@ -33,22 +33,20 @@ export default function Page() {
     }));
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
       <main className="flex-1">
-        <HeroSection onLoadComplete={() => handleLoadComplete('heroLoaded')} />
-        <WelcomeSection onLoadComplete={() => handleLoadComplete('welcomeLoaded')} />
-        <SupplyChainSection onLoadComplete={() => handleLoadComplete('supplyChainLoaded')} />
-        <ExpertiseSection onLoadComplete={() => handleLoadComplete('expertiseLoaded')} />
-        <DifferentiatorSection onLoadComplete={() => handleLoadComplete('differentiatorLoaded')} />
-        <ServicesSection onLoadComplete={() => handleLoadComplete('servicesLoaded')} />
-        <VisionSection onLoadComplete={() => handleLoadComplete('visionLoaded')} />
-        <LocationsSection onLoadComplete={() => handleLoadComplete('locationsLoaded')} />
-        <ContactSection onLoadComplete={() => handleLoadComplete('contactLoaded')} />
+        <div className="snap-container">
+          <HeroSection onLoadComplete={() => handleLoadComplete('heroLoaded')} />
+          <WelcomeSection onLoadComplete={() => handleLoadComplete('welcomeLoaded')} />
+          <SupplyChainSection onLoadComplete={() => handleLoadComplete('supplyChainLoaded')} />
+          <ExpertiseSection onLoadComplete={() => handleLoadComplete('expertiseLoaded')} />
+          <DifferentiatorSection onLoadComplete={() => handleLoadComplete('differentiatorLoaded')} />
+          <ServicesSection onLoadComplete={() => handleLoadComplete('servicesLoaded')} />
+          <VisionSection onLoadComplete={() => handleLoadComplete('visionLoaded')} />
+          <LocationsSection onLoadComplete={() => handleLoadComplete('locationsLoaded')} />
+          <ContactSection onLoadComplete={() => handleLoadComplete('contactLoaded')} />
+        </div>
       </main>
       {allComponentsLoaded && (
         <div>

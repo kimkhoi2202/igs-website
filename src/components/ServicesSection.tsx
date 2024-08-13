@@ -51,7 +51,7 @@ export default function ServicesSection({ onLoadComplete }: ServicesSectionProps
   }, [loaded, onLoadComplete]);
   
   return (
-    <section className="w-full py-12">
+    <section className="w-full h-screen py-12">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-gray-50">
           Our Services

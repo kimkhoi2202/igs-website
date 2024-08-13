@@ -22,7 +22,7 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
   }, [loaded, onLoadComplete]);
 
   return (
-    <section className="relative w-full py-12 md:py-24 lg:py-32 bg-black">
+    <section className="relative w-full h-screen py-12 md:py-24 lg:py-32 bg-black">
       <div className="container px-4 md:px-6 mx-auto text-center relative z-10">
         <h2 className="text-3xl font-bold tracking-tighter text-white">Supply Chain Solution</h2>
         <div className="w-full h-auto rounded-lg mt-8">

@@ -13,10 +13,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
   const imageControls = useAnimation();
   const textControls = useAnimation();
   const shadowControls = useAnimation();
-  const imageRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const shadowRef = useRef<HTMLDivElement>(null);
-
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -31,50 +28,49 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
   }, [loaded, onLoadComplete]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (imageRef.current && textRef.current && shadowRef.current) {
-        const imageRect = imageRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Check image position
-        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
-          imageControls.start({ x: 0, opacity: 1 });
-          textControls.start({ opacity: 1, x: 0 });
-          shadowControls.start({ x: -10, y: 0, opacity: 1 }); // Move shadow to the left of the image
-        }
-        else {
-          imageControls.start({ x: -40});
-          textControls.start({ x: 40 });
-          shadowControls.start({ x: -60, y: 20}); // Move shadow to the left of the image
-        }
-      }
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px',
+      threshold: 0.5 // Trigger when at least 50% of the section is visible
     };
 
-    // Initial animation setup
-    imageControls.set({ x: 50, opacity: 0 });
-    textControls.set({ opacity: 0, x: -20 });
-    shadowControls.set({ x: 50, opacity: 0 }); // Initial position of the shadow
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Section is partially or fully in view
+          imageControls.start({ x: 0, opacity: 1 });
+          textControls.start({ opacity: 1, x: 0 });
+          shadowControls.start({ x: -10, y: 0, opacity: 1 });
+        } else {
+          // Section is not in view
+          imageControls.start({ x: -40 });
+          textControls.start({ x: 40 });
+          shadowControls.start({ x: -60, y: 20 });
+        }
+      });
+    }, observerOptions);
 
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
   }, [imageControls, textControls, shadowControls]);
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section ref={sectionRef} className="w-full h-screen py-12 md:py-24 lg:py-32 snap-start">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
         <div className="relative">
           <motion.div
-            ref={shadowRef}
             animate={shadowControls}
             initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
             className="absolute bottom-[-40px] left-[-30px] w-full h-full bg-red-800 rounded-lg z-0"
           />
           <motion.div
-            ref={imageRef}
             animate={imageControls}
             initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
             className="relative z-10"
@@ -90,7 +86,6 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           </motion.div>
         </div>
         <motion.div
-          ref={textRef}
           animate={textControls}
           initial={{ opacity: 0, x: -20 }} // Start off-screen to the left
           className="flex flex-col justify-center space-y-4"

@@ -30,7 +30,7 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
 
   return (
     <HeroHighlight
-      containerClassName="w-full h-screen bg-[url('/hero-bg.jpg')] bg-cover bg-center flex items-center justify-center"
+      containerClassName="w-full h-screen bg-[url('/hero-bg.jpg')] bg-cover bg-center flex items-center justify-center snap-start"
     >
       <div className="relative flex flex-col md:flex-row items-center justify-center text-center h-full">
         <div className="flex flex-col items-center w-full md:w-3/4 lg:w-2/3 mb-24 md:mb-0">

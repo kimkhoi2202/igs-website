@@ -1,3 +1,5 @@
+// layout.tsx
+
 import { Poppins } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
@@ -31,7 +33,9 @@ export default function Layout({ children }: LayoutProps) {
         >
           <SpeedInsights />
           <NavbarMenu />
-          {children}
+          <div className="snap-container overflow-y-auto"> {/* Ensure overflow-y is set here */}
+            {children}
+          </div>
           <Footer />
         </ThemeProvider>
       </body>

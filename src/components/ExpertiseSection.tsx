@@ -66,39 +66,41 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
   const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (imageRef.current && textRef.current && shadowRef.current) {
-        const imageRect = imageRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px',
+      threshold: 0.5 // Trigger when at least 50% of the section is visible
+    };
 
-        // Check image position
-        if ((imageRect.top + (imageRect.height / 3) * 2) >= 0 && imageRect.bottom <= windowHeight) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Section is partially or fully in view
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
           shadowControls.start({ x: 0, opacity: 1 }); // Shadow appears from left to right
         } else {
-          imageControls.start({ x: 40}); // Move from right to left
-          textControls.start({  x: -40 });
-          shadowControls.start({ x: 50}); // Move shadow to the left
+          // Section is not in view
+          imageControls.start({ x: 40 }); // Move from right to left
+          textControls.start({ x: -40 });
+          shadowControls.start({ x: 50 }); // Move shadow to the left
         }
-      }
-    };
+      });
+    }, observerOptions);
 
-    // Initial animation setup
-    imageControls.set({ x: 100, opacity: 0 });
-    textControls.set({ opacity: 0, x: 20 });
-    shadowControls.set({ x: -60, opacity: 0 }); // Initial position of the shadow
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      if (textRef.current) {
+        observer.unobserve(textRef.current);
+      }
     };
   }, [imageControls, textControls, shadowControls]);
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full h-screen py-12 md:py-24 lg:py-32">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
         <motion.div
           ref={textRef}

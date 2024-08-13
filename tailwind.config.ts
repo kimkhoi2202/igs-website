@@ -24,7 +24,7 @@ const config: Config = {
       fontFamily: {
         heading: ['var(--font-poppins)', ...fontFamily.sans],
         body: ['var(--font-poppins)', ...fontFamily.sans],
-      },   
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -108,6 +108,21 @@ const config: Config = {
         shimmer: "shimmer 2s linear infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
         aurora: "aurora 60s linear infinite",
+      },
+      scrollSnapType: {
+        none: 'none',
+        x: 'x var(--snap-strictness, mandatory)',
+        y: 'y var(--snap-strictness, mandatory)',
+        both: 'both var(--snap-strictness, mandatory)',
+      },
+      scrollSnapAlign: {
+        start: 'start',
+        end: 'end',
+        center: 'center',
+      },
+      scrollSnapStop: {
+        normal: 'normal',
+        always: 'always',
       },
     },
   },

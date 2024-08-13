@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useTheme } from "next-themes";
 
 const GlobeDemo = dynamic(() => import('@/components/ui/GlobeDemo').then((m) => m.default), { ssr: false });
+
 interface LocationsSectionProps {
   onLoadComplete?: () => void;
 }
@@ -32,31 +33,37 @@ export default function LocationsSection({ onLoadComplete }: LocationsSectionPro
       onLoadComplete(); // Notify when loading is complete
     }
   }, [loaded, onLoadComplete]);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      if (textRef.current) {
-        const textRec = textRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
 
-        if (textRec.top <= windowHeight && textRec.bottom >= 0+textRec.height/4) {
-          setFocusLat(29.7869); // Return to initial position
-          setFocusLng(-95.4108); // Return to initial position
-          //setAutoRotate(true);
-          //setScroll(true)
-        } else {
-            const antipodalPos = getAntipodalLocation(29.7869, -95.4108);
-            setFocusLat(antipodalPos.lat);
-            setFocusLng(antipodalPos.lng);   
-        }
-      }
+  useEffect(() => {
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px',
+      threshold: 0.5 // Trigger when at least 50% of the section is visible
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Run once on mount to set initial state
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Section is partially or fully in view
+          setFocusLat(29.7869); // Return to initial position
+          setFocusLng(-95.4108); // Return to initial position
+        } else {
+          // Section is not in view
+          const antipodalPos = getAntipodalLocation(29.7869, -95.4108);
+          setFocusLat(antipodalPos.lat);
+          setFocusLng(antipodalPos.lng);
+        }
+      });
+    }, observerOptions);
+
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      if (textRef.current) {
+        observer.unobserve(textRef.current);
+      }
     };
   }, []);
 
@@ -162,7 +169,7 @@ export default function LocationsSection({ onLoadComplete }: LocationsSectionPro
   const glowColor = theme === 'light' ? '#B71C1C' : '#FF0000'; // Darker red for light theme, bright red for dark theme
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full h-screen py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8">
           <div ref={textRef} style={{ transform: 'translateX(-25%) translateY(0%)'}}> {/* Move text section to the left */}

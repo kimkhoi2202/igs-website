@@ -36,7 +36,7 @@ export default function VisionSection({ onLoadComplete }: VisionSectionProps) {
   }, [loaded, onLoadComplete]);
 
   return (
-    <section ref={ref} className="w-full py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section ref={ref} className="w-full h-screen py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
       <motion.div
         initial="hidden"
         animate={controls}
