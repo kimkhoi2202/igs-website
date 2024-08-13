@@ -22,9 +22,9 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        heading: ['var(--font-inter)', ...fontFamily.sans],
-        body: ['var(--font-inter)', ...fontFamily.sans]
-      },
+        heading: ['var(--font-poppins)', ...fontFamily.sans],
+        body: ['var(--font-poppins)', ...fontFamily.sans],
+      },   
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
