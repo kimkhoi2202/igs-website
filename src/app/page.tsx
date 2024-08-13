@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HeroSection from '@/components/HeroSection';
 import WelcomeSection from '@/components/WelcomeSection';
 import SupplyChainSection from '@/components/SupplyChainSection';
@@ -36,7 +36,7 @@ export default function Page() {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
       <main className="flex-1">
-        <div className="snap-container">
+        <div className={`snap-container ${allComponentsLoaded ? 'scroll-enabled' : ''}`}>
           <HeroSection onLoadComplete={() => handleLoadComplete('heroLoaded')} />
           <WelcomeSection onLoadComplete={() => handleLoadComplete('welcomeLoaded')} />
           <SupplyChainSection onLoadComplete={() => handleLoadComplete('supplyChainLoaded')} />

@@ -77,8 +77,12 @@
     height: 100vh;
     scroll-behavior: smooth;
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-y: hidden; /* Enable vertical scrolling */
     scrollbar-width: none; /* Hide scrollbar */
+  }
+
+  .snap-container.scroll-enabled {
+    overflow-y: scroll; /* Enable vertical scrolling when class is applied */
   }
   
   .snap-container > section {
