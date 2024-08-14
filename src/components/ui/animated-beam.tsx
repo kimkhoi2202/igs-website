@@ -17,7 +17,7 @@ interface CircleProps {
         <div
           ref={ref}
           className={cn(
-            "z-10 flex h-24 w-24 items-center justify-center rounded-full border-2 bg-white p-4 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]", // Increase the size
+            "z-10 flex h-48 w-48 items-center justify-center rounded-full border-2 bg-white p-4 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
             className,
             {
               "opacity-0": hidden,
@@ -47,8 +47,8 @@ export function AnimatedBeamDemo() {
       className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-lg bg-background p-10 "
       ref={containerRef}
     >
-      <div className="flex size-full flex-col items-stretch justify-between gap-10">
-        <div className="flex flex-row justify-between">
+      <div className="flex size-full flex-col items-stretch justify-between gap-16">
+        <div className="flex flex-row justify-between gap-x-16">
           <Circle hidden={true} />
           <Circle hidden={true} />
           <Circle ref={div1Ref}>
@@ -57,7 +57,7 @@ export function AnimatedBeamDemo() {
           <Circle hidden={true} />
           <Circle hidden={true} />
         </div>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between gap-16">
           <Circle ref={div2Ref}>
             <Icons.user />
           </Circle>
@@ -70,9 +70,7 @@ export function AnimatedBeamDemo() {
           <Circle ref={div5Ref}>
             <Icons.openai />
           </Circle>
-          <Circle ref={div6Ref}>
-            <Icons.openai />
-          </Circle>
+    
         </div>
         
       </div>
@@ -107,24 +105,18 @@ export function AnimatedBeamDemo() {
       <AnimatedBeam
         duration={5}
         containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div6Ref}
+        fromRef={div2Ref}
+        toRef={div3Ref}
+        startYOffset={20}
+        endYOffset={20}
       />
       <AnimatedBeam
         duration={5}
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={div3Ref}
-        startYOffset={10}
-        endYOffset={10}
-      />
-      <AnimatedBeam
-        duration={5}
-        containerRef={containerRef}
-        fromRef={div2Ref}
-        toRef={div3Ref}
-        startYOffset={-10}
-        endYOffset={-10}
+        startYOffset={-20}
+        endYOffset={-20}
         reverse
       />
       <AnimatedBeam
@@ -132,16 +124,16 @@ export function AnimatedBeamDemo() {
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div4Ref}
-        startYOffset={10}
-        endYOffset={10}
+        startYOffset={20}
+        endYOffset={20}
       />
       <AnimatedBeam
         duration={5}
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div4Ref}
-        startYOffset={-10}
-        endYOffset={-10}
+        startYOffset={-20}
+        endYOffset={-20}
         reverse
       />
       <AnimatedBeam
@@ -149,33 +141,16 @@ export function AnimatedBeamDemo() {
         containerRef={containerRef}
         fromRef={div4Ref}
         toRef={div5Ref}
-        startYOffset={10}
-        endYOffset={10}
+        startYOffset={20}
+        endYOffset={20}
       />
       <AnimatedBeam
         duration={5}
         containerRef={containerRef}
         fromRef={div4Ref}
         toRef={div5Ref}
-        startYOffset={-10}
-        endYOffset={-10}
-        reverse
-      />
-      <AnimatedBeam
-        duration={5}
-        containerRef={containerRef}
-        fromRef={div5Ref}
-        toRef={div6Ref}
-        startYOffset={10}
-        endYOffset={10}
-      />
-      <AnimatedBeam
-        duration={5}
-        containerRef={containerRef}
-        fromRef={div5Ref}
-        toRef={div6Ref}
-        startYOffset={-10}
-        endYOffset={-10}
+        startYOffset={-20}
+        endYOffset={-20}
         reverse
       />
     </div>

@@ -19,10 +19,12 @@ export default function DifferentiatorSection({ onLoadComplete }: Differentiator
       onLoadComplete(); // Notify when loading is complete
     }
   }, [loaded, onLoadComplete]);
+
   return (
-    <section className="w-full h-screen py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
-      <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center" style={{ transform: 'translateX(0%) translateY(-15%)'}}>
-        <div className="md:w-1/2 text-center">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
+      <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center md:items-start">
+        {/* Text Container */}
+        <div className="md:w-2/3 text-center md:text-left mb-12 md:mb-0">
           <h2 className="text-3xl font-bold tracking-tighter mb-8 w-full">Differentiator</h2>
           <div className="max-w-3xl mx-auto space-y-6">
             <p className="text-muted-foreground">
@@ -47,35 +49,39 @@ export default function DifferentiatorSection({ onLoadComplete }: Differentiator
             </p>
           </div>
         </div>
-        <div className="md:w-1/2 flex flex-col items-center gap-8 mt-12 md:mt-0">
+
+        {/* Images Container */}
+        <div className="flex flex-col gap-4 md:w-1/3 mb-12 md:mb-0">
           <Image
             src="/iso.png"
-            width={400}
-            height={300}
+            width={300}
+            height={200}
             alt=""
             className="object-cover rounded-lg"
-            style={{ aspectRatio: '400/300', objectFit: 'contain' }}
+            style={{ aspectRatio: '300/200', objectFit: 'contain' }}
           />
           <Image
             src="/anab.png"
-            width={400}
-            height={300}
+            width={300}
+            height={200}
             alt=""
             className="object-cover rounded-lg"
-            style={{ aspectRatio: '400/300', objectFit: 'contain' }}
+            style={{ aspectRatio: '300/200', objectFit: 'contain' }}
           />
         </div>
       </div>
-      <div className="max-w-auto mx-auto px-4">
+
+      {/* Differentiator Image */}
+      {/* <div className="w-full flex justify-center mt-12">
         <Image
           src="/differentiator.png"
           width={1200}
           height={200}
           alt=""
-          className="w-full h-auto rounded-lg object-contain mt-12"
+          className="w-full h-auto rounded-lg object-contain"
           style={{ aspectRatio: '1200/200', objectFit: 'contain' }}
         />
-      </div>
+      </div> */}
     </section>
   );
 }
