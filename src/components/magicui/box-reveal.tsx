@@ -26,8 +26,14 @@ export const BoxReveal = ({
 
   useEffect(() => {
     if (isInView && startAnimation) {
-      slideControls.start("visible");
-      mainControls.start("visible");
+      slideControls.start("visible").then(() => {
+        setTimeout(() => {
+          slideControls.start("hidden").then(() => {
+            mainControls.start("visible");
+          });
+        }, 200); // Adjust the delay in milliseconds
+      });
+      
     } else {
       slideControls.start("hidden");
       mainControls.start("hidden");
@@ -43,19 +49,19 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: duration ?? 0.5, delay: 0.25 }}
+        transition={{ duration: duration ?? 1.0, delay: 0.1 }}
       >
         {children}
       </motion.div>
 
       <motion.div
         variants={{
-          hidden: { left: 0 },
-          visible: { left: "100%" },
+          hidden: { left: "100%" },
+          visible: {left: 0},
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: duration ?? 0.5, ease: "easeIn" }}
+        transition={{ duration: duration ?? 0.8, ease: "easeIn" }}
         style={{
           position: "absolute",
           top: 4,
