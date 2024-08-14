@@ -8,7 +8,7 @@ interface BoxRevealProps {
   width?: "fit-content" | "100%";
   boxColor?: string;
   duration?: number;
-  startAnimation?: boolean; // Add this prop
+  startAnimation?: boolean;
 }
 
 export const BoxReveal = ({
@@ -16,7 +16,7 @@ export const BoxReveal = ({
   width = "fit-content",
   boxColor,
   duration,
-  startAnimation = false, // Default to false
+  startAnimation = false,
 }: BoxRevealProps) => {
   const mainControls = useAnimation();
   const slideControls = useAnimation();
@@ -26,13 +26,13 @@ export const BoxReveal = ({
 
   useEffect(() => {
     if (isInView && startAnimation) {
-      slideControls.start("visible").then(() => {
-        setTimeout(() => {
-          slideControls.start("hidden").then(() => {
+      // slideControls.start("visible").then(() => {
+      //   setTimeout(() => {
+      //     slideControls.start("hidden").then(() => {
             mainControls.start("visible");
-          });
-        }, 100); // Adjust the delay in milliseconds
-      });
+      //     });
+      //   }, 100);
+      // });
       
     } else {
       slideControls.start("hidden");
@@ -49,7 +49,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: duration ?? 2.0, delay: 0.1 }}
+        transition={{ duration: duration ?? 1.0, delay: 0.1 }}
       >
         {children}
       </motion.div>
@@ -61,7 +61,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: duration ?? 1.5, ease: "easeIn" }}
+        transition={{ duration: duration ?? 0.5, ease: "easeIn" }}
         style={{
           position: "absolute",
           top: 4,
