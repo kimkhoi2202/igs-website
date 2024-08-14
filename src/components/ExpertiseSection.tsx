@@ -105,6 +105,7 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
         <motion.div
           ref={textRef}
           animate={textControls}
+          transition={{ duration: 1.0 }}
           initial={{ opacity: 0, x: 20 }} // Start off-screen to the right
           className="flex flex-col justify-center space-y-4"
         >
@@ -124,12 +125,14 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
           <motion.div
             ref={shadowRef}
             animate={shadowControls}
+            transition={{ duration: 1.0 }}
             initial={{ x: -60, opacity: 0 }} // Start off-screen to the left
             className="absolute bottom-[-40px] right-[-50px] w-full h-full bg-red-800 rounded-lg z-0"
           />
           <motion.div
             ref={imageRef}
             animate={imageControls}
+            transition={{ duration: 1.0 }}
             initial={{ x: 100, opacity: 0 }} // Start off-screen to the right
             className="relative z-10"
           >

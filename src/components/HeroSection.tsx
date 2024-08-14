@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 import BoxReveal from '@/components/magicui/box-reveal';
-import { WavyBackground } from '@/components/ui/wavy-background'; // Import WavyBackground
+import { WavyBackground } from '@/components/ui/wavy-background';
 
 interface HeroSectionProps {
   onLoadComplete?: () => void;
@@ -10,6 +11,8 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
   const [loaded, setLoaded] = useState(false);
+  const { theme } = useTheme(); // Get the current theme
+  const [currentTheme, setCurrentTheme] = useState(theme);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,10 +28,18 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
     }
   }, [loaded, onLoadComplete]);
 
+  // Listen for theme changes and update the currentTheme state
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
+
   return (
     <div className="relative w-full h-screen flex items-center justify-center snap-start">
-      <WavyBackground className="absolute inset-0 w-full h-full z-0" /> {/* Wavy background contained in HeroSection */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-8"> {/* Increased space-y to ensure more spacing */}
+      <WavyBackground 
+        className="absolute inset-0 w-full h-full z-0" 
+        theme={currentTheme} // Pass the currentTheme as a prop to WavyBackground
+      /> 
+      <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-8">
         <BoxReveal width="100%" boxColor="#c53030" startAnimation={loaded}>
           <span className="text-red-800 text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold">
             INTERNASH GLOBAL SERVICES

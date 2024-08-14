@@ -67,11 +67,13 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
         <div className="relative">
           <motion.div
             animate={shadowControls}
+            transition={{ duration: 1.0 }}
             initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
             className="absolute bottom-[-40px] left-[-30px] w-full h-full bg-red-800 rounded-lg z-0"
           />
           <motion.div
             animate={imageControls}
+            transition={{ duration: 1.0 }}
             initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
             className="relative z-10"
           >
@@ -87,7 +89,8 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
         </div>
         <motion.div
           animate={textControls}
-          initial={{ opacity: 0, x: -20 }} // Start off-screen to the left
+          transition={{ duration: 1.0 }}
+          initial={{ opacity: 0, x: -20}} // Start off-screen to the left
           className="flex flex-col justify-center space-y-4"
         >
           <h2 className="text-3xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
