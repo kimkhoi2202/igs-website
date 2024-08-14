@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import AnimatedBeamDemo from '@/components/ui/animated-beam';
 
 interface SupplyChainSectionProps {
   onLoadComplete?: () => void;
@@ -25,7 +26,7 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
     <section className="relative w-full h-screen py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 mx-auto text-center relative z-10">
         <h2 className="text-3xl font-bold tracking-tighter text-black dark:text-white">Supply Chain Solution</h2>
-        <div className="w-full h-auto rounded-lg mt-8">
+        {/* <div className="w-full h-auto rounded-lg mt-8">
           <Image
             src="/supply-chain-light-mode.png"
             width={1200}
@@ -42,6 +43,9 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
             className="w-full h-auto rounded-lg hidden dark:block"
             style={{ aspectRatio: '1200/600', objectFit: 'contain' }}
           />
+        </div> */}
+        <div className="relative w-full h-full rounded-lg">
+          <AnimatedBeamDemo/>
         </div>
       </div>
     </section>
