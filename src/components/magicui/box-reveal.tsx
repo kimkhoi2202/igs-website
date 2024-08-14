@@ -31,7 +31,7 @@ export const BoxReveal = ({
           slideControls.start("hidden").then(() => {
             mainControls.start("visible");
           });
-        }, 200); // Adjust the delay in milliseconds
+        }, 100); // Adjust the delay in milliseconds
       });
       
     } else {
@@ -49,7 +49,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: duration ?? 1.0, delay: 0.1 }}
+        transition={{ duration: duration ?? 2.0, delay: 0.1 }}
       >
         {children}
       </motion.div>
@@ -61,7 +61,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: duration ?? 0.8, ease: "easeIn" }}
+        transition={{ duration: duration ?? 1.5, ease: "easeIn" }}
         style={{
           position: "absolute",
           top: 4,
