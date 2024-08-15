@@ -46,6 +46,15 @@ interface ExpertiseSectionProps {
 
 export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionProps) {
   const [loaded, setLoaded] = useState(false);
+  const [imageHeight, setImageHeight] = useState<number | null>(null);
+  const [imageWidth, setImageWidth] = useState<number | null>(null);
+
+  const imageControls = useAnimation();
+  const textControls = useAnimation();
+  const shadowControls = useAnimation();
+  const imageRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Simulate loading (replace with real loading logic)
@@ -57,13 +66,6 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
       onLoadComplete(); // Notify when loading is complete
     }
   }, [loaded, onLoadComplete]);
-
-  const imageControls = useAnimation();
-  const textControls = useAnimation();
-  const shadowControls = useAnimation();
-  const imageRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -78,7 +80,7 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
           // Section is partially or fully in view
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
-          shadowControls.start({ x: 0, opacity: 1 }); // Shadow appears from left to right
+          shadowControls.start({ x: -20, y: -30, opacity: 1 }); // Shadow appears from left to right
         } else {
           // Section is not in view
           imageControls.start({ x: 40 }); // Move from right to left
@@ -98,6 +100,12 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
       }
     };
   }, [imageControls, textControls, shadowControls]);
+
+  const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const { naturalWidth, naturalHeight } = event.currentTarget;
+    setImageWidth(naturalWidth);
+    setImageHeight(naturalHeight);
+  };
 
   return (
     <section className="w-full h-screen py-12 md:py-24 lg:py-32">
@@ -127,7 +135,13 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
             animate={shadowControls}
             transition={{ duration: 1.0 }}
             initial={{ x: -60, opacity: 0 }} // Start off-screen to the left
-            className="absolute bottom-[-40px] right-[-50px] w-full h-full bg-red-800 rounded-lg z-0"
+            className="absolute bottom-[-40px] right-[-50px] z-0"
+            style={{
+              width: imageWidth ? `${imageWidth}px` : '100%',
+              height: imageHeight ? `${imageHeight}px` : '100%',
+              background: 'linear-gradient(135deg, #d32f2f, #b71c1c)', // Red-orange gradient
+              borderRadius: '12px', // Adjust radius as needed
+            }}
           />
           <motion.div
             ref={imageRef}
@@ -143,6 +157,7 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
               alt="Expertise"
               className="w-full h-auto rounded-lg object-cover"
               style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+              onLoad={handleImageLoad} // Set image dimensions on load
             />
           </motion.div>
         </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   motion,
   AnimatePresence,
@@ -19,6 +19,37 @@ const transition = {
   stiffness: 100,
   restDelta: 0.001,
   restSpeed: 0.001,
+};
+
+interface DropdownProps {
+  isOpen: boolean;
+  onClose: () => void;
+  buttonRef: React.RefObject<HTMLButtonElement>;
+}
+
+const Dropdown: React.FC<DropdownProps> = ({ isOpen, onClose, buttonRef }) => {
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 z-20"
+          onClick={onClose}
+          style={{ originX: 0.5, originY: 0 }}
+        >
+          <div className="p-2">
+            <Link href="#" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">English</Link>
+            <Link href="#" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">中文</Link>
+            <Link href="#" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Español</Link>
+            <Link href="#" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Tiếng Việt</Link>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export const MenuItem = ({
@@ -169,6 +200,9 @@ export const FloatingNav = ({
 
 export default function NavbarMenu() {
   const [active, setActive] = useState<string | null>(null);
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false); // State for dropdown visibility
+  const languageButtonRef = useRef<HTMLButtonElement>(null); // Ref for positioning the dropdown
+  const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown menu
 
   const navItems = [
     { name: "Home", link: "#", icon: <Home className="h-10 w-10 text-black dark:text-white bg-white dark:bg-gray-500 p-2 rounded" /> }, // Adjusted size
@@ -176,6 +210,25 @@ export default function NavbarMenu() {
     { name: "Expertise", link: "#", icon: <Hammer className="h-6 w-6 text-white dark:text-white" /> },
     { name: "Services", link: "#", icon: <Layers className="h-6 w-6 text-white dark:text-white" /> },
   ];
+
+  // Effect to handle clicks outside of the dropdown and button
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        languageButtonRef.current &&
+        !languageButtonRef.current.contains(event.target as Node) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setLanguageMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -200,11 +253,18 @@ export default function NavbarMenu() {
             </MenuItem>
           </Menu>
         </div>
-        <div className="flex gap-2 ">
-          <Button variant="outline" size="md" className="text-black dark:bg-black dark:hover:bg-red-700 dark:text-white">
-            Login
+        <div className="flex gap-2 items-center relative">
+          <Button
+            variant="outline"
+            size="md"
+            className="text-black dark:bg-black dark:hover:bg-red-700 dark:text-white"
+            onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
+            ref={languageButtonRef} // Attach ref to the button
+          >
+            Language
           </Button>
           <ModeToggle />
+          <Dropdown isOpen={languageMenuOpen} onClose={() => setLanguageMenuOpen(false)} buttonRef={languageButtonRef} ref={dropdownRef} />
         </div>
       </header>
       <FloatingNav navItems={navItems} />
