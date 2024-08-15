@@ -26,20 +26,20 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
   }, []);
 
   useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
+
+  useEffect(() => {
     if (loaded && onLoadComplete) {
       onLoadComplete();
     }
   }, [loaded, onLoadComplete]);
 
-  // Listen for theme changes and update the currentTheme state
-  useEffect(() => {
-    setCurrentTheme(theme);
-  }, [theme]);
-
   return (
     <div className="relative w-full h-screen flex items-center justify-center snap-start">
       {loaded && (
         <WavyBackground 
+          key={currentTheme} // Use currentTheme as a key to force re-render
           className="absolute inset-0 w-full h-full z-0" 
           theme={currentTheme} // Pass the currentTheme as a prop to WavyBackground
         />
