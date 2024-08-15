@@ -68,7 +68,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           <motion.div
             animate={shadowControls}
             transition={{ duration: 1.0 }}
-            initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
+            initial={{ x: 50, opacity: 0 }}
             className="absolute bottom-[-40px] left-[-30px] w-full h-full z-0"
             style={{
               background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',

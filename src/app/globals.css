@@ -68,8 +68,8 @@
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-x: hidden; /* Ensure no overflow on the body */
-    overflow-y: hidden; /* Ensure no overflow on the body */
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
   
   .snap-container {
