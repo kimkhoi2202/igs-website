@@ -40,7 +40,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           // Section is partially or fully in view
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
-          shadowControls.start({ x: -10, y: 0, opacity: 1 });
+          shadowControls.start({ x: 0, y: 0, opacity: 1 });
         } else {
           // Section is not in view
           imageControls.start({ x: -40 });
@@ -69,7 +69,11 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
             animate={shadowControls}
             transition={{ duration: 1.0 }}
             initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
-            className="absolute bottom-[-40px] left-[-30px] w-full h-full bg-red-800 rounded-lg z-0"
+            className="absolute bottom-[-40px] left-[-30px] w-full h-full z-0"
+            style={{
+              background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',
+              borderRadius: '12px', // Adjust radius as needed
+            }}
           />
           <motion.div
             animate={imageControls}
@@ -90,7 +94,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
         <motion.div
           animate={textControls}
           transition={{ duration: 1.0 }}
-          initial={{ opacity: 0, x: -20}} // Start off-screen to the left
+          initial={{ opacity: 0, x: -20 }} // Start off-screen to the left
           className="flex flex-col justify-center space-y-4"
         >
           <h2 className="text-3xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>

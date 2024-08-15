@@ -4,12 +4,14 @@ import React, { forwardRef, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { useTheme } from 'next-themes';
 
 interface CircleProps {
     className?: string;
     children?: React.ReactNode;
     hidden?: boolean; // Add the hidden prop
   }
+  
 
   const Circle = forwardRef<HTMLDivElement, CircleProps>(
     ({ className, children, hidden = false }, ref) => {
@@ -32,6 +34,8 @@ interface CircleProps {
   );
 
 export function AnimatedBeamDemo() {
+  const { theme } = useTheme();
+  const pathColor = theme === 'dark' ? 'white' : 'darkgrey';
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -76,82 +80,122 @@ export function AnimatedBeamDemo() {
       </div>
 
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div2Ref}
         curvature={0}
         reverse={true}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div3Ref}
         reverse={true}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div4Ref}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div5Ref}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={div3Ref}
         startYOffset={20}
         endYOffset={20}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={div3Ref}
         startYOffset={-20}
         endYOffset={-20}
         reverse
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div4Ref}
         startYOffset={20}
         endYOffset={20}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div4Ref}
         startYOffset={-20}
         endYOffset={-20}
         reverse
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div4Ref}
         toRef={div5Ref}
         startYOffset={20}
         endYOffset={20}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
       <AnimatedBeam
-        duration={5}
         containerRef={containerRef}
         fromRef={div4Ref}
         toRef={div5Ref}
         startYOffset={-20}
         endYOffset={-20}
         reverse
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor = {"#ff6f61"}
+        gradientStopColor = {"#ff8c00"}
       />
     </div>
   );
