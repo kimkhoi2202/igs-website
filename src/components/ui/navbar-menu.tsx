@@ -264,7 +264,7 @@ export default function NavbarMenu() {
             Language
           </Button>
           <ModeToggle />
-          <Dropdown isOpen={languageMenuOpen} onClose={() => setLanguageMenuOpen(false)} buttonRef={languageButtonRef} ref={dropdownRef} />
+          <Dropdown isOpen={languageMenuOpen} onClose={() => setLanguageMenuOpen(false)} buttonRef={languageButtonRef} />
         </div>
       </header>
       <FloatingNav navItems={navItems} />
