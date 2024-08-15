@@ -40,13 +40,12 @@ export default function ServicesSection({ onLoadComplete }: ServicesSectionProps
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading (replace with real loading logic)
     setTimeout(() => {
       setLoaded(true);
-    }, 1000); // Adjust timing as needed
+    }, 1000);
 
     if (loaded && onLoadComplete) {
-      onLoadComplete(); // Notify when loading is complete
+      onLoadComplete();
     }
   }, [loaded, onLoadComplete]);
   

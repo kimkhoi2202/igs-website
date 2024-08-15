@@ -14,8 +14,7 @@ interface HeroSectionProps {
 export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
   const [loaded, setLoaded] = useState(false);
   const [animationsCompleted, setAnimationsCompleted] = useState(false);
-  const { theme } = useTheme(); // Get the current theme
-  const [currentTheme, setCurrentTheme] = useState(theme);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,9 +30,10 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
     }
   }, [loaded, onLoadComplete]);
 
-  // Listen for theme changes and update the currentTheme state
   useEffect(() => {
-    setCurrentTheme(theme);
+    // Trigger a re-render when the theme changes to apply the new styles
+    setLoaded((prev) => !prev);
+    setLoaded((prev) => !prev);
   }, [theme]);
 
   return (
@@ -41,7 +41,7 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
       {loaded && (
         <WavyBackground 
           className="absolute inset-0 w-full h-full z-0" 
-          theme={currentTheme} // Pass the currentTheme as a prop to WavyBackground
+          theme={theme}  // Directly use the theme from useTheme
         />
       )}
       <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-8">
@@ -65,9 +65,9 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
         )}
         <motion.div
           className="mt-8"
-          initial={{ opacity: 0 }} // Button starts with opacity 0
-          animate={{ opacity: animationsCompleted ? 1 : 0 }} // Button fades in when animations are complete
-          transition={{ duration: 1 }} // Transition duration
+          initial={{ opacity: 0 }}
+          animate={{ opacity: animationsCompleted ? 1 : 0 }}
+          transition={{ duration: 1 }}
         >
           <button className="relative inline-flex h-14 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />

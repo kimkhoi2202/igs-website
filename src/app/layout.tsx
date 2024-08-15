@@ -1,12 +1,10 @@
-// layout.tsx
-
 import { Poppins } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css';
 import { ReactNode } from 'react';
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import NavbarMenu from '@/components/ui/navbar-menu';
+import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/Footer';
 
 const fontPoppins = Poppins({
@@ -32,8 +30,8 @@ export default function Layout({ children }: LayoutProps) {
           disableTransitionOnChange
         >
           <SpeedInsights />
-          <NavbarMenu />
-          <div className="snap-container overflow-y-auto"> {/* Ensure overflow-y is set here */}
+          <Navbar />
+          <div className="snap-container overflow-y-auto">
             {children}
           </div>
           <Footer />
