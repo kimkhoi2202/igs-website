@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import WelcomeSection from '@/components/WelcomeSection';
 import SupplyChainSection from '@/components/SupplyChainSection';
@@ -10,6 +10,7 @@ import ServicesSection from '@/components/ServicesSection';
 import VisionSection from '@/components/VisionSection';
 import LocationsSection from '@/components/LocationsSection';
 import ContactSection from '@/components/ContactSection';
+import ThemeDetector from '@/components/ui/detect-dark-mode';
 
 export default function Page() {
   const [loadingStates, setLoadingStates] = useState({
@@ -35,6 +36,9 @@ export default function Page() {
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
+      {/* Insert ThemeDetector at the top level */}
+      <ThemeDetector />
+
       <main className="flex-1">
         <div className={`snap-container ${allComponentsLoaded ? 'scroll-enabled' : ''}`}>
           <HeroSection onLoadComplete={() => handleLoadComplete('heroLoaded')} />
