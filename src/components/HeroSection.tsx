@@ -36,7 +36,7 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
   }, [loaded, onLoadComplete]);
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center snap-start">
+    <div id="home" className="relative w-full h-screen flex items-center justify-center snap-start">
       {loaded && (
         <WavyBackground 
           key={currentTheme} // Use currentTheme as a key to force re-render

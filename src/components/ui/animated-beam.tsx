@@ -1,54 +1,51 @@
 "use client";
 
 import React, { forwardRef, useRef } from "react";
-
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
 
 interface CircleProps {
-    className?: string;
-    children?: React.ReactNode;
-    hidden?: boolean; // Add the hidden prop
-  }
-  
+  className?: string;
+  children?: React.ReactNode;
+  hidden?: boolean;
+}
 
-  const Circle = forwardRef<HTMLDivElement, CircleProps>(
-    ({ className, children, hidden = false }, ref) => {
-      return (
-        <div
-          ref={ref}
-          className={cn(
-            "z-10 flex h-48 w-48 items-center justify-center rounded-full border-2 bg-white p-4 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-            className,
-            {
-              "opacity-0": hidden,
-              "invisible": hidden, // Keep the space but make it invisible
-            }
-          )}
-        >
-          {children}
-        </div>
-      );
-    }
-  );
+const Circle = forwardRef<HTMLDivElement, CircleProps>(
+  ({ className, children, hidden = false }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "z-10 flex h-48 w-48 items-center justify-center rounded-full border-2 bg-white p-4 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+          className,
+          {
+            "opacity-0": hidden,
+            "invisible": hidden,
+          }
+        )}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+Circle.displayName = "Circle";
 
 export function AnimatedBeamDemo() {
   const { theme } = useTheme();
-  const pathColor = theme === 'dark' ? 'white' : 'darkgrey';
+  const pathColor = theme === "dark" ? "white" : "darkgrey";
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
   const div3Ref = useRef<HTMLDivElement>(null);
   const div4Ref = useRef<HTMLDivElement>(null);
   const div5Ref = useRef<HTMLDivElement>(null);
-  const div6Ref = useRef<HTMLDivElement>(null);
-
-
 
   return (
     <div
-      className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-lg bg-background p-10 "
+      className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-lg bg-background p-10"
       ref={containerRef}
     >
       <div className="flex size-full flex-col items-stretch justify-between gap-16">
@@ -56,27 +53,25 @@ export function AnimatedBeamDemo() {
           <Circle hidden={true} />
           <Circle hidden={true} />
           <Circle ref={div1Ref}>
-            <Icons.openai />
+            <Icons.OpenAI />
           </Circle>
           <Circle hidden={true} />
           <Circle hidden={true} />
         </div>
         <div className="flex flex-row justify-between gap-16">
           <Circle ref={div2Ref}>
-            <Icons.user />
+            <Icons.User />
           </Circle>
           <Circle ref={div3Ref}>
-            <Icons.openai />
+            <Icons.OpenAI />
           </Circle>
           <Circle ref={div4Ref}>
-            <Icons.openai />
+            <Icons.OpenAI />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.openai />
+            <Icons.OpenAI />
           </Circle>
-    
         </div>
-        
       </div>
 
       <AnimatedBeam
@@ -88,8 +83,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -99,8 +94,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -109,8 +104,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -119,8 +114,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -131,8 +126,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -144,8 +139,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -156,8 +151,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -169,8 +164,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -181,8 +176,8 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -194,15 +189,15 @@ export function AnimatedBeamDemo() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor = {"#ff6f61"}
-        gradientStopColor = {"#ff8c00"}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
       />
     </div>
   );
 }
 
 const Icons = {
-  openai: () => (
+  OpenAI: () => (
     <svg
       width="24"
       height="24"
@@ -212,7 +207,7 @@ const Icons = {
       <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0" />
     </svg>
   ),
-  user: () => (
+  User: () => (
     <svg
       width="24"
       height="24"
@@ -227,5 +222,16 @@ const Icons = {
     </svg>
   ),
 };
+
+type IconComponent = (() => JSX.Element) & { displayName?: string };
+
+const OpenAI: IconComponent = Icons.OpenAI;
+OpenAI.displayName = "OpenAI";
+
+const User: IconComponent = Icons.User;
+User.displayName = "User";
+
+Icons.OpenAI = OpenAI;
+Icons.User = User;
 
 export default AnimatedBeamDemo;

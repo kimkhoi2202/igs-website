@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -85,9 +85,9 @@ export default function Navbar() {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
-                      variant="outline"
+                      variant="language"
                       size="icon"
-                      className="text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 h-10 w-28"
+                      className="h-10 w-28"
                       ref={languageButtonRef}
                     >
                       Language

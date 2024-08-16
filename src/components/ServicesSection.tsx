@@ -50,7 +50,7 @@ export default function ServicesSection({ onLoadComplete }: ServicesSectionProps
   }, [loaded, onLoadComplete]);
   
   return (
-    <section className="w-full h-screen py-12 flex flex-col items-center justify-center relative overflow-hidden">
+    <section id="services" className="w-full h-screen py-12 flex flex-col items-center justify-center relative overflow-hidden">
       <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-gray-50">
         Our Services
       </h2>

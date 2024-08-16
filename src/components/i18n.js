@@ -1,4 +1,3 @@
-// i18n.ts
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslations from './locales/en/translation.json';
@@ -15,7 +14,7 @@ i18n
       es: { translation: esTranslations },
       vi: { translation: viTranslations },
     },
-    lng: 'en', // default language
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,

@@ -70,30 +70,31 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    scroll-behavior: smooth;
   }
   
   .snap-container {
     scroll-snap-type: y mandatory;
     height: 100vh;
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: hidden; /* Enable vertical scrolling */
-    scrollbar-width: none; /* Hide scrollbar */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scrollbar-width: none;
   }
 
   .snap-container.scroll-enabled {
-    overflow-y: scroll; /* Enable vertical scrolling when class is applied */
+    overflow-y: scroll;
   }
   
   .snap-container > section {
     scroll-snap-align: start;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .snap-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for WebKit browsers */
+    display: none;
   }
 }

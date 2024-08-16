@@ -77,15 +77,13 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Section is partially or fully in view
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
-          shadowControls.start({ x: -20, y: -30, opacity: 1 }); // Shadow appears from left to right
+          shadowControls.start({ x: -20, y: -30, opacity: 1 });
         } else {
-          // Section is not in view
-          imageControls.start({ x: 40 }); // Move from right to left
+          imageControls.start({ x: 40 });
           textControls.start({ x: -40 });
-          shadowControls.start({ x: 50 }); // Move shadow to the left
+          shadowControls.start({ x: 50 });
         }
       });
     }, observerOptions);
@@ -108,7 +106,7 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
   };
 
   return (
-    <section className="w-full h-screen py-12 md:py-24 lg:py-32">
+    <section id="expertise" className="w-full h-screen py-12 md:py-24 lg:py-32">
       <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
         <motion.div
           ref={textRef}
