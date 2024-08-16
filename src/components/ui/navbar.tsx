@@ -2,7 +2,7 @@
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -20,7 +20,6 @@ function classNames(...classes: string[]): string {
 }
 
 export default function Navbar() {
-  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const languageButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function Navbar() {
         languageButtonRef.current &&
         !languageButtonRef.current.contains(event.target as Node)
       ) {
-        setLanguageMenuOpen(false);
+        // Handle logic when clicking outside the language menu
       }
     }
 

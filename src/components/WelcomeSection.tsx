@@ -17,32 +17,29 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading (replace with real loading logic)
     setTimeout(() => {
       setLoaded(true);
-    }, 1000); // Adjust timing as needed
+    }, 1000);
 
     if (loaded && onLoadComplete) {
-      onLoadComplete(); // Notify when loading is complete
+      onLoadComplete();
     }
   }, [loaded, onLoadComplete]);
 
   useEffect(() => {
     const observerOptions = {
-      root: null, // Use the viewport as the root
+      root: null,
       rootMargin: '0px',
-      threshold: 0.5 // Trigger when at least 50% of the section is visible
+      threshold: 0.5
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Section is partially or fully in view
           imageControls.start({ x: 0, opacity: 1 });
           textControls.start({ opacity: 1, x: 0 });
           shadowControls.start({ x: 0, y: 0, opacity: 1 });
         } else {
-          // Section is not in view
           imageControls.start({ x: -40 });
           textControls.start({ x: 40 });
           shadowControls.start({ x: -60, y: 20 });
@@ -72,13 +69,13 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
             className="absolute bottom-[-40px] left-[-30px] w-full h-full z-0"
             style={{
               background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',
-              borderRadius: '12px', // Adjust radius as needed
+              borderRadius: '12px',
             }}
           />
           <motion.div
             animate={imageControls}
             transition={{ duration: 1.0 }}
-            initial={{ x: 50, opacity: 0 }} // Start off-screen to the right
+            initial={{ x: 50, opacity: 0 }}
             className="relative z-10"
           >
             <Image
@@ -94,20 +91,17 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
         <motion.div
           animate={textControls}
           transition={{ duration: 1.0 }}
-          initial={{ opacity: 0, x: -20 }} // Start off-screen to the left
-          className="flex flex-col justify-center space-y-4"
+          initial={{ opacity: 0, x: -20 }}
+          className="flex flex-col justify-center space-y-8"
         >
-          <h2 className="text-3xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
+          <h2 className="text-6xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
           <Separator />
-          <p className="font-bold text-muted-foreground md:text-xl">
+          <p className="font-bold text-2xl text-muted-foreground">
             Internash Global Services, As a group covers service operations across Asia, North America and EMEA
           </p>
-          <p className="text-muted-foreground md:text-xl">
+          <p className="text-2xl text-muted-foreground">
             Internash Global Services, LLC is a supply chain management service provider to large electronic
-            manufactures who seek a complete global solutions that allows customers to focus on what they do the
-            best- manufacturing, growing their business and staying competitive in the market place. We have a near
-            site facility to facilitate rapid turn-around-time, so our customers can have the best service in the
-            shortest time.
+            manufacturers who seek a complete global solution that allows customers to focus on what they do best—manufacturing, growing their business, and staying competitive in the marketplace. We have a near-site facility to facilitate rapid turnaround time, so our customers can have the best service in the shortest time.
           </p>
         </motion.div>
       </div>

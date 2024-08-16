@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
-import { Separator } from '@/components/ui/separator';
 
 interface CheckIconProps {
   readonly className?: string;
@@ -57,21 +56,20 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
   const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Simulate loading (replace with real loading logic)
     setTimeout(() => {
       setLoaded(true);
-    }, 1000); // Adjust timing as needed
+    }, 1000);
 
     if (loaded && onLoadComplete) {
-      onLoadComplete(); // Notify when loading is complete
+      onLoadComplete();
     }
   }, [loaded, onLoadComplete]);
 
   useEffect(() => {
     const observerOptions = {
-      root: null, // Use the viewport as the root
+      root: null, 
       rootMargin: '0px',
-      threshold: 0.5 // Trigger when at least 50% of the section is visible
+      threshold: 0.5 
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -112,15 +110,15 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
           ref={textRef}
           animate={textControls}
           transition={{ duration: 1.0 }}
-          initial={{ opacity: 0, x: 20 }} // Start off-screen to the right
-          className="flex flex-col justify-center space-y-4"
+          initial={{ opacity: 0, x: 20 }} 
+          className="flex flex-col justify-center space-y-8" // Increased space between elements
         >
-          <h2 className="text-3xl font-bold tracking-tighter">IGS Expertise</h2>
-          <ul className="space-y-2">
+          <h2 className="text-6xl font-bold tracking-tighter">IGS Expertise</h2> {/* Doubled the font size */}
+          <ul className="space-y-4"> {/* Increased spacing between items */}
             {expertiseItems.map((item) => (
-              <li key={item.title} className="flex items-start gap-2">
-                <CheckIcon className="w-6 h-6 text-primary" />
-                <span className="flex-1">
+              <li key={item.title} className="flex items-start gap-4"> {/* Increased gap between icon and text */}
+                <CheckIcon className="w-12 h-12 text-primary" /> {/* Doubled the icon size */}
+                <span className="flex-1 text-2xl"> {/* Doubled the font size */}
                   <b>{item.title}</b> {item.description}
                 </span>
               </li>
@@ -132,20 +130,20 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
             ref={shadowRef}
             animate={shadowControls}
             transition={{ duration: 1.0 }}
-            initial={{ x: -60, opacity: 0 }} // Start off-screen to the left
+            initial={{ x: -60, opacity: 0 }} 
             className="absolute bottom-[-40px] right-[-50px] z-0"
             style={{
               width: imageWidth ? `${imageWidth}px` : '100%',
               height: imageHeight ? `${imageHeight}px` : '100%',
-              background: 'linear-gradient(135deg, #d32f2f, #b71c1c)', // Red-orange gradient
-              borderRadius: '12px', // Adjust radius as needed
+              background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',
+              borderRadius: '12px',
             }}
           />
           <motion.div
             ref={imageRef}
             animate={imageControls}
             transition={{ duration: 1.0 }}
-            initial={{ x: 100, opacity: 0 }} // Start off-screen to the right
+            initial={{ x: 100, opacity: 0 }} 
             className="relative z-10"
           >
             <Image
@@ -155,7 +153,7 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
               alt="Expertise"
               className="w-full h-auto rounded-lg object-cover"
               style={{ aspectRatio: '550/400', objectFit: 'cover' }}
-              onLoad={handleImageLoad} // Set image dimensions on load
+              onLoad={handleImageLoad} 
             />
           </motion.div>
         </div>

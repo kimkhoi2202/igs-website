@@ -25,13 +25,12 @@ export default function VisionSection({ onLoadComplete }: VisionSectionProps) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading (replace with real loading logic)
     setTimeout(() => {
       setLoaded(true);
-    }, 1000); // Adjust timing as needed
+    }, 1000); 
 
     if (loaded && onLoadComplete) {
-      onLoadComplete(); // Notify when loading is complete
+      onLoadComplete(); 
     }
   }, [loaded, onLoadComplete]);
 
@@ -50,14 +49,14 @@ export default function VisionSection({ onLoadComplete }: VisionSectionProps) {
         <Spotlight className="w-screen h-full -top-44 left-4 md:left-64 md:-top-24" fill="white" />
       </motion.div>
       <div className="container px-4 md:px-6 text-primary-foreground max-w-6xl mx-auto relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h2 className="text-3xl font-bold text-black dark:text-white tracking-tighter">Our Vision</h2>
-          <p className="text-lg text-black dark:text-white md:text-xl">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h2 className="text-6xl font-bold text-black dark:text-white tracking-tighter">Our Vision</h2>
+          <p className="text-2xl text-black dark:text-white">
             Internash Global offers a wide array of service portfolios that includes fulfillment, component level
             repair, refurbishment of legacy and wireless equipment, warehousing, and distribution on behalf of OEM
             customers.
           </p>
-          <h3 className="text-xl text-black dark:text-white font-semibold">
+          <h3 className="text-2xl text-black dark:text-white font-semibold">
             Additionally, we offer LTE Base Station testing, engineering, installation, and maintenance.
           </h3>
         </div>
