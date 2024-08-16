@@ -42,6 +42,8 @@ export function AnimatedBeamDemo() {
   const div3Ref = useRef<HTMLDivElement>(null);
   const div4Ref = useRef<HTMLDivElement>(null);
   const div5Ref = useRef<HTMLDivElement>(null);
+  const div6Ref = useRef<HTMLDivElement>(null);
+  const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -50,13 +52,13 @@ export function AnimatedBeamDemo() {
     >
       <div className="flex size-full flex-col items-stretch justify-between gap-16">
         <div className="flex flex-row justify-between gap-x-16">
-          <Circle hidden={true} />
+          <Circle ref={div6Ref} hidden={true} />
           <Circle hidden={true} />
           <Circle ref={div1Ref}>
             <Icons.OpenAI />
           </Circle>
           <Circle hidden={true} />
-          <Circle hidden={true} />
+          <Circle ref={div7Ref}hidden={true} />
         </div>
         <div className="flex flex-row justify-between gap-16">
           <Circle ref={div2Ref}>
@@ -75,16 +77,28 @@ export function AnimatedBeamDemo() {
       </div>
 
       <AnimatedBeam
+        endXOffset={3.5}
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div2Ref}
-        curvature={0}
         reverse={true}
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
         gradientStartColor={"#ff6f61"}
         gradientStopColor={"#ff8c00"}
+        mode={'x-first'}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div5Ref}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+        mode={'x-first'}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -109,22 +123,12 @@ export function AnimatedBeamDemo() {
       />
       <AnimatedBeam
         containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div5Ref}
-        pathColor={pathColor}
-        pathOpacity={0.5}
-        pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
         fromRef={div2Ref}
         toRef={div3Ref}
         startYOffset={20}
         endYOffset={20}
         pathColor={pathColor}
-        pathOpacity={0.5}
+        pathOpacity={0.5} 
         pathWidth={4}
         gradientStartColor={"#ff6f61"}
         gradientStopColor={"#ff8c00"}

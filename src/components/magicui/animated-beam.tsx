@@ -7,10 +7,9 @@ import { cn } from "@/lib/utils";
 
 export interface AnimatedBeamProps {
   className?: string;
-  containerRef: RefObject<HTMLElement>; // Container ref
+  containerRef: RefObject<HTMLElement>;
   fromRef: RefObject<HTMLElement>;
   toRef: RefObject<HTMLElement>;
-  curvature?: number;
   reverse?: boolean;
   pathColor?: string;
   pathWidth?: number;
@@ -23,6 +22,8 @@ export interface AnimatedBeamProps {
   startYOffset?: number;
   endXOffset?: number;
   endYOffset?: number;
+  borderRadius?: number;
+  mode?: "original" | "x-first"; // Mode selection
 }
 
 export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
@@ -30,8 +31,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   containerRef,
   fromRef,
   toRef,
-  curvature = 0,
-  reverse = false, // Include the reverse prop
+  reverse = false,
   duration = Math.random() * 3 + 4,
   delay = 0,
   pathColor = "gray",
@@ -43,12 +43,13 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   startYOffset = 0,
   endXOffset = 0,
   endYOffset = 0,
+  borderRadius = 10, // This is used for rounding corners
+  mode = "original", // Default mode is "original"
 }) => {
   const id = useId();
   const [pathD, setPathD] = useState("");
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
 
-  // Calculate the gradient coordinates based on the reverse prop
   const gradientCoordinates = reverse
     ? {
         x1: ["90%", "-10%"],
@@ -65,49 +66,98 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
 
   useEffect(() => {
     const updatePath = () => {
-      if (containerRef.current && fromRef.current && toRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const rectA = fromRef.current.getBoundingClientRect();
-        const rectB = toRef.current.getBoundingClientRect();
-
-        const svgWidth = containerRect.width;
-        const svgHeight = containerRect.height;
-        setSvgDimensions({ width: svgWidth, height: svgHeight });
-
-        const startX =
-          rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
-        const startY =
-          rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
-        const endX =
-          rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
-        const endY =
-          rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
-
-        const controlY = startY - curvature;
-        const d = `M ${startX},${startY} Q ${
-          (startX + endX) / 2
-        },${controlY} ${endX},${endY}`;
-        setPathD(d);
+      if (!containerRef.current || !fromRef.current || !toRef.current) {
+        return;
       }
+
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const rectA = fromRef.current.getBoundingClientRect();
+      const rectB = toRef.current.getBoundingClientRect();
+
+      const startX =
+        rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
+      const startY =
+        rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
+      const endX =
+        rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
+      const endY =
+        rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
+
+      let d = "";
+
+      const isHorizontal = Math.abs(endX - startX) > Math.abs(endY - startY);
+      const isStraightLine = startX === endX || startY === endY;
+
+      if (mode === "x-first") {
+        // Mode 2: Go fully along the X-axis first, then 90-degree turn to Y-axis with rounded corner
+        if (isStraightLine) {
+          d = `M ${startX},${startY} H ${endX} V ${endY}`;
+        } else if (startY === endY) {
+          // No curve needed for 180-degree horizontal line
+          d = `M ${startX},${startY} H ${endX}`;
+        } else if (startX === endX) {
+          // No curve needed for 180-degree vertical line
+          d = `M ${startX},${startY} V ${endY}`;
+        } else if (startX < endX) {
+          d = `M ${startX},${startY} H ${
+            endX - borderRadius
+          } Q ${endX},${startY} ${endX},${startY + borderRadius} V ${endY}`;
+        } else {
+          d = `M ${startX},${startY} H ${
+            endX + borderRadius
+          } Q ${endX},${startY} ${endX},${startY + borderRadius} V ${endY}`;
+        }
+      } else {
+        // Mode 1 (Original): Midway horizontal or vertical turn based on distance with rounded corners
+        if (isStraightLine) {
+          d = `M ${startX},${startY} H ${endX} V ${endY}`;
+        } else if (isHorizontal) {
+          const midX = startX + (endX - startX) / 2;
+          if (startY < endY) {
+            d = `M ${startX},${startY} H ${midX - borderRadius} Q ${midX},${startY} ${midX},${
+              startY + borderRadius
+            } V ${endY - borderRadius} Q ${midX},${endY} ${
+              midX + borderRadius
+            },${endY} H ${endX}`;
+          } else {
+            d = `M ${startX},${startY} H ${midX - borderRadius} Q ${midX},${startY} ${midX},${
+              startY - borderRadius
+            } V ${endY + borderRadius} Q ${midX},${endY} ${
+              midX + borderRadius
+            },${endY} H ${endX}`;
+          }
+        } else {
+          const midY = startY + (endY - startY) / 2;
+          if (startX < endX) {
+            d = `M ${startX},${startY} V ${midY - borderRadius} Q ${startX},${midY} ${
+              startX + borderRadius
+            },${midY} H ${endX - borderRadius} Q ${endX},${midY} ${endX},${
+              midY + borderRadius
+            } V ${endY}`;
+          } else {
+            d = `M ${startX},${startY} V ${midY - borderRadius} Q ${startX},${midY} ${
+              startX - borderRadius
+            },${midY} H ${endX + borderRadius} Q ${endX},${midY} ${endX},${
+              midY + borderRadius
+            } V ${endY}`;
+          }
+        }
+      }
+
+      setPathD(d);
+      setSvgDimensions({ width: containerRect.width, height: containerRect.height });
     };
 
-    // Initialize ResizeObserver
-    const resizeObserver = new ResizeObserver((entries) => {
-      // For all entries, recalculate the path
-      for (let entry of entries) {
-        updatePath();
-      }
+    const resizeObserver = new ResizeObserver(() => {
+      updatePath();
     });
 
-    // Observe the container element
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);
     }
 
-    // Call the updatePath initially to set the initial path
     updatePath();
 
-    // Clean up the observer on component unmount
     return () => {
       resizeObserver.disconnect();
     };
@@ -115,11 +165,12 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
     containerRef,
     fromRef,
     toRef,
-    curvature,
     startXOffset,
     startYOffset,
     endXOffset,
     endYOffset,
+    borderRadius,
+    mode, // Depend on mode for dynamic updates
   ]);
 
   return (
@@ -140,6 +191,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         strokeWidth={pathWidth}
         strokeOpacity={pathOpacity}
         strokeLinecap="round"
+        fill="none"
       />
       <path
         d={pathD}
@@ -147,6 +199,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         stroke={`url(#${id})`}
         strokeOpacity="1"
         strokeLinecap="round"
+        fill="none"
       />
       <defs>
         <motion.linearGradient
