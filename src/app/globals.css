@@ -65,6 +65,9 @@
   }
 
   html, body {
+    font-size: 16px;
+    transform: scale(1);
+    transform-origin: top left;
     margin: 0;
     padding: 0;
     height: 100%;

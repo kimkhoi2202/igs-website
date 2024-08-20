@@ -34,7 +34,6 @@ export default function Layout({ children }: LayoutProps) {
           <div className="snap-container overflow-y-auto">
             {children}
           </div>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
