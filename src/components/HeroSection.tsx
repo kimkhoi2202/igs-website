@@ -59,7 +59,7 @@ export default function HeroSection({ onLoadComplete }: HeroSectionProps) {
             <TypingAnimation
               className="mt-4 text-black dark:text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight"
               text="Create value and a competitive edge for our clients"
-              duration={3}
+              duration={50}
             />
           </>
         )}

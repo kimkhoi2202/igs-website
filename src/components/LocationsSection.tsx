@@ -203,7 +203,7 @@ export default function LocationsSection({ onLoadComplete }: LocationsSectionPro
               </li>
             </ul>
           </div>
-          <div className="relative" style={{ height: '260%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-30%)'}}>
+          {/* <div className="relative" style={{ height: '260%', width: '280%', margin: 'auto', transform: 'translateX(0%) translateY(-30%)'}}>
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
               <GlobeDemo
                 globeConfig={globeConfig}
@@ -215,7 +215,7 @@ export default function LocationsSection({ onLoadComplete }: LocationsSectionPro
                 theme={theme}
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <style jsx>{`

@@ -60,13 +60,13 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
 
   return (
     <section ref={sectionRef} className="w-full h-screen py-12 md:py-24 lg:py-32 snap-start">
-      <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6">
+      <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-2">
         <div className="relative">
           <motion.div
             animate={shadowControls}
             transition={{ duration: 1.0 }}
             initial={{ x: 50, opacity: 0 }}
-            className="absolute bottom-[-40px] left-[-30px] w-full h-full z-0"
+            className="absolute bottom-[-40px] left-[-30px] w-full h-auto z-0"
             style={{
               background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',
               borderRadius: '12px',
@@ -94,12 +94,12 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           initial={{ opacity: 0, x: -20 }}
           className="flex flex-col justify-center space-y-8"
         >
-          <h2 className="text-6xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
+          <h2 className="sm:text-2xl md:text-4xl lg:text-6xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
           <Separator />
-          <p className="font-bold text-2xl text-muted-foreground">
+          <p className="font-bold sm:text-lg md:text-xl lg:text-2xl  text-muted-foreground">
             Internash Global Services, As a group covers service operations across Asia, North America and EMEA
           </p>
-          <p className="text-2xl text-muted-foreground">
+          <p className="sm:text-base md:text-lg lg:text-xl text-muted-foreground">
             Internash Global Services, LLC is a supply chain management service provider to large electronic
             manufacturers who seek a complete global solution that allows customers to focus on what they do best—manufacturing, growing their business, and staying competitive in the marketplace. We have a near-site facility to facilitate rapid turnaround time, so our customers can have the best service in the shortest time.
           </p>
