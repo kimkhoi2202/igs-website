@@ -94,7 +94,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           initial={{ opacity: 0, x: -20 }}
           className="flex flex-col justify-center space-y-8"
         >
-          <h2 className="sm:text-2xl md:text-4xl lg:text-6xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
+          <h2 className="sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter">Welcome to Internash Global Services, LLC</h2>
           <Separator />
           <p className="font-bold sm:text-lg md:text-xl lg:text-2xl  text-muted-foreground">
             Internash Global Services, As a group covers service operations across Asia, North America and EMEA

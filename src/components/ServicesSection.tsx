@@ -48,10 +48,10 @@ export default function ServicesSection({ onLoadComplete }: ServicesSectionProps
       onLoadComplete();
     }
   }, [loaded, onLoadComplete]);
-  
+
   return (
     <section id="services" className="w-full h-screen py-12 flex flex-col items-center justify-center relative overflow-hidden">
-      <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-gray-50">
+      <h2 className="text-center sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-12 text-gray-900 dark:text-gray-50">
         Our Services
       </h2>
       <div className="flex flex-nowrap gap-6 overflow-x-auto">
@@ -60,22 +60,25 @@ export default function ServicesSection({ onLoadComplete }: ServicesSectionProps
             key={index}
             containerClassName="w-full max-w-xs flex"
           >
-            <div className="group w-full overflow-hidden relative card h-96 rounded-3xl shadow-xl flex items-center justify-center p-4 border border-transparent bg-white dark:bg-neutral-900 hover:shadow-2xl transition-shadow duration-300">
-              <div className="absolute top-4 left-4">
+            <div className="group w-full overflow-hidden relative card h-96 rounded-3xl shadow-xl flex flex-col p-4 border border-transparent bg-white dark:bg-neutral-900 hover:shadow-2xl transition-shadow duration-300">
+              {/* Icon and Title */}
+              <div className="flex items-center gap-4 mb-4">
                 <Image
                   src={service.icon}
                   width={50}
                   height={50}
                   alt={service.heading}
+                  className=""
                 />
+                <h1 className="font-bold sm:text-2xl md:text-3xl lg:4xl text-gray-900 dark:text-gray-50">
+                  {service.heading}
+                </h1>
               </div>
-
-              <div className="flex flex-col items-center justify-center text-center group-hover:scale-105 transition-transform duration-300 pt-20">
-                <div className="text relative z-40">
-                  <h1 className="font-bold text-xl md:text-3xl text-gray-900 dark:text-gray-50">
-                    {service.heading}
-                  </h1>
-                  <p className="font-normal text-base text-gray-900 dark:text-gray-50 my-4">
+              
+              {/* Centered Text Container */}
+              <div className="flex-grow flex items-center">
+                <div className="text-container text-left">
+                  <p className="font-normal sm:text-lg md:text-xl lg:2xl text-gray-900 dark:text-gray-50">
                     {service.text}
                   </p>
                 </div>

@@ -24,7 +24,7 @@ export default function DifferentiatorSection({ onLoadComplete }: Differentiator
     <section className="flex flex-col  w-full py-12 md:py-12 lg:py-24 bg-[url('/hero-bg.jpg')] bg-cover bg-center gap-0">
       <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center justify-center  gap-8">
         {/* Text Container */}
-        <div className="w-full md:w-2/3 mb-12 md:mb-0">
+        <div className="w-full md:w-3/4 mb-12 md:mb-0">
           <h2 className="text-4xl font-bold tracking-tighter mb-8 w-full">Differentiator</h2>
           <div className="space-y-8">
             <p className="text-lg text-muted-foreground">
@@ -50,7 +50,7 @@ export default function DifferentiatorSection({ onLoadComplete }: Differentiator
           </div>
         </div>
         {/* Images Container */}
-        <div className="flex flex-col gap-4 md:w-1/3">
+        <div className="flex flex-col item-end gap-4 md:w-1/3">
           <Image
             src="/iso.png"
             width={300}
