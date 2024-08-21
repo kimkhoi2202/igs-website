@@ -17,13 +17,18 @@ const Circle = forwardRef<HTMLDivElement, CircleProps>(
       <div
         ref={ref}
         className={cn(
-          "z-10 flex h-48 w-48 items-center justify-center rounded-full border-2 bg-white p-4 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+          "z-10 flex items-center justify-center rounded-full border-2 bg-white p-4 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
           className,
           {
             "opacity-0": hidden,
             "invisible": hidden,
           }
         )}
+        style={{
+          width: "min(100%, 48vw)", // Width will adjust based on viewport
+          height: "auto", // Height will adjust to maintain aspect ratio
+          aspectRatio: "1/1", // Ensures the element remains a circle regardless of width
+        }}
       >
         {children}
       </div>
@@ -51,7 +56,7 @@ export function AnimatedBeamDemo() {
       ref={containerRef}
     >
       <div className="flex size-full flex-col items-stretch justify-between gap-16">
-        <div className="flex flex-row justify-between gap-x-16">
+        <div className="flex flex-row justify-between">
           <Circle ref={div6Ref} hidden={true} />
           <Circle hidden={true} />
           <Circle ref={div1Ref}>
