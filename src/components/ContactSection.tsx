@@ -27,7 +27,7 @@ export default function ContactSection({ onLoadComplete }: ContactSectionProps) 
     <section>
         <div className="flex flex-col py-12 md:py-24 lg:py-32 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
           <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-8">
-            <div>
+            <div className="flex-1">
               <h2 className="text-3xl font-bold tracking-tighter">Please get in touch with us</h2>
               <p className="text-muted-foreground md:text-xl mt-2">
                 We&#39;re always excited to collaborate on new ideas and projects. If you&#39;re interested in a teaming
