@@ -4,25 +4,25 @@ const svgToDataUri = require("mini-svg-data-uri");
 const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: ["class"], // Dark mode support
   content: [
     "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
     './pages/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-  prefix: "",
+  prefix: "", // Prefix for class names
   theme: {
     container: {
-      center: true,
-      padding: "2rem",
+      center: true, // Center container
+      padding: "2rem", // Padding for container
       screens: {
-        "2xl": "1536px",
-        "xl": "1280px",
-        "lg": "1024px",
-        "md": "768px",
-        "sm": "640px",
-        "xs": "475px", // Extra small devices
+        "2xl": "1536px", // Extra large screens
+        "xl": "1280px",  // Large screens
+        "lg": "1024px",  // Medium-large screens
+        "md": "768px",   // Medium screens
+        "sm": "640px",   // Small screens
+        "xs": "475px",   // Extra small screens
       },
     },
     extend: {
@@ -31,6 +31,7 @@ const config: Config = {
         body: ['var(--font-poppins)', ...fontFamily.sans],
       },
       colors: {
+        // Custom color palette
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

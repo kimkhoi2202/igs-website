@@ -111,14 +111,14 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
           animate={textControls}
           transition={{ duration: 1.0 }}
           initial={{ opacity: 0, x: 20 }} 
-          className="flex flex-col justify-center space-y-8" // Increased space between elements
+          className="flex flex-col justify-center space-y-8"
         >
-          <h2 className="text-6xl font-bold tracking-tighter">IGS Expertise</h2> {/* Doubled the font size */}
-          <ul className="space-y-4"> {/* Increased spacing between items */}
+          <h2 className="sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter">IGS Expertise</h2>
+          <ul className="sm:space-y-2 md:space-y-3 lg:space-y-4">
             {expertiseItems.map((item) => (
-              <li key={item.title} className="flex items-start gap-4"> {/* Increased gap between icon and text */}
-                <CheckIcon className="w-12 h-12 text-primary" /> {/* Doubled the icon size */}
-                <span className="flex-1 text-2xl"> {/* Doubled the font size */}
+              <li key={item.title} className="flex items-start gap-4">
+                <CheckIcon className="w-12 h-12 text-primary" />
+                <span className="flex-1 sm:text-lg md:text-xl lg:text-2xl">
                   <b>{item.title}</b> {item.description}
                 </span>
               </li>
@@ -126,36 +126,41 @@ export default function ExpertiseSection({ onLoadComplete }: ExpertiseSectionPro
           </ul>
         </motion.div>
         <div className="relative">
-          <motion.div
-            ref={shadowRef}
-            animate={shadowControls}
-            transition={{ duration: 1.0 }}
-            initial={{ x: -60, opacity: 0 }} 
-            className="absolute bottom-[-40px] right-[-50px] z-0"
-            style={{
-              width: imageWidth ? `${imageWidth}px` : '100%',
-              height: imageHeight ? `${imageHeight}px` : '100%',
-              background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',
-              borderRadius: '12px',
-            }}
-          />
-          <motion.div
-            ref={imageRef}
-            animate={imageControls}
-            transition={{ duration: 1.0 }}
-            initial={{ x: 100, opacity: 0 }} 
-            className="relative z-10"
-          >
-            <Image
-              src="/expertise.png"
-              width={550}
-              height={400}
-              alt="Expertise"
-              className="w-full h-auto rounded-lg object-cover"
-              style={{ aspectRatio: '550/400', objectFit: 'cover' }}
-              onLoad={handleImageLoad} 
+          {/* Container to ensure consistent shadow behavior */}
+          <div className="relative" style={{ aspectRatio: '550 / 400' }}>
+            {/* Shadow element */}
+            <motion.div
+              ref={shadowRef}
+              animate={shadowControls}
+              transition={{ duration: 1.0 }}
+              initial={{ x: -60, opacity: 0 }}
+              className="absolute bottom-[-40px] left-[-50px] z-0"
+              style={{
+                width: imageWidth ? `${imageWidth}px` : '100%',
+                height: imageHeight ? `${imageHeight}px` : '100%',
+                background: 'linear-gradient(135deg, #d32f2f, #b71c1c)',
+                borderRadius: '12px',
+                position: 'absolute', // Ensures it stays in place
+              }}
             />
-          </motion.div>
+            <motion.div
+              ref={imageRef}
+              animate={imageControls}
+              transition={{ duration: 1.0 }}
+              initial={{ x: 100, opacity: 0 }}
+              className="relative z-10"
+            >
+              <Image
+                src="/expertise.png"
+                width={550}
+                height={400}
+                alt="Expertise"
+                className="w-full h-auto rounded-lg object-cover"
+                style={{ aspectRatio: '550/400', objectFit: 'cover' }}
+                onLoad={handleImageLoad}
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
