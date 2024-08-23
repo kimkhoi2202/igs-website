@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from '@/components/ui/navbar';
-import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/components/context/LanguageContext';
 
 const fontPoppins = Poppins({
   weight: ['400', '700'],
@@ -30,10 +30,12 @@ export default function Layout({ children }: LayoutProps) {
           disableTransitionOnChange
         >
           <SpeedInsights />
-          <Navbar />
-          <div className="snap-container overflow-y-auto">
-            {children}
-          </div>
+          <LanguageProvider>
+            <Navbar />
+              <div className="snap-container overflow-y-auto">     
+                {children}
+              </div>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
