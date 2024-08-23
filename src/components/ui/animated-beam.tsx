@@ -4,6 +4,14 @@ import React, { forwardRef, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+
+// Corrected import paths
+const WarehouseIcon = "/supplychain/Warehouse icon.png";
+const PlaneIcon = "/supplychain/Plane icon.png";
+const TruckIcon = "/supplychain/Truck delivery.png";
+const ChartIcon = "/supplychain/Chart growth.png";
+const VisibilityIcon = "/supplychain/Visibility shared.png";
 
 interface CircleProps {
   className?: string;
@@ -60,23 +68,23 @@ export function AnimatedBeamDemo() {
           <Circle ref={div6Ref} hidden={true} />
           <Circle hidden={true} />
           <Circle ref={div1Ref}>
-            <Icons.OpenAI />
+            <Icons.Warehouse />
           </Circle>
           <Circle hidden={true} />
-          <Circle ref={div7Ref}hidden={true} />
+          <Circle ref={div7Ref} hidden={true} />
         </div>
         <div className="flex flex-row justify-between gap-16">
           <Circle ref={div2Ref}>
-            <Icons.User />
+            <Icons.Plane />
           </Circle>
           <Circle ref={div3Ref}>
-            <Icons.OpenAI />
+            <Icons.Truck />
           </Circle>
           <Circle ref={div4Ref}>
-            <Icons.OpenAI />
+            <Icons.Chart />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.OpenAI />
+            <Icons.Visibility />
           </Circle>
         </div>
       </div>
@@ -206,41 +214,13 @@ export function AnimatedBeamDemo() {
 }
 
 const Icons = {
-  OpenAI: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0" />
-    </svg>
+  Warehouse: () => (
+    <Image src={WarehouseIcon} alt="Warehouse Icon" width={100} height={100} />
   ),
-  User: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#000000"
-      strokeWidth="2"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-      <circle cx="13" cy="7" r="4" />
-    </svg>
-  ),
+  Plane: () => <Image src={PlaneIcon} alt="Plane Icon" width={100} height={100} />,
+  Truck: () => <Image src={TruckIcon} alt="Truck Icon" width={100} height={100} />,
+  Chart: () => <Image src={ChartIcon} alt="Chart Icon" width={100} height={100} />,
+  Visibility: () => <Image src={VisibilityIcon} alt="Visibility Icon" width={100} height={100} />,
 };
-
-type IconComponent = (() => JSX.Element) & { displayName?: string };
-
-const OpenAI: IconComponent = Icons.OpenAI;
-OpenAI.displayName = "OpenAI";
-
-const User: IconComponent = Icons.User;
-User.displayName = "User";
-
-Icons.OpenAI = OpenAI;
-Icons.User = User;
 
 export default AnimatedBeamDemo;

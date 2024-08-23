@@ -1,0 +1,71 @@
+{
+    "navbar": {
+      "home": "首页",
+      "solutions": "解决方案",
+      "expertise": "专业知识",
+      "services": "服务",
+      "language": "语言"
+    },
+    "hero": {
+      "title": "INTERNASH GLOBAL SERVICES",
+      "subtitle": "工程、维修和物流解决方案",
+      "description": "为客户创造价值和竞争优势",
+      "contact": "联系我们"
+    },
+    "welcome": {
+      "title": "欢迎来到 Internash Global Services, LLC",
+      "description": "Internash Global Services，作为一个集团，覆盖了亚洲、北美和 EMEA 的服务运营",
+      "details": "Internash Global Services, LLC 是一家为大型电子制造商提供供应链管理服务的供应商，这些制造商寻求一个完整的全球解决方案，使客户能够专注于他们最擅长的事情——制造、发展业务并在市场中保持竞争力。我们拥有一个近站设施，以便快速周转时间，这样我们的客户就能在最短时间内获得最好的服务。"
+    },
+    "supplyChain": {
+      "title": "供应链解决方案"
+    },
+    "expertise": {
+      "title": "IGS 专业知识",
+      "logistics": "第三方物流 (3PL) 包括仓储、订单履行、运输、装配和定制选项。",
+      "assembly": "智能设备和设备的合同组装服务，具有一流的制造环境。",
+      "electronics": "智能设备、LTE 移动设备、网络和便携式设备的电子维修和翻新。",
+      "callCenter": "技术支持和客户服务应用的呼叫中心服务。"
+    },
+    "differentiator": {
+      "title": "差异化",
+      "experience": "IGS 拥有超过 15 年的经验，为 Apple 和 Dell 等全球科技领袖以及各种 OEM/ODM 优化供应链，他们为当今的技术进步做出了贡献，例如智能设备、医疗设备、移动能源和电力来源。",
+      "customizes": "IGS 根据您的特定业务规模和需求定制我们的解决方案。我们按需组装智能设备和复杂设备，或进行批量组装，在位于德克萨斯州和俄亥俄州的 ISO 认证设施内完成所有订单。",
+      "qualityPolicy": "IGS 质量政策：",
+      "policyDetails": "质量是 IGS 的基础，我们的员工致力于满足客户对质量的期望，以推动客户满意度。我们通过持续改进过程，努力以最有效和一致的方式提供卓越的质量和服务。",
+      "employeeEngagement": "所有员工都必须参与 IGS 的质量文化，以理解他们在实现质量目标中的责任。"
+    },
+    "services": {
+      "title": "我们的服务",
+      "depotRepair": "仓库维修服务",
+      "depotRepairDetails": "IGS 支持 RMA 处理、分类、组件级维修、翻新和 QC 测试，以使电子设备恢复到其原始规格。",
+      "warehouseDistribution": "仓库分销",
+      "warehouseDetails": "IGS 可以帮助客户摆脱召回产品、RMA 管理以及其他将商品从消费点退回到起点的过程中的麻烦。",
+      "fulfillment": "履行",
+      "fulfillmentDetails": "IGS 可以通过直接将我们的 3PL 技术与客户的 ERP 系统集成来处理广泛的渠道履行，以进行 PO 订购流程。",
+      "level2Repair": "二级维修",
+      "level2Details": "INTERNASH 维修中心通过根据客户的运营需求定制解决方案，提供创新的解决方案。",
+      "sparePartsSourcing": "备件采购",
+      "sparePartsDetails": "IGS 可以为您的电子设备提供甚至非常难以找到的零件，以恢复其原始规格。"
+    },
+    "vision": {
+      "title": "我们的愿景",
+      "visionDetails": "Internash Global 提供广泛的服务组合，包括履行、组件级维修、旧版和无线设备的翻新、仓储和代表 OEM 客户进行的分销。",
+      "additionalServices": "此外，我们还提供 LTE 基站测试、工程、安装和维护服务。"
+    },
+    "locations": {
+      "title": "维修服务中心位置",
+      "locationsDetails": "维修服务中心位置",
+      "houston": "休斯顿 Kempwood 工厂（美国）",
+      "cincinnati": "辛辛那提工厂（美国）",
+      "taoyuan": "桃园市新设施 2021 年 2 月（台湾）"
+    },
+    "contact": {
+      "title": "请联系我们",
+      "description": "我们总是对合作新想法和项目充满热情。如果您有合作机会的兴趣或只是想保持联系，我们很想听到您的声音！",
+      "contactButton": "联系我们",
+      "formTitle": "填写下方表格，了解更多关于我们供应链解决方案的信息。",
+      "submitButton": "提交"
+    }
+  }
+  
