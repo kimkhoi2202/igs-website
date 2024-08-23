@@ -2,8 +2,12 @@
 
 import { RefObject, useEffect, useId, useState } from "react";
 import { motion } from "framer-motion";
-
 import { cn } from "@/lib/utils";
+import WarehouseIcon from '/path/to/supplychain/Warehouse icon.png';
+import PlaneIcon from '/path/to/supplychain/Plane icon.png';
+import TruckDeliveryIcon from '/path/to/supplychain/Truck delivery.png';
+import ChartGrowthIcon from '/path/to/supplychain/Chart growth.png';
+import VisibilitySharedIcon from '/path/to/supplychain/Visibility shared.png';
 
 export interface AnimatedBeamProps {
   className?: string;

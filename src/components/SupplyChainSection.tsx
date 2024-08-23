@@ -12,13 +12,12 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading (replace with real loading logic)
     setTimeout(() => {
       setLoaded(true);
-    }, 1000); // Adjust timing as needed
+    }, 1000);
 
     if (loaded && onLoadComplete) {
-      onLoadComplete(); // Notify when loading is complete
+      onLoadComplete();
     }
   }, [loaded, onLoadComplete]);
 
@@ -45,8 +44,11 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
           />
         </div> */}
         <div className="relative w-full h-full rounded-lg">
-          <AnimatedBeamDemo/>
+          <AnimatedBeamDemo />
         </div>
+        <p className="text-sm text-gray-500 mt-4">
+          Icons made by Freepik from <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer" className="underline">www.flaticon.com</a>
+        </p>
       </div>
     </section>
   );

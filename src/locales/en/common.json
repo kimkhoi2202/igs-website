@@ -1,0 +1,71 @@
+{
+    "navbar": {
+      "home": "Home",
+      "solutions": "Solutions",
+      "expertise": "Expertise",
+      "services": "Services",
+      "language": "Language"
+    },
+    "hero": {
+      "title": "INTERNASH GLOBAL SERVICES",
+      "subtitle": "Engineering, Repair, and Logistics Solutions",
+      "description": "Create value and a competitive edge for our clients",
+      "contact": "Contact Us"
+    },
+    "welcome": {
+      "title": "Welcome to Internash Global Services, LLC",
+      "description": "Internash Global Services, As a group covers service operations across Asia, North America and EMEA",
+      "details": "Internash Global Services, LLC is a supply chain management service provider to large electronic manufacturers who seek a complete global solution that allows customers to focus on what they do best—manufacturing, growing their business, and staying competitive in the marketplace. We have a near-site facility to facilitate rapid turnaround time, so our customers can have the best service in the shortest time."
+    },
+    "supplyChain": {
+      "title": "Supply Chain Solution"
+    },
+    "expertise": {
+      "title": "IGS Expertise",
+      "logistics": "3rd Party Logistics (3PL) including warehousing, order fulfillment, transportation, kitting and customization options.",
+      "assembly": "Contract Assembly Service for smart devices and equipment with first class manufacture setting.",
+      "electronics": "Electronics repairs and refurbishments across smart-devices, LTE mobility, network and portable devices.",
+      "callCenter": "Call Center Services for Technical Support and Customer Service applications."
+    },
+    "differentiator": {
+      "title": "Differentiator",
+      "experience": "IGS has over 15 years of experience streamlining the supply chain of global tech leaders like Apple and Dell along with various OEM/ODMs who contribute to today's advancement in the tech industry, i.e. smart devices, medical equipment, mobile-energy, and power sources.",
+      "customizes": "IGS customizes our solution to your specific business size and needs. We assemble SMART devices and complex equipment on demand or in bulk assembles, completing all orders within ISO certified located in Texas and Ohio.",
+      "qualityPolicy": "IGS Quality Policy:",
+      "policyDetails": "Quality is the foundation of IGS, and its employees are committed to meet the quality requirements expected by our customers to drive customer satisfaction. We strive to provide excellent quality and service in the most efficient and consistent manner through a process of continual improvement.",
+      "employeeEngagement": "All employees are required to be engaged in IGS quality culture to understand their responsibility in achieving its quality objectives."
+    },
+    "services": {
+      "title": "Our Services",
+      "depotRepair": "Depot Repair Services",
+      "depotRepairDetails": "IGS supports RMA processing, triage, component level repairs, refurbishment, and QC testing, to return electronic devices to their original specifications.",
+      "warehouseDistribution": "Warehouse Distribution",
+      "warehouseDetails": "IGS can unburden customers from the hassles of recalling for a product returns, RMA management and any other process that returns goods from the point of consumption to the point of origin.",
+      "fulfillment": "Fulfillment",
+      "fulfillmentDetails": "IGS can handle wide channel fulfillment by directly integrating our 3PL technology with a client’s ERP system for PO ordering process.",
+      "level2Repair": "Level 2 Repair",
+      "level2Details": "INTERNASH REPAIR CENTER provides innovative solution by customizing to Customer's operation needs.",
+      "sparePartsSourcing": "Spare Parts Sourcing",
+      "sparePartsDetails": "IGS can source even the very hard to find parts for your electronic devices to their original specifications."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "visionDetails": "Internash Global offers a wide array of service portfolios that includes fulfillment, component level repair, refurbishment of legacy and wireless equipment, warehousing, and distribution on behalf of OEM customers.",
+      "additionalServices": "Additionally, we offer LTE Base Station testing, engineering, installation, and maintenance."
+    },
+    "locations": {
+      "title": "REPAIR SERVICE CENTER LOCATIONS",
+      "locationsDetails": "Repair Service Center Locations",
+      "houston": "Houston Kempwood Facility (US)",
+      "cincinnati": "Cincinnati Facility (US)",
+      "taoyuan": "Taoyuan City New Facility 2/2021 (Taiwan)"
+    },
+    "contact": {
+      "title": "Please get in touch with us",
+      "description": "We're always excited to collaborate on new ideas and projects. If you're interested in a teaming opportunity or just want to touch base, we'd love to hear from you!",
+      "contactButton": "Contact Us",
+      "formTitle": "Fill out the form below to learn more about our supply chain solutions.",
+      "submitButton": "Submit"
+    }
+  }
+  

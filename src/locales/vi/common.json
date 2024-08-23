@@ -1,0 +1,71 @@
+{
+    "navbar": {
+      "home": "Trang chủ",
+      "solutions": "Giải pháp",
+      "expertise": "Chuyên môn",
+      "services": "Dịch vụ",
+      "language": "Ngôn ngữ"
+    },
+    "hero": {
+      "title": "INTERNASH GLOBAL SERVICES",
+      "subtitle": "Giải pháp kỹ thuật, sửa chữa và hậu cần",
+      "description": "Tạo giá trị và lợi thế cạnh tranh cho khách hàng của chúng tôi",
+      "contact": "Liên hệ"
+    },
+    "welcome": {
+      "title": "Chào mừng đến với Internash Global Services, LLC",
+      "description": "Internash Global Services, bao gồm các hoạt động dịch vụ trên toàn châu Á, Bắc Mỹ và EMEA",
+      "details": "Internash Global Services, LLC là nhà cung cấp dịch vụ quản lý chuỗi cung ứng cho các nhà sản xuất điện tử lớn, giúp họ tập trung vào những gì họ làm tốt nhất—sản xuất, phát triển kinh doanh và duy trì cạnh tranh trên thị trường. Chúng tôi có cơ sở gần nơi để thúc đẩy thời gian xử lý nhanh chóng, giúp khách hàng của chúng tôi có được dịch vụ tốt nhất trong thời gian ngắn nhất."
+    },
+    "supplyChain": {
+      "title": "Giải pháp chuỗi cung ứng"
+    },
+    "expertise": {
+      "title": "Chuyên môn của IGS",
+      "logistics": "Logistics bên thứ ba (3PL) bao gồm kho bãi, thực hiện đơn hàng, vận chuyển, lắp ráp và tùy chỉnh.",
+      "assembly": "Dịch vụ lắp ráp hợp đồng cho các thiết bị thông minh và thiết bị với môi trường sản xuất hạng nhất.",
+      "electronics": "Sửa chữa và tân trang thiết bị điện tử trên các thiết bị thông minh, di động LTE, mạng và thiết bị di động.",
+      "callCenter": "Dịch vụ trung tâm cuộc gọi cho hỗ trợ kỹ thuật và dịch vụ khách hàng."
+    },
+    "differentiator": {
+      "title": "Khác biệt",
+      "experience": "IGS có hơn 15 năm kinh nghiệm trong việc tối ưu hóa chuỗi cung ứng của các công ty công nghệ hàng đầu thế giới như Apple và Dell cùng với các OEM/ODM khác, đóng góp vào sự phát triển công nghệ ngày nay, chẳng hạn như thiết bị thông minh, thiết bị y tế, năng lượng di động và nguồn năng lượng.",
+      "customizes": "IGS tùy chỉnh giải pháp của chúng tôi phù hợp với quy mô và nhu cầu kinh doanh cụ thể của bạn. Chúng tôi lắp ráp các thiết bị SMART và thiết bị phức tạp theo yêu cầu hoặc theo lắp ráp số lượng lớn, hoàn thành tất cả các đơn hàng trong các cơ sở được chứng nhận ISO tại Texas và Ohio.",
+      "qualityPolicy": "Chính sách chất lượng của IGS:",
+      "policyDetails": "Chất lượng là nền tảng của IGS và các nhân viên của chúng tôi cam kết đáp ứng các yêu cầu chất lượng mà khách hàng mong đợi để thúc đẩy sự hài lòng của khách hàng. Chúng tôi nỗ lực cung cấp chất lượng và dịch vụ tuyệt vời nhất một cách hiệu quả và nhất quán thông qua quá trình cải tiến liên tục.",
+      "employeeEngagement": "Tất cả các nhân viên đều phải tham gia vào văn hóa chất lượng của IGS để hiểu trách nhiệm của họ trong việc đạt được các mục tiêu chất lượng."
+    },
+    "services": {
+      "title": "Dịch vụ của chúng tôi",
+      "depotRepair": "Dịch vụ sửa chữa tại kho",
+      "depotRepairDetails": "IGS hỗ trợ xử lý RMA, phân loại, sửa chữa cấp độ thành phần, tân trang và kiểm tra QC để đưa thiết bị điện tử trở lại trạng thái ban đầu.",
+      "warehouseDistribution": "Phân phối kho bãi",
+      "warehouseDetails": "IGS có thể giúp khách hàng giải quyết các rắc rối liên quan đến việc thu hồi sản phẩm, quản lý RMA và bất kỳ quy trình nào khác trả lại hàng từ điểm tiêu thụ về điểm xuất phát.",
+      "fulfillment": "Thực hiện đơn hàng",
+      "fulfillmentDetails": "IGS có thể xử lý thực hiện kênh rộng bằng cách tích hợp trực tiếp công nghệ 3PL của chúng tôi với hệ thống ERP của khách hàng để thực hiện quá trình đặt hàng PO.",
+      "level2Repair": "Sửa chữa cấp 2",
+      "level2Details": "TRUNG TÂM SỬA CHỮA INTERNASH cung cấp giải pháp sáng tạo bằng cách tùy chỉnh theo nhu cầu hoạt động của khách hàng.",
+      "sparePartsSourcing": "Tìm nguồn cung cấp phụ tùng",
+      "sparePartsDetails": "IGS có thể tìm nguồn cung cấp ngay cả những phụ tùng khó tìm nhất cho các thiết bị điện tử của bạn để đưa chúng trở lại trạng thái ban đầu."
+    },
+    "vision": {
+      "title": "Tầm nhìn của chúng tôi",
+      "visionDetails": "Internash Global cung cấp một loạt các dịch vụ bao gồm thực hiện đơn hàng, sửa chữa cấp độ thành phần, tân trang thiết bị di sản và không dây, kho bãi và phân phối thay mặt cho khách hàng OEM.",
+      "additionalServices": "Ngoài ra, chúng tôi còn cung cấp dịch vụ kiểm tra, kỹ thuật, lắp đặt và bảo trì trạm gốc LTE."
+    },
+    "locations": {
+      "title": "VỊ TRÍ TRUNG TÂM DỊCH VỤ SỬA CHỮA",
+      "locationsDetails": "Vị trí trung tâm dịch vụ sửa chữa",
+      "houston": "Cơ sở Houston Kempwood (Mỹ)",
+      "cincinnati": "Cơ sở Cincinnati (Mỹ)",
+      "taoyuan": "Cơ sở mới thành phố Taoyuan 2/2021 (Đài Loan)"
+    },
+    "contact": {
+      "title": "Vui lòng liên hệ với chúng tôi",
+      "description": "Chúng tôi luôn háo hức hợp tác trong các ý tưởng và dự án mới. Nếu bạn quan tâm đến cơ hội hợp tác hoặc chỉ muốn kết nối, chúng tôi rất mong nhận được sự liên hệ từ bạn!",
+      "contactButton": "Liên hệ",
+      "formTitle": "Điền vào biểu mẫu dưới đây để tìm hiểu thêm về các giải pháp chuỗi cung ứng của chúng tôi.",
+      "submitButton": "Gửi"
+    }
+  }
+  

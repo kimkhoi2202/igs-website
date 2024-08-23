@@ -1,0 +1,71 @@
+{
+    "navbar": {
+      "home": "Inicio",
+      "solutions": "Soluciones",
+      "expertise": "Experiencia",
+      "services": "Servicios",
+      "language": "Idioma"
+    },
+    "hero": {
+      "title": "INTERNASH GLOBAL SERVICES",
+      "subtitle": "Soluciones de ingeniería, reparación y logística",
+      "description": "Crear valor y una ventaja competitiva para nuestros clientes",
+      "contact": "Contáctanos"
+    },
+    "welcome": {
+      "title": "Bienvenido a Internash Global Services, LLC",
+      "description": "Internash Global Services, como grupo cubre operaciones de servicio en Asia, América del Norte y EMEA",
+      "details": "Internash Global Services, LLC es un proveedor de servicios de gestión de la cadena de suministro para grandes fabricantes de electrónica que buscan una solución global completa que permita a los clientes centrarse en lo que mejor saben hacer: fabricar, hacer crecer su negocio y mantenerse competitivos en el mercado. Contamos con una instalación cercana para facilitar tiempos de respuesta rápidos, de modo que nuestros clientes puedan recibir el mejor servicio en el menor tiempo posible."
+    },
+    "supplyChain": {
+      "title": "Solución de cadena de suministro"
+    },
+    "expertise": {
+      "title": "Experiencia de IGS",
+      "logistics": "Logística de terceros (3PL) que incluye almacenamiento, cumplimiento de pedidos, transporte, kits y opciones de personalización.",
+      "assembly": "Servicio de ensamblaje por contrato para dispositivos inteligentes y equipos con un entorno de fabricación de primera clase.",
+      "electronics": "Reparaciones y reacondicionamientos electrónicos en dispositivos inteligentes, movilidad LTE, redes y dispositivos portátiles.",
+      "callCenter": "Servicios de centro de llamadas para aplicaciones de soporte técnico y servicio al cliente."
+    },
+    "differentiator": {
+      "title": "Diferenciador",
+      "experience": "IGS tiene más de 15 años de experiencia optimizando la cadena de suministro de líderes tecnológicos globales como Apple y Dell, junto con varios OEM/ODM que contribuyen al avance tecnológico de hoy en día, es decir, dispositivos inteligentes, equipos médicos, energía móvil y fuentes de energía.",
+      "customizes": "IGS personaliza nuestra solución para adaptarse al tamaño y las necesidades específicas de su empresa. Ensamblamos dispositivos SMART y equipos complejos bajo demanda o en montajes masivos, completando todos los pedidos en instalaciones certificadas por ISO ubicadas en Texas y Ohio.",
+      "qualityPolicy": "Política de Calidad de IGS:",
+      "policyDetails": "La calidad es la base de IGS, y sus empleados están comprometidos a cumplir con los requisitos de calidad que nuestros clientes esperan para impulsar su satisfacción. Nos esforzamos por ofrecer la mejor calidad y servicio de manera eficiente y constante a través de un proceso de mejora continua.",
+      "employeeEngagement": "Se requiere que todos los empleados se involucren en la cultura de calidad de IGS para comprender su responsabilidad en el logro de los objetivos de calidad."
+    },
+    "services": {
+      "title": "Nuestros Servicios",
+      "depotRepair": "Servicios de reparación en depósito",
+      "depotRepairDetails": "IGS apoya el procesamiento de RMA, la clasificación, las reparaciones a nivel de componente, el reacondicionamiento y las pruebas de control de calidad para devolver los dispositivos electrónicos a sus especificaciones originales.",
+      "warehouseDistribution": "Distribución de almacenes",
+      "warehouseDetails": "IGS puede liberar a los clientes de los inconvenientes de gestionar devoluciones de productos, la gestión de RMA y cualquier otro proceso que devuelva los productos desde el punto de consumo al punto de origen.",
+      "fulfillment": "Cumplimiento",
+      "fulfillmentDetails": "IGS puede gestionar el cumplimiento de canales amplios integrando directamente nuestra tecnología 3PL con el sistema ERP de un cliente para el proceso de pedido de PO.",
+      "level2Repair": "Reparación de Nivel 2",
+      "level2Details": "El CENTRO DE REPARACIÓN INTERNASH ofrece una solución innovadora al personalizar las necesidades operativas del cliente.",
+      "sparePartsSourcing": "Obtención de repuestos",
+      "sparePartsDetails": "IGS puede obtener incluso las piezas más difíciles de encontrar para sus dispositivos electrónicos según sus especificaciones originales."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "visionDetails": "Internash Global ofrece una amplia gama de carteras de servicios que incluyen cumplimiento, reparación a nivel de componentes, reacondicionamiento de equipos heredados e inalámbricos, almacenamiento y distribución en nombre de los clientes OEM.",
+      "additionalServices": "Además, ofrecemos pruebas de estaciones base LTE, ingeniería, instalación y mantenimiento."
+    },
+    "locations": {
+      "title": "UBICACIONES DE CENTROS DE SERVICIO DE REPARACIÓN",
+      "locationsDetails": "Ubicaciones de centros de servicio de reparación",
+      "houston": "Instalación de Houston Kempwood (EE. UU.)",
+      "cincinnati": "Instalación de Cincinnati (EE. UU.)",
+      "taoyuan": "Nueva instalación de la ciudad de Taoyuan 2/2021 (Taiwán)"
+    },
+    "contact": {
+      "title": "Por favor, póngase en contacto con nosotros",
+      "description": "Siempre estamos emocionados de colaborar en nuevas ideas y proyectos. Si está interesado en una oportunidad de colaboración o simplemente quiere ponerse en contacto, ¡nos encantaría saber de usted!",
+      "contactButton": "Contáctanos",
+      "formTitle": "Complete el formulario a continuación para obtener más información sobre nuestras soluciones de cadena de suministro.",
+      "submitButton": "Enviar"
+    }
+  }
+  
