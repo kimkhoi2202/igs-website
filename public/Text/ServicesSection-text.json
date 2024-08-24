@@ -1,0 +1,123 @@
+{
+    "en": {
+      "title": "Our Services",
+      "services": [
+        {
+          "icon": "/section/truck.png",
+          "heading": "Depot Repair Services",
+          "text": "IGS supports RMA processing, triage, component level repairs, refurbishment, and QC testing, to return electronic devices to their original specifications."
+        },
+        {
+          "icon": "/section/warehouse.png",
+          "heading": "Warehouse Distribution",
+          "text": "IGS can unburden customers from the hassles of recalling for a product returns, RMA management and any other process that returns goods from the point of consumption to the point of origin."
+        },
+        {
+          "icon": "/section/fulfill.png",
+          "heading": "Fulfillment",
+          "text": "IGS can handle wide channel fulfillment by directly integrating our 3PL technology with a client’s ERP system for PO ordering process."
+        },
+        {
+          "icon": "/section/repair.png",
+          "heading": "Level 2 Repair",
+          "text": "INTERNASH REPAIR CENTER provides innovative solution by customizing to Customer's operation needs."
+        },
+        {
+          "icon": "/section/truck.png",
+          "heading": "Spare Parts Sourcing",
+          "text": "IGS can source even the very hard to find parts for your electronic devices to their original specifications."
+        }
+      ]
+    },
+    "es": {
+      "title": "Nuestros Servicios",
+      "services": [
+        {
+          "icon": "/section/truck.png",
+          "heading": "Servicios de Reparación en Depósito",
+          "text": "IGS apoya el procesamiento de RMA, triage, reparaciones a nivel de componentes, reacondicionamiento y pruebas de QC, para devolver los dispositivos electrónicos a sus especificaciones originales."
+        },
+        {
+          "icon": "/section/warehouse.png",
+          "heading": "Distribución de Almacén",
+          "text": "IGS puede liberar a los clientes de las molestias de recordar para devoluciones de productos, gestión de RMA y cualquier otro proceso que devuelva bienes desde el punto de consumo hasta el punto de origen."
+        },
+        {
+          "icon": "/section/fulfill.png",
+          "heading": "Cumplimiento",
+          "text": "IGS puede manejar el cumplimiento de canales amplios integrando directamente nuestra tecnología 3PL con el sistema ERP del cliente para el proceso de pedido de PO."
+        },
+        {
+          "icon": "/section/repair.png",
+          "heading": "Reparación de Nivel 2",
+          "text": "EL CENTRO DE REPARACIÓN INTERNASH proporciona una solución innovadora al personalizarse a las necesidades operativas del cliente."
+        },
+        {
+          "icon": "/section/truck.png",
+          "heading": "Suministro de Piezas de Repuesto",
+          "text": "IGS puede encontrar incluso las piezas muy difíciles de encontrar para sus dispositivos electrónicos a sus especificaciones originales."
+        }
+      ]
+    },
+    "vi": {
+      "title": "Dịch Vụ Của Chúng Tôi",
+      "services": [
+        {
+          "icon": "/section/truck.png",
+          "heading": "Dịch Vụ Sửa Chữa Depot",
+          "text": "IGS hỗ trợ xử lý RMA, phân loại, sửa chữa cấp độ thành phần, tái chế và kiểm tra QC, để trả lại các thiết bị điện tử về thông số kỹ thuật ban đầu của chúng."
+        },
+        {
+          "icon": "/section/warehouse.png",
+          "heading": "Phân Phối Kho",
+          "text": "IGS có thể giải phóng khách hàng khỏi những phiền toái của việc thu hồi sản phẩm, quản lý RMA và bất kỳ quy trình nào khác mà trả lại hàng hóa từ điểm tiêu thụ về điểm xuất xứ."
+        },
+        {
+          "icon": "/section/fulfill.png",
+          "heading": "Hoàn Thành",
+          "text": "IGS có thể xử lý hoàn thành kênh rộng bằng cách tích hợp trực tiếp công nghệ 3PL của chúng tôi với hệ thống ERP của khách hàng cho quy trình đặt hàng PO."
+        },
+        {
+          "icon": "/section/repair.png",
+          "heading": "Sửa Chữa Cấp 2",
+          "text": "TRUNG TÂM SỬA CHỮA INTERNASH cung cấp giải pháp sáng tạo bằng cách tùy chỉnh theo nhu cầu vận hành của khách hàng."
+        },
+        {
+          "icon": "/section/truck.png",
+          "heading": "Tìm Nguồn Phụ Tùng",
+          "text": "IGS có thể tìm nguồn ngay cả những phụ tùng rất khó tìm cho thiết bị điện tử của bạn theo thông số kỹ thuật ban đầu của chúng."
+        }
+      ]
+    },
+    "zh": {
+      "title": "我们的服务",
+      "services": [
+        {
+          "icon": "/section/truck.png",
+          "heading": "仓库维修服务",
+          "text": "IGS 支持 RMA 处理、分类、组件级修复、翻新和 QC 测试，以使电子设备恢复到原始规格。"
+        },
+        {
+          "icon": "/section/warehouse.png",
+          "heading": "仓库分发",
+          "text": "IGS 可以解除客户在产品退回、RMA 管理和任何其他将货物从消费点返回到起点的过程中所遇到的麻烦。"
+        },
+        {
+          "icon": "/section/fulfill.png",
+          "heading": "履行",
+          "text": "IGS 可以通过直接将我们的 3PL 技术与客户的 ERP 系统集成，处理广泛的渠道履行 PO 订单流程。"
+        },
+        {
+          "icon": "/section/repair.png",
+          "heading": "二级维修",
+          "text": "INTERNASH 维修中心通过根据客户的操作需求进行定制，提供创新解决方案。"
+        },
+        {
+          "icon": "/section/truck.png",
+          "heading": "备件采购",
+          "text": "IGS 可以为您的电子设备找到即使是非常难找的零件，以恢复到原始规格。"
+        }
+      ]
+    }
+  }
+  

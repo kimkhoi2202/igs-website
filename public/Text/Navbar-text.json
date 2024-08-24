@@ -1,0 +1,35 @@
+{
+    "en": {
+      "home": "Home",
+      "solutions": "Solutions",
+      "expertise": "Expertise",
+      "services": "Services",
+      "joinUs": "Join Us",
+      "language": "Language"
+    },
+    "es": {
+      "home": "Inicio",
+      "solutions": "Soluciones",
+      "expertise": "Experiencia",
+      "services": "Servicios",
+      "joinUs": "Únete a Nosotros",
+      "language": "Idioma"
+    },
+    "vi": {
+      "home": "Trang chủ",
+      "solutions": "Giải pháp",
+      "expertise": "Chuyên môn",
+      "services": "Dịch vụ",
+      "joinUs": "Tham gia với chúng tôi",
+      "language": "Ngôn ngữ"
+    },
+    "zh": {
+      "home": "首页",
+      "solutions": "解决方案",
+      "expertise": "专长",
+      "services": "服务",
+      "joinUs": "加入我们",
+      "language": "语言"
+    }
+  }
+  

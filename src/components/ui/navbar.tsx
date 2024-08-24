@@ -9,21 +9,11 @@ import Image from 'next/image';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useLanguage } from '@/components/context/LanguageContext';
 
-const translations = {
-  en: { home: 'Home', solutions: 'Solutions', expertise: 'Expertise', services: 'Services', joinUs: 'Join Us' },
-  es: { home: 'Inicio', solutions: 'Soluciones', expertise: 'Experiencia', services: 'Servicios', joinUs: 'Únete a Nosotros' },
-  vi: { home: 'Trang chủ', solutions: 'Giải pháp', expertise: 'Chuyên môn', services: 'Dịch vụ', joinUs: 'Tham gia với chúng tôi' },
-  zh: { home: '首页', solutions: '解决方案', expertise: '专长', services: '服务', joinUs: '加入我们' },
-};
-
-function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function Navbar() {
   const { language, setLanguage } = useLanguage(); // Use language context
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [_, setRenderCount] = useState(0); // Force re-render
+  const [navigation, setNavigation] = useState<{ name: string; href: string; current: boolean }[]>([]);
+  const [textData, setTextData] = useState<any>({}); // State to hold JSON data
 
   const languageButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -40,18 +30,30 @@ export default function Navbar() {
     };
   }, []);
 
-  const navigation = [
-    { name: translations[language].home, href: '#home', current: false },
-    { name: translations[language].solutions, href: '#solutions', current: false },
-    { name: translations[language].expertise, href: '#expertise', current: false },
-    { name: translations[language].services, href: '#services', current: false },
-    { name: translations[language].joinUs, href: '#joinus', current: false },
-  ];
+  useEffect(() => {
+    // Fetch JSON data when component mounts
+    fetch('/Text/Navbar-text.json')
+      .then(response => response.json())
+      .then(data => {
+        setTextData(data); // Store the fetched data
+      })
+      .catch(error => {
+        console.error('Error fetching JSON data:', error); // Handle fetch error
+      });
+  }, []);
 
   useEffect(() => {
-    console.log('Language changed to:', language);
-    setRenderCount((prev) => prev + 1);
-  }, [language]);
+    if (textData && textData[language]) {
+      const navItems = [
+        { name: textData[language].home || 'Home', href: '#home', current: false },
+        { name: textData[language].solutions || 'Solutions', href: '#solutions', current: false },
+        { name: textData[language].expertise || 'Expertise', href: '#expertise', current: false },
+        { name: textData[language].services || 'Services', href: '#services', current: false },
+        { name: textData[language].joinUs || 'Join Us', href: '#joinus', current: false },
+      ];
+      setNavigation(navItems);
+    }
+  }, [language, textData]);
 
   return (
     <Disclosure as="nav" className="bg-red-900">
@@ -98,7 +100,7 @@ export default function Navbar() {
                       ref={languageButtonRef}
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
-                      Language
+                      {textData[language]?.language || 'Language'} {/* Display current language */}
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -135,4 +137,8 @@ export default function Navbar() {
       )}
     </Disclosure>
   );
+}
+
+function classNames(...classes: string[]): string {
+  return classes.filter(Boolean).join(' ');
 }

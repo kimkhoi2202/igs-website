@@ -3,41 +3,40 @@
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Image from "next/image";
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '@/components/context/LanguageContext';
+
+interface Service {
+  icon: string;
+  heading: string;
+  text: string;
+}
+
+interface ServicesData {
+  title: string;
+  services: Service[];
+}
 
 interface ServicesSectionProps {
   onLoadComplete?: () => void;
 }
 
-const services = [
-  {
-    icon: "/section/truck.png",
-    heading: "Depot Repair Services",
-    text: "IGS supports RMA processing, triage, component level repairs, refurbishment, and QC testing, to return electronic devices to their original specifications.",
-  },
-  {
-    icon: "/section/warehouse.png",
-    heading: "Warehouse Distribution",
-    text: "IGS can unburden customers from the hassles of recalling for a product returns, RMA management and any other process that returns goods from the point of consumption to the point of origin.",
-  },
-  {
-    icon: "/section/fulfill.png",
-    heading: "Fulfillment",
-    text: "IGS can handle wide channel fulfillment by directly integrating our 3PL technology with a client’s ERP system for PO ordering process.",
-  },
-  {
-    icon: "/section/repair.png",
-    heading: "Level 2 Repair",
-    text: "INTERNASH REPAIR CENTER provides innovative solution by customizing to Customer's operation needs.",
-  },
-  {
-    icon: "/section/truck.png",
-    heading: "Spare Parts Sourcing",
-    text: "IGS can source even the very hard to find parts for your electronic devices to their original specifications.",
-  },
-];
-
 export default function ServicesSection({ onLoadComplete }: ServicesSectionProps) {
   const [loaded, setLoaded] = useState(false);
+  const [services, setServices] = useState<ServicesData>({
+    title: '',
+    services: []
+  });
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    async function fetchServicesData() {
+      const response = await fetch(`/Text/ServicesSection-text.json`);
+      const data = await response.json();
+      setServices(data[language] || data.en);
+    }
+
+    fetchServicesData();
+  }, [language]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -52,10 +51,10 @@ export default function ServicesSection({ onLoadComplete }: ServicesSectionProps
   return (
     <section id="services" className="w-full h-screen py-12 flex flex-col items-center justify-center relative overflow-hidden">
       <h2 className="text-center sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-12 text-gray-900 dark:text-gray-50">
-        Our Services
+        {services.title}
       </h2>
       <div className="flex flex-nowrap gap-6 overflow-x-auto">
-        {services.map((service, index) => (
+        {services.services.map((service, index) => (
           <BackgroundGradient
             key={index}
             containerClassName="w-full max-w-xs flex"

@@ -1,0 +1,27 @@
+{
+    "en": {
+      "title": "INTERNASH GLOBAL SERVICES",
+      "subtitle": "Engineering, Repair, and Logistics Solutions",
+      "description": "Create value and a competitive edge for our clients",
+      "button": "Contact Us"
+    },
+    "es": {
+      "title": "INTERNASH SERVICIOS GLOBAL",
+      "subtitle": "Soluciones de Ingeniería, Reparación y Logística",
+      "description": "Crear valor y una ventaja competitiva para nuestros clientes",
+      "button": "Contáctanos"
+    },
+    "vi": {
+      "title": "DỊCH VỤ TOÀN CẦU INTERNASH",
+      "subtitle": "Giải pháp Kỹ thuật, Sửa chữa và Logistics",
+      "description": "Tạo giá trị và lợi thế cạnh tranh cho khách hàng của chúng tôi",
+      "button": "Liên hệ với chúng tôi"
+    },
+    "zh": {
+      "title": "INTERNASH 全球服务",
+      "subtitle": "工程、维修和物流解决方案",
+      "description": "为我们的客户创造价值和竞争优势",
+      "button": "联系我们"
+    }
+  }
+  

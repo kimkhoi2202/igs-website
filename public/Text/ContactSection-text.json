@@ -1,0 +1,25 @@
+{
+    "en": {
+      "title": "Please get in touch with us",
+      "description": "We're always excited to collaborate on new ideas and projects. If you're interested in a teaming opportunity or just want to touch base, we'd love to hear from you!",
+      "contactUs": "Contact Us",
+      "formDescription": "Fill out the form below to learn more about our supply chain solutions.",
+      "namePlaceholder": "Name*",
+      "emailPlaceholder": "Email*",
+      "phonePlaceholder": "Phone*",
+      "messagePlaceholder": "Message",
+      "submitButton": "Submit"
+    },
+    "es": {
+      "title": "Por favor, póngase en contacto con nosotros",
+      "description": "Siempre estamos emocionados de colaborar en nuevas ideas y proyectos. Si estás interesado en una oportunidad de colaboración o simplemente quieres contactar, ¡nos encantaría saber de ti!",
+      "contactUs": "Contáctenos",
+      "formDescription": "Rellena el formulario a continuación para conocer más sobre nuestras soluciones de cadena de suministro.",
+      "namePlaceholder": "Nombre*",
+      "emailPlaceholder": "Correo electrónico*",
+      "phonePlaceholder": "Teléfono*",
+      "messagePlaceholder": "Mensaje",
+      "submitButton": "Enviar"
+    }
+  }
+  

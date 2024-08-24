@@ -1,0 +1,23 @@
+{
+    "en": {
+      "title": "Our Vision",
+      "description": "Internash Global offers a wide array of service portfolios that includes fulfillment, component level repair, refurbishment of legacy and wireless equipment, warehousing, and distribution on behalf of OEM customers.",
+      "additional": "Additionally, we offer LTE Base Station testing, engineering, installation, and maintenance."
+    },
+    "es": {
+      "title": "Nuestra Visión",
+      "description": "Internash Global ofrece una amplia gama de carteras de servicios que incluyen cumplimiento, reparación a nivel de componentes, reacondicionamiento de equipos heredados y inalámbricos, almacenamiento y distribución en nombre de los clientes OEM.",
+      "additional": "Además, ofrecemos pruebas de estaciones base LTE, ingeniería, instalación y mantenimiento."
+    },
+    "vi": {
+      "title": "Tầm Nhìn Của Chúng Tôi",
+      "description": "Internash Global cung cấp một loạt các danh mục dịch vụ bao gồm thực hiện, sửa chữa cấp độ thành phần, tái chế thiết bị di động và không dây, kho bãi và phân phối thay mặt cho các khách hàng OEM.",
+      "additional": "Ngoài ra, chúng tôi cung cấp kiểm tra trạm gốc LTE, kỹ thuật, lắp đặt và bảo trì."
+    },
+    "zh": {
+      "title": "我们的愿景",
+      "description": "Internash Global 提供一系列服务，包括履行、组件级修理、遗留和无线设备的翻新、仓储和代表 OEM 客户的分销。",
+      "additional": "此外，我们还提供 LTE 基站测试、工程、安装和维护。"
+    }
+  }
+  

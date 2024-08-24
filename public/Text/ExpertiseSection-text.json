@@ -1,0 +1,39 @@
+{
+    "en": {
+      "title": "IGS Expertise",
+      "items": [
+        { "title": "3rd Party Logistics (3PL)", "description": "including warehousing, order fulfillment, transportation, kitting, and customization options." },
+        { "title": "Contract Assembly Service", "description": "for smart devices and equipment with first-class manufacturing settings." },
+        { "title": "Electronics", "description": "repairs and refurbishments across smart-devices, LTE mobility, network, and portable devices." },
+        { "title": "Call Center Services", "description": "for Technical Support and Customer Service applications." }
+      ]
+    },
+    "es": {
+      "title": "Experiencia de IGS",
+      "items": [
+        { "title": "Logística de 3er Partido (3PL)", "description": "incluyendo almacenamiento, cumplimiento de pedidos, transporte, ensamblaje y opciones de personalización." },
+        { "title": "Servicio de Ensamblaje por Contrato", "description": "para dispositivos inteligentes y equipos con configuraciones de fabricación de primera clase." },
+        { "title": "Electrónica", "description": "reparaciones y reacondicionamientos en dispositivos inteligentes, movilidad LTE, red y dispositivos portátiles." },
+        { "title": "Servicios de Centro de Llamadas", "description": "para soporte técnico y aplicaciones de servicio al cliente." }
+      ]
+    },
+    "vi": {
+      "title": "Chuyên Môn IGS",
+      "items": [
+        { "title": "Logistics bên thứ ba (3PL)", "description": "bao gồm lưu kho, thực hiện đơn hàng, vận chuyển, lắp ráp và tùy chọn tùy chỉnh." },
+        { "title": "Dịch vụ Lắp ráp theo Hợp đồng", "description": "cho thiết bị thông minh và thiết bị với cài đặt sản xuất hàng đầu." },
+        { "title": "Điện tử", "description": "sửa chữa và tân trang trên thiết bị thông minh, di động LTE, mạng và thiết bị di động." },
+        { "title": "Dịch vụ Trung tâm Cuộc gọi", "description": "cho hỗ trợ kỹ thuật và các ứng dụng dịch vụ khách hàng." }
+      ]
+    },
+    "zh": {
+      "title": "IGS 专业领域",
+      "items": [
+        { "title": "第三方物流 (3PL)", "description": "包括仓储、订单履行、运输、装配和定制选项。" },
+        { "title": "合同组装服务", "description": "针对具有一流制造设置的智能设备和设备。" },
+        { "title": "电子产品", "description": "智能设备、LTE 移动、网络和便携式设备的维修和翻新。" },
+        { "title": "呼叫中心服务", "description": "用于技术支持和客户服务应用。" }
+      ]
+    }
+  }
+  

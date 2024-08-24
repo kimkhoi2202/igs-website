@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { useLanguage } from '@/components/context/LanguageContext'; // Assuming you're using LanguageContext
 
 function FacebookIcon(props: Readonly<React.SVGProps<SVGSVGElement>>) {
   return (
@@ -50,6 +51,23 @@ interface FooterProps {
 
 export default function Footer({ onLoadComplete }: FooterProps) {
   const [loaded, setLoaded] = useState(false);
+  const [translations, setTranslations] = useState<any>(null);
+  const { language } = useLanguage(); // Get the current language
+
+  const fetchTranslations = async (lang: string) => {
+    try {
+      const response = await fetch(`/Text/Footer-text.json`);
+      const data = await response.json();
+      setTranslations(data[lang] || data['en']); // Default to English if the language is not found
+    } catch (error) {
+      console.error("Error fetching translations:", error);
+      setTranslations({}); // Fallback to an empty object
+    }
+  };
+
+  useEffect(() => {
+    fetchTranslations(language); // Fetch translations when the language changes
+  }, [language]);
 
   useEffect(() => {
     // Simulate loading (replace with real loading logic)
@@ -61,9 +79,9 @@ export default function Footer({ onLoadComplete }: FooterProps) {
       onLoadComplete(); // Notify when loading is complete
     }
   }, [loaded, onLoadComplete]);
-  
+
   return (
-    <footer className="bg-background pb-4 w-full"> {/* Changed to pb-4 for bottom padding only */}
+    <footer className="bg-background pb-4 w-full"> {/* Bottom padding only */}
       <div className="container flex flex-col items-center justify-between max-w-7xl mx-auto">
         <Separator className="my-4" />
         <div className="flex gap-4">
@@ -74,7 +92,9 @@ export default function Footer({ onLoadComplete }: FooterProps) {
             <LinkedinIcon className="w-5 h-5" />
           </Button>
         </div>
-        <p className="mt-4 text-sm text-primary-foreground">Copyrights © 2021. All Rights Reserved.</p>
+        <p className="mt-4 text-sm text-primary-foreground">
+          {translations?.footerText || 'Copyrights © 2021. All Rights Reserved.'}
+        </p>
       </div>
     </footer>
   );

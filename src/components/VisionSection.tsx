@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 import { useInView } from "react-intersection-observer";
+import { useLanguage } from "@/components/context/LanguageContext"; // Import your custom language context
 
 interface VisionSectionProps {
   onLoadComplete?: () => void;
@@ -15,6 +16,24 @@ export default function VisionSection({ onLoadComplete }: VisionSectionProps) {
     threshold: 0.5,
     triggerOnce: true,
   });
+
+  const { language } = useLanguage(); // Use the custom language context
+
+  const [translations, setTranslations] = useState({
+    title: "",
+    description: "",
+    additional: "",
+  });
+
+  useEffect(() => {
+    async function fetchTranslations() {
+      const response = await fetch(`/Text/VisionSection-text.json`);
+      const data = await response.json();
+      setTranslations(data[language]);
+    }
+
+    fetchTranslations();
+  }, [language]);
 
   useEffect(() => {
     if (inView) {
@@ -50,14 +69,12 @@ export default function VisionSection({ onLoadComplete }: VisionSectionProps) {
       </motion.div>
       <div className="container px-4 md:px-6 text-primary-foreground max-w-6xl mx-auto relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-6xl font-bold text-black dark:text-white tracking-tighter">Our Vision</h2>
+          <h2 className="text-6xl font-bold text-black dark:text-white tracking-tighter">{translations.title}</h2>
           <p className="text-2xl text-black dark:text-white">
-            Internash Global offers a wide array of service portfolios that includes fulfillment, component level
-            repair, refurbishment of legacy and wireless equipment, warehousing, and distribution on behalf of OEM
-            customers.
+            {translations.description}
           </p>
           <h3 className="text-2xl text-black dark:text-white font-semibold">
-            Additionally, we offer LTE Base Station testing, engineering, installation, and maintenance.
+            {translations.additional}
           </h3>
         </div>
       </div>

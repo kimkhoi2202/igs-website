@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
+import { useLanguage } from '@/components/context/LanguageContext';
+
 
 interface WelcomeSectionProps {
   onLoadComplete?: () => void;
@@ -15,6 +17,22 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
   const shadowControls = useAnimation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const { language } = useLanguage();
+  const [translations, setTranslations] = useState({
+    title: '',
+    subtitle: '',
+    description: ''
+  });
+
+  useEffect(() => {
+    async function fetchTranslations() {
+      const response = await fetch(`/Text/WelcomeSection-text.json`);
+      const data = await response.json();
+      setTranslations(data[language]);
+    }
+
+    fetchTranslations();
+  }, [language]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -62,9 +80,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
     <section ref={sectionRef} className="w-full h-screen py-12 md:py-24 lg:py-32 snap-start">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-2">
         <div className="relative w-full order-2">
-          {/* Image container with responsive height */}
           <div className="relative w-full" style={{ aspectRatio: '550 / 400' }}>
-            {/* Shadow element */}
             <motion.div
               animate={shadowControls}
               transition={{ duration: 1.0 }}
@@ -75,7 +91,6 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
                 borderRadius: '12px',
               }}
             />
-            {/* Image */}
             <motion.div
               animate={imageControls}
               transition={{ duration: 1.0 }}
@@ -99,18 +114,14 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           className="flex flex-col justify-center space-y-8 order-1 md:order-2"
         >
           <h2 className="sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter">
-            Welcome to Internash Global Services, LLC
+            {translations.title}
           </h2>
           <Separator />
           <p className="font-bold sm:text-lg md:text-xl lg:text-2xl text-muted-foreground">
-            Internash Global Services, As a group covers service operations across Asia, North America and EMEA
+            {translations.subtitle}
           </p>
           <p className="sm:text-base md:text-lg lg:text-xl text-muted-foreground">
-            Internash Global Services, LLC is a supply chain management service provider to large electronic
-            manufacturers who seek a complete global solution that allows customers to focus on what they do
-            best—manufacturing, growing their business, and staying competitive in the marketplace. We have a
-            near-site facility to facilitate rapid turnaround time, so our customers can have the best service in
-            the shortest time.
+            {translations.description}
           </p>
         </motion.div>
       </div>

@@ -2,14 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import AnimatedBeamDemo from '@/components/ui/animated-beam';
+import { useLanguage } from '@/components/context/LanguageContext';
 
 interface SupplyChainSectionProps {
   onLoadComplete?: () => void;
 }
 
 export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectionProps) {
-
   const [loaded, setLoaded] = useState(false);
+  const { language } = useLanguage();
+  const [translations, setTranslations] = useState({
+    title: '',
+    credits: ''
+  });
+
+  useEffect(() => {
+    async function fetchTranslations() {
+      const response = await fetch(`/Text/SupplyChainSection-text.json`);
+      const data = await response.json();
+      setTranslations(data[language]);
+    }
+
+    fetchTranslations();
+  }, [language]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,7 +39,9 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
   return (
     <section id="solutions" className="relative w-full h-screen py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 mx-auto text-center relative z-10">
-        <h2 className="text-3xl font-bold tracking-tighter text-black dark:text-white">Supply Chain Solution</h2>
+        <h2 className="text-3xl font-bold tracking-tighter text-black dark:text-white">
+          {translations.title}
+        </h2>
         {/* <div className="w-full h-auto rounded-lg mt-8">
           <Image
             src="/supply-chain-light-mode.png"
@@ -47,7 +64,7 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
           <AnimatedBeamDemo />
         </div>
         <p className="text-sm text-gray-500 mt-4">
-          Icons made by Freepik from <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer" className="underline">www.flaticon.com</a>
+          {translations.credits}
         </p>
       </div>
     </section>

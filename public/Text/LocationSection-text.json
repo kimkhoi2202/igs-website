@@ -1,0 +1,31 @@
+{
+    "en": {
+      "title": "Repair Service Center Locations",
+      "subtitle": "REPAIR SERVICE CENTER LOCATIONS",
+      "location1": "Houston Kempwood Facility (US)",
+      "location2": "Cincinnati Facility (US)",
+      "location3": "Taoyuan City New Facility 2/2021 (Taiwan)"
+    },
+    "es": {
+      "title": "Ubicaciones de Centros de Servicio de Reparación",
+      "subtitle": "UBICACIONES DE CENTROS DE SERVICIO DE REPARACIÓN",
+      "location1": "Instalación Kempwood en Houston (EE.UU.)",
+      "location2": "Instalación de Cincinnati (EE.UU.)",
+      "location3": "Nueva Instalación en Taoyuan City 2/2021 (Taiwán)"
+    },
+    "vi": {
+      "title": "Địa điểm Trung Tâm Dịch Vụ Sửa Chữa",
+      "subtitle": "ĐỊA ĐIỂM TRUNG TÂM DỊCH VỤ SỬA CHỮA",
+      "location1": "Cơ sở Kempwood ở Houston (Mỹ)",
+      "location2": "Cơ sở Cincinnati (Mỹ)",
+      "location3": "Cơ sở mới tại Thành phố Taoyuan 2/2021 (Đài Loan)"
+    },
+    "zh": {
+      "title": "维修服务中心位置",
+      "subtitle": "维修服务中心位置",
+      "location1": "休斯顿 Kempwood 设施（美国）",
+      "location2": "辛辛那提设施（美国）",
+      "location3": "桃园市新设施 2/2021（台湾）"
+    }
+  }
+  
