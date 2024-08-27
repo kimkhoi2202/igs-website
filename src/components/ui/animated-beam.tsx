@@ -19,6 +19,18 @@ interface CircleProps {
   hidden?: boolean;
 }
 
+const gradientColors = {
+  light: {
+    start: "#BF4343", // Deep red
+    stop: "#D14D4D",  // Slightly lighter red
+  },
+  dark: {
+    start: "#FF6F6F", // Soft light red
+    stop: "#FF3B3B",  // Vibrant red
+  },
+};
+
+
 const Circle = forwardRef<HTMLDivElement, CircleProps>(
   ({ className, children, hidden = false }, ref) => {
     return (
@@ -55,6 +67,7 @@ export function AnimatedBeamHorizontal() {
   const div3Ref = useRef<HTMLDivElement>(null);
   const div4Ref = useRef<HTMLDivElement>(null);
   const div5Ref = useRef<HTMLDivElement>(null);
+  const currentGradientColors = gradientColors[theme as keyof typeof gradientColors] || gradientColors.light;
 
   return (
     <div
@@ -92,8 +105,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'x-first'}
       />
       <AnimatedBeam
@@ -103,8 +116,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'x-first'}
       />
       <AnimatedBeam
@@ -115,8 +128,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'x-first'}
       />
       <AnimatedBeam
@@ -126,8 +139,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'x-first'}
       />
       <AnimatedBeam
@@ -139,8 +152,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5} 
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -152,8 +165,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -164,8 +177,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -177,8 +190,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -189,8 +202,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -202,8 +215,8 @@ export function AnimatedBeamHorizontal() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
     </div>
   );
@@ -218,6 +231,7 @@ export function AnimatedBeamVertical() {
   const div3Ref = useRef<HTMLDivElement>(null);
   const div4Ref = useRef<HTMLDivElement>(null);
   const div5Ref = useRef<HTMLDivElement>(null);
+  const currentGradientColors = gradientColors[theme as keyof typeof gradientColors] || gradientColors.light;
 
   return (
     <div
@@ -255,8 +269,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'y-first'}
       />
       <AnimatedBeam
@@ -266,8 +280,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'y-first'}
       />
       <AnimatedBeam
@@ -278,8 +292,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'y-first'}
       />
       <AnimatedBeam
@@ -289,8 +303,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
         mode={'y-first'}
       />
       <AnimatedBeam
@@ -302,8 +316,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5} 
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -315,8 +329,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -327,8 +341,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -340,8 +354,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -352,8 +366,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -365,8 +379,8 @@ export function AnimatedBeamVertical() {
         pathColor={pathColor}
         pathOpacity={0.5}
         pathWidth={4}
-        gradientStartColor={"#ff6f61"}
-        gradientStopColor={"#ff8c00"}
+        gradientStartColor={currentGradientColors.start}
+        gradientStopColor={currentGradientColors.stop}
       />
     </div>
   );

@@ -2,14 +2,10 @@
 
 import { RefObject, useEffect, useId, useState } from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import WarehouseIcon from '/path/to/supplychain/Warehouse icon.png';
-import PlaneIcon from '/path/to/supplychain/Plane icon.png';
-import TruckDeliveryIcon from '/path/to/supplychain/Truck delivery.png';
-import ChartGrowthIcon from '/path/to/supplychain/Chart growth.png';
-import VisibilitySharedIcon from '/path/to/supplychain/Visibility shared.png';
 
-export interface AnimatedBeamProps {
+import { cn } from "@/lib/utils";
+
+interface AnimatedBeamProps {
   className?: string;
   containerRef: RefObject<HTMLElement>;
   fromRef: RefObject<HTMLElement>;
@@ -27,7 +23,7 @@ export interface AnimatedBeamProps {
   endXOffset?: number;
   endYOffset?: number;
   borderRadius?: number;
-  mode?: "original" | "x-first" | "y-first"; // Mode selection
+  mode?: "original" | "x-first"  | "y-first"; //Mode selection
 }
 
 export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
@@ -221,35 +217,36 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         fill="none"
       />
       <defs>
-        <motion.linearGradient
-          className="transform-gpu"
-          id={id}
-          gradientUnits={"userSpaceOnUse"}
-          initial={{
-            x1: "0%",
-            x2: "0%",
-            y1: "0%",
-            y2: "0%",
-          }}
-          animate={{
-            x1: gradientCoordinates.x1,
-            x2: gradientCoordinates.x2,
-            y1: gradientCoordinates.y1,
-            y2: gradientCoordinates.y2,
-          }}
-          transition={{
-            delay,
-            duration,
-            ease: [0.16, 1, 0.3, 1], // https://easings.net/#easeOutExpo
-            repeat: Infinity,
-            repeatDelay: 0,
-          }}
-        >
-          <stop stopColor={gradientStartColor} stopOpacity={1} />
-          <stop offset="1" stopColor={gradientStopColor} stopOpacity={1} />
-        </motion.linearGradient>
+      <motion.linearGradient
+        className="transform-gpu"
+        id={id}
+        gradientUnits={"userSpaceOnUse"}
+        initial={{
+          x1: "0%",
+          x2: "0%",
+          y1: "0%",
+          y2: "0%",
+        }}
+        animate={{
+          x1: gradientCoordinates.x1,
+          x2: gradientCoordinates.x2,
+          y1: gradientCoordinates.y1,
+          y2: gradientCoordinates.y2,
+        }}
+        transition={{
+          delay,
+          duration,
+          ease: [0.16, 1, 0.3, 1],
+          repeat: Infinity,
+          repeatDelay: 0,
+        }}
+      >
+        <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
+        <stop stopColor={gradientStartColor}></stop>
+        <stop offset="32.5%" stopColor={gradientStopColor}></stop>
+        <stop offset="100%" stopColor={gradientStopColor} stopOpacity="0"></stop>
+      </motion.linearGradient>
       </defs>
     </svg>
   );
 };
-
