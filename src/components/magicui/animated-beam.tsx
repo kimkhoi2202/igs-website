@@ -27,7 +27,7 @@ export interface AnimatedBeamProps {
   endXOffset?: number;
   endYOffset?: number;
   borderRadius?: number;
-  mode?: "original" | "x-first"; // Mode selection
+  mode?: "original" | "x-first" | "y-first"; // Mode selection
 }
 
 export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
@@ -93,14 +93,12 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       const isStraightLine = startX === endX || startY === endY;
 
       if (mode === "x-first") {
-        // Mode 2: Go fully along the X-axis first, then 90-degree turn to Y-axis with rounded corner
+        // Mode: Go fully along the X-axis first, then 90-degree turn to Y-axis with rounded corner
         if (isStraightLine) {
           d = `M ${startX},${startY} H ${endX} V ${endY}`;
         } else if (startY === endY) {
-          // No curve needed for 180-degree horizontal line
           d = `M ${startX},${startY} H ${endX}`;
         } else if (startX === endX) {
-          // No curve needed for 180-degree vertical line
           d = `M ${startX},${startY} V ${endY}`;
         } else if (startX < endX) {
           d = `M ${startX},${startY} H ${
@@ -111,8 +109,25 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
             endX + borderRadius
           } Q ${endX},${startY} ${endX},${startY + borderRadius} V ${endY}`;
         }
+      } else if (mode === "y-first") {
+        // New Mode: Go fully along the Y-axis first, then 90-degree turn to X-axis with rounded corner
+        if (isStraightLine) {
+          d = `M ${startX},${startY} V ${endY} H ${endX}`;
+        } else if (startX === endX) {
+          d = `M ${startX},${startY} V ${endY}`;
+        } else if (startY === endY) {
+          d = `M ${startX},${startY} H ${endX}`;
+        } else if (startY < endY) {
+          d = `M ${startX},${startY} V ${
+            endY - borderRadius
+          } Q ${startX},${endY} ${startX + borderRadius},${endY} H ${endX}`;
+        } else {
+          d = `M ${startX},${startY} V ${
+            endY + borderRadius
+          } Q ${startX},${endY} ${startX + borderRadius},${endY} H ${endX}`;
+        }
       } else {
-        // Mode 1 (Original): Midway horizontal or vertical turn based on distance with rounded corners
+        // Mode: Midway horizontal or vertical turn based on distance with rounded corners
         if (isStraightLine) {
           d = `M ${startX},${startY} H ${endX} V ${endY}`;
         } else if (isHorizontal) {
@@ -230,16 +245,11 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
             repeatDelay: 0,
           }}
         >
-          <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
-          <stop stopColor={gradientStartColor}></stop>
-          <stop offset="32.5%" stopColor={gradientStopColor}></stop>
-          <stop
-            offset="100%"
-            stopColor={gradientStopColor}
-            stopOpacity="0"
-          ></stop>
+          <stop stopColor={gradientStartColor} stopOpacity={1} />
+          <stop offset="1" stopColor={gradientStopColor} stopOpacity={1} />
         </motion.linearGradient>
       </defs>
     </svg>
   );
 };
+

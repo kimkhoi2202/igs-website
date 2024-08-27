@@ -33,7 +33,7 @@ const Circle = forwardRef<HTMLDivElement, CircleProps>(
           }
         )}
         style={{
-          width: "min(100%, 48vw)", // Width will adjust based on viewport
+          width: "auto", // Width will adjust based on viewport
           height: "auto", // Height will adjust to maintain aspect ratio
           aspectRatio: "1/1", // Ensures the element remains a circle regardless of width
         }}
@@ -46,7 +46,7 @@ const Circle = forwardRef<HTMLDivElement, CircleProps>(
 
 Circle.displayName = "Circle";
 
-export function AnimatedBeamDemo() {
+export function AnimatedBeamHorizontal() {
   const { theme } = useTheme();
   const pathColor = theme === "dark" ? "white" : "darkgrey";
   const containerRef = useRef<HTMLDivElement>(null);
@@ -55,8 +55,6 @@ export function AnimatedBeamDemo() {
   const div3Ref = useRef<HTMLDivElement>(null);
   const div4Ref = useRef<HTMLDivElement>(null);
   const div5Ref = useRef<HTMLDivElement>(null);
-  const div6Ref = useRef<HTMLDivElement>(null);
-  const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -64,14 +62,10 @@ export function AnimatedBeamDemo() {
       ref={containerRef}
     >
       <div className="flex size-full flex-col items-stretch justify-between gap-16">
-        <div className="flex flex-row justify-between">
-          <Circle ref={div6Ref} hidden={true} />
-          <Circle hidden={true} />
+        <div className="flex flex-row justify-center">      
           <Circle ref={div1Ref}>
             <Icons.Warehouse />
           </Circle>
-          <Circle hidden={true} />
-          <Circle ref={div7Ref} hidden={true} />
         </div>
         <div className="flex flex-row justify-between gap-16">
           <Circle ref={div2Ref}>
@@ -123,6 +117,7 @@ export function AnimatedBeamDemo() {
         pathWidth={4}
         gradientStartColor={"#ff6f61"}
         gradientStopColor={"#ff8c00"}
+        mode={'x-first'}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -133,6 +128,7 @@ export function AnimatedBeamDemo() {
         pathWidth={4}
         gradientStartColor={"#ff6f61"}
         gradientStopColor={"#ff8c00"}
+        mode={'x-first'}
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -213,6 +209,169 @@ export function AnimatedBeamDemo() {
   );
 }
 
+export function AnimatedBeamVertical() {
+  const { theme } = useTheme();
+  const pathColor = theme === "dark" ? "white" : "darkgrey";
+  const containerRef = useRef<HTMLDivElement>(null);
+  const div1Ref = useRef<HTMLDivElement>(null);
+  const div2Ref = useRef<HTMLDivElement>(null);
+  const div3Ref = useRef<HTMLDivElement>(null);
+  const div4Ref = useRef<HTMLDivElement>(null);
+  const div5Ref = useRef<HTMLDivElement>(null);
+
+  return (
+    <div
+      className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-lg bg-background p-10"
+      ref={containerRef}
+    >
+      <div className="flex size-full h-full flex-row items-center justify-between gap-16">
+        <div className="flex flex-col justtify-center h-full">
+          <Circle ref={div1Ref}>
+            <Icons.Warehouse />
+          </Circle>  
+        </div>
+        <div className="flex flex-col justtify-center gap-16">
+         <Circle ref={div2Ref}>
+            <Icons.Plane />
+          </Circle>
+          <Circle ref={div3Ref}>
+            <Icons.Truck />
+          </Circle>
+          <Circle ref={div4Ref}>
+            <Icons.Chart />
+          </Circle>
+          <Circle ref={div5Ref}>
+            <Icons.Visibility />
+          </Circle>
+        </div>
+      </div>
+
+      <AnimatedBeam
+        endXOffset={3.5}
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div2Ref}
+        reverse={true}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+        mode={'y-first'}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div5Ref}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+        mode={'y-first'}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div3Ref}
+        reverse={true}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+        mode={'y-first'}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div4Ref}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+        mode={'y-first'}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div2Ref}
+        toRef={div3Ref}
+        startXOffset={20}
+        endXOffset={20}
+        pathColor={pathColor}
+        pathOpacity={0.5} 
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div2Ref}
+        toRef={div3Ref}
+        startXOffset={-20}
+        endXOffset={-20}
+        reverse
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div3Ref}
+        toRef={div4Ref}
+        startXOffset={20}
+        endXOffset={20}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div3Ref}
+        toRef={div4Ref}
+        startXOffset={-20}
+        endXOffset={-20}
+        reverse
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div4Ref}
+        toRef={div5Ref}
+        startXOffset={20}
+        endXOffset={20}
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div4Ref}
+        toRef={div5Ref}
+        startXOffset={-20}
+        endXOffset={-20}
+        reverse
+        pathColor={pathColor}
+        pathOpacity={0.5}
+        pathWidth={4}
+        gradientStartColor={"#ff6f61"}
+        gradientStopColor={"#ff8c00"}
+      />
+    </div>
+  );
+}
+
 const Icons = {
   Warehouse: () => (
     <Image src={WarehouseIcon} alt="Warehouse Icon" width={100} height={100} />
@@ -223,4 +382,4 @@ const Icons = {
   Visibility: () => <Image src={VisibilityIcon} alt="Visibility Icon" width={100} height={100} />,
 };
 
-export default AnimatedBeamDemo;
+export default AnimatedBeamHorizontal;

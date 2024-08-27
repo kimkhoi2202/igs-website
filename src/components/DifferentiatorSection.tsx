@@ -1,8 +1,8 @@
-"use client"; 
+"use client";
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useLanguage } from '@/components/context/LanguageContext'; // Make sure this is the correct import path
+import { useLanguage } from '@/components/context/LanguageContext'; // Ensure this is the correct import path
 
 interface DifferentiatorSectionProps {
   onLoadComplete?: () => void;
@@ -42,33 +42,39 @@ export default function DifferentiatorSection({ onLoadComplete }: Differentiator
       <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
         {/* Text Container */}
         <div className="w-full md:w-3/4 mb-12 md:mb-0">
-          <h2 className="text-4xl font-bold tracking-tighter mb-8 w-full">{translations.title}</h2>
+          <h2 className="sm:text-lg md:text-2xl lg:text-4xl font-bold tracking-tighter mb-8 w-full">{translations.title}</h2>
           <div className="space-y-8">
             {translations.content.map((text, index) => (
-              <p key={index} className={`text-lg ${index === 2 ? 'text-xl font-bold' : 'text-muted-foreground'}`}>
+              <p key={index} className={`sm:text-sm md:text-base lg:text-lg ${index === 2 ? 'sm:text-sm md:text-base lg:text-lg font-bold' : 'text-muted-foreground'}`}>
                 {text}
               </p>
             ))}
           </div>
         </div>
         {/* Images Container */}
-        <div className="flex flex-col item-end gap-4 md:w-1/3">
-          <Image
-            src="/iso.png"
-            width={300}
-            height={200}
-            alt=""
-            className="object-cover rounded-lg"
-            style={{ aspectRatio: '300/200', objectFit: 'contain' }}
-          />
-          <Image
-            src="/anab.png"
-            width={300}
-            height={200}
-            alt=""
-            className="object-cover rounded-lg"
-            style={{ aspectRatio: '300/200', objectFit: 'contain' }}
-          />
+        <div className="w-full md:w-1/3 lg:w-1/4">
+          <div className="flex md:flex-row gap-1 md:gap-2">
+            <div className="flex-1">
+              <Image
+                src="/iso.png"
+                width={300}
+                height={200}
+                alt=""
+                className="object-cover rounded-lg w-full"
+                style={{ aspectRatio: '300/200', objectFit: 'contain' }}
+              />
+            </div>
+            <div className="flex-1">
+              <Image
+                src="/anab.png"
+                width={300}
+                height={200}
+                alt=""
+                className="object-cover rounded-lg w-full"
+                style={{ aspectRatio: '300/200', objectFit: 'contain' }}
+              />
+            </div>
+          </div>
         </div>
       </div>
       {/* Differentiator Image */}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import AnimatedBeamDemo from '@/components/ui/animated-beam';
+import { AnimatedBeamHorizontal, AnimatedBeamVertical } from '@/components/ui/animated-beam'; // Assuming this exists
 import { useLanguage } from '@/components/context/LanguageContext';
 
 interface SupplyChainSectionProps {
@@ -10,12 +10,14 @@ interface SupplyChainSectionProps {
 
 export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectionProps) {
   const [loaded, setLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { language } = useLanguage();
   const [translations, setTranslations] = useState({
     title: '',
     credits: ''
   });
 
+  // Fetch translations based on selected language
   useEffect(() => {
     async function fetchTranslations() {
       const response = await fetch(`/Text/SupplyChainSection-text.json`);
@@ -26,13 +28,28 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
     fetchTranslations();
   }, [language]);
 
+  // Detect screen width to toggle between horizontal and vertical beam
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 650);
+    };
+
+    handleResize(); // Initial check on component mount
+    window.addEventListener('resize', handleResize); // Add event listener
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Cleanup listener on unmount
+    };
+  }, []);
+
+  // Simulate loading (replace with real loading logic)
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 1000);
 
     if (loaded && onLoadComplete) {
-      onLoadComplete();
+      onLoadComplete(); // Notify when loading is complete
     }
   }, [loaded, onLoadComplete]);
 
@@ -42,26 +59,9 @@ export default function SupplyChainSection({ onLoadComplete }: SupplyChainSectio
         <h2 className="text-3xl font-bold tracking-tighter text-black dark:text-white">
           {translations.title}
         </h2>
-        {/* <div className="w-full h-auto rounded-lg mt-8">
-          <Image
-            src="/supply-chain-light-mode.png"
-            width={1200}
-            height={600}
-            alt="Supply Chain Solution"
-            className="w-full h-auto rounded-lg dark:hidden"
-            style={{ aspectRatio: '1200/600', objectFit: 'contain' }}
-          />
-          <Image
-            src="/supply-chain-dark-mode.png"
-            width={1200}
-            height={600}
-            alt="Supply Chain Solution"
-            className="w-full h-auto rounded-lg hidden dark:block"
-            style={{ aspectRatio: '1200/600', objectFit: 'contain' }}
-          />
-        </div> */}
         <div className="relative w-full h-full rounded-lg">
-          <AnimatedBeamDemo />
+          {/* Conditionally render the beam based on screen width */}
+          {isMobile ? <AnimatedBeamVertical /> : <AnimatedBeamHorizontal />}
         </div>
         <p className="text-sm text-gray-500 mt-4">
           {translations.credits}
