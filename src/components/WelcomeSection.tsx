@@ -79,7 +79,7 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
   return (
     <section ref={sectionRef} className="w-full h-screen py-12 md:py-24 lg:py-32 snap-start">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-2">
-        <div className="relative w-full order-2">
+        <div className="relative w-full sm:h-full md:h-auto order-2">
           <div className="relative w-full" style={{ aspectRatio: '550 / 400' }}>
             <motion.div
               animate={shadowControls}
@@ -113,14 +113,14 @@ export default function WelcomeSection({ onLoadComplete }: WelcomeSectionProps) 
           initial={{ opacity: 0, x: -20 }}
           className="flex flex-col justify-center space-y-8 order-1 md:order-2"
         >
-          <h2 className="sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter">
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter">
             {translations.title}
           </h2>
           <Separator />
-          <p className="font-bold sm:text-lg md:text-xl lg:text-2xl text-muted-foreground">
+          <p className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground">
             {translations.subtitle}
           </p>
-          <p className="sm:text-base md:text-lg lg:text-xl text-muted-foreground">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground">
             {translations.description}
           </p>
         </motion.div>
